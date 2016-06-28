@@ -4,6 +4,10 @@
  */
 package ua.romenskyi.webapp.shopping.domain;
 
-public interface EntityInterface {
-	
+/**
+ * @author dmytro.romenskyi - Jun 28, 2016
+ *
+ */
+public interface UniqueNamedEntityInterface extends NamedEntityInterface {
+
 }
