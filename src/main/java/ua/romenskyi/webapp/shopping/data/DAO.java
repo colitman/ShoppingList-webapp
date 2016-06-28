@@ -13,6 +13,7 @@ import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import ua.romenskyi.webapp.shopping.domain.EntityInterface;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
 
@@ -107,5 +108,18 @@ public abstract class DAO {
 		
 		ENTITY entity = session.load(clazz, key);
 		return entity;
+	}
+	
+	public <ENTITY extends EntityInterface> List<ENTITY> getAll(Class<ENTITY> clazz) {
+		Session session = getSession();
+		
+		@SuppressWarnings("unchecked")
+		List<ENTITY> entities = session.createCriteria(clazz).list();
+		
+		if(entities == null) {
+			entities = Collections.emptyList();
+		}
+		
+		return entities;
 	}
 }
