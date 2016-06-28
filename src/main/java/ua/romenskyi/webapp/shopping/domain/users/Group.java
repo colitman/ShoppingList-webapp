@@ -6,16 +6,39 @@ package ua.romenskyi.webapp.shopping.domain.users;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Type;
+
+import ua.romenskyi.webapp.shopping.data.NameColumn;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
 
 /**
  * @author dmytro.romenskyi - Jun 28, 2016
  *
  */
+@Entity
+@Table(name="groups")
 public class Group implements NamedEntityInterface {
 
+	@Id
+	@Column(name="key")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long key;
+	
+	@Column(name="name", nullable=false)
+	@NameColumn
+	@Type(type="text")
 	private String name;
+	
+	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
 	private Collection<User> users;
 
 	@Override
