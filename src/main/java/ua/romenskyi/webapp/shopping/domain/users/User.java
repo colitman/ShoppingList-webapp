@@ -6,8 +6,16 @@ package ua.romenskyi.webapp.shopping.domain.users;
 
 import java.util.Collection;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,14 +23,27 @@ import org.springframework.security.core.userdetails.UserDetails;
 import ua.romenskyi.webapp.shopping.data.NameColumn;
 import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
 
+@Entity
+@Table(name="users")
 public class User implements UniqueNamedEntityInterface, UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	
+	@Id
+	@Column(name="key")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long key;
-	@NameColumn(name="username")
+	
+	@Column(name="username", nullable=false, unique=true)
+	@NameColumn
+	@Type(type="text")
 	private String username;
+	
+	@Column(name="password", nullable=false)
+	@Type(type="text")
 	private String password;
+	
+	@ManyToMany(mappedBy="users")
 	private Collection<Group> groups;
 
 	@Override
