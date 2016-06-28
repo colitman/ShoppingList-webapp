@@ -4,7 +4,6 @@
  */
 package ua.romenskyi.webapp.shopping.domain;
 
-public interface EntityInterface<KEY> {
-	KEY getKey();
-	void setKey(KEY key);
+public interface EntityInterface {
+	
 }
