@@ -11,18 +11,19 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 		
-		<title>Dashboard</title>
+		<title>ShoppingList</title>
 		<link rel="stylesheet" href="${app }/res/bootstrap/css/bootstrap.min.css">
 		<link rel="stylesheet" href="${app }/res/fa/css/font-awesome.css">
 		<link rel="stylesheet" href="${app }/res/adminlte/css/AdminLTE.css">
 		<link rel="stylesheet" href="${app }/res/adminlte/css/skins/_all-skins.css">
-		<link rel="stylesheet" href="${app }/res/doctool/css/fix.css">
+		<link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
 	</head>
 	<body class="error-404-page">
+		<i class="fa fa-meh-o fa-6"></i>
 		Not Found
 		
 		<footer class="main-footer text-center">
-			EasyERP | Dmytro Romenskyi | HobbyDev | 2016
+			ShoppingList | Dmytro Romenskyi | HobbyDev | 2016
 		</footer>
 				
 		<script src="${app }/res/jquery/jquery.min.js"></script>

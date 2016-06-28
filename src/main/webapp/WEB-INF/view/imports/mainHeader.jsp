@@ -5,8 +5,8 @@
 <c:set value="${pageContext.servletContext.contextPath}" var="app"></c:set>
 
 <a href="${app }/" class="logo">
-	<span class="logo-mini">ERP</span>
-	<span class="logo-lg">Easy<b>ERP</b></span>
+	<span class="logo-mini">SL</span>
+	<span class="logo-lg"><strong>Shopping</strong>List</span>
 </a>
 
 <nav class="navbar navbar-static-top">
@@ -106,7 +106,7 @@
 						</div>
 						<div class="pull-right">
 							<form action="${app }/logout" method="post">
-								<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
+								<sec:csrfInput/>
 								<button type="submit" class="btn btn-default btn-flat">Logout</button>
 							</form>
 						</div>

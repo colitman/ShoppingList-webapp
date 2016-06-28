@@ -3,4 +3,4 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:set value="${pageContext.servletContext.contextPath}" var="app"></c:set>
 
-EasyERP | Dmytro Romenskyi | HobbyDev | 2016
+ShoppingList | Dmytro Romenskyi | HobbyDev | 2016

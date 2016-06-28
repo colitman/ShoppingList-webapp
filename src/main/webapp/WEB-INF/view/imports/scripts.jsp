@@ -6,6 +6,6 @@
 <script src="${app }/res/jquery/jquery.min.js"></script>
 <script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>
 <script src="${app }/res/adminlte/js/app.js"></script>
-<script src="${app }/res/doctool/js/controlSidebarLayoutController.js"></script>
-<script src="${app }/res/doctool/js/skinLayoutController.js"></script>
-<script src="${app }/res/doctool/js/control-sidebar.js"></script>
+<script src="${app }/res/shoplist/js/controlSidebarLayoutController.js"></script>
+<script src="${app }/res/shoplist/js/skinLayoutController.js"></script>
+<script src="${app }/res/shoplist/js/control-sidebar.js"></script>

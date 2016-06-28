@@ -13,5 +13,5 @@
 <link rel="stylesheet" href="${app }/res/fa/css/font-awesome.css">
 <link rel="stylesheet" href="${app }/res/adminlte/css/AdminLTE.css">
 <link rel="stylesheet" href="${app }/res/adminlte/css/skins/_all-skins.css">
-<link rel="stylesheet" href="${app }/res/doctool/css/fix.css">
-<link rel="stylesheet" href="${app }/res/doctool/css/skins-fix.css">
+<link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
+<link rel="stylesheet" href="${app }/res/shoplist/css/skins-fix.css">
