@@ -18,6 +18,7 @@
 		<jasyptVersion>1.9.2</jasyptVersion>
 		<log4j2Version>2.3</log4j2Version>
 		<hibernateVersion>5.1.0.Final</hibernateVersion>
+		<swaggerVersion>2.5.0</swaggerVersion>
 	</properties>
 
 	<dependencies>
@@ -111,9 +112,21 @@
 			<artifactId>spring-orm</artifactId>
 			<version>${springVersion}</version>
 		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger2</artifactId>
+			<version>${swaggerVersion}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>io.springfox</groupId>
+			<artifactId>springfox-swagger-ui</artifactId>
+			<version>${swaggerVersion}</version>
+		</dependency>
 	</dependencies>
 
 	<build>
-		<finalName>shopping-list</finalName>
+		<finalName>shoplist</finalName>
 	</build>
 </project>
