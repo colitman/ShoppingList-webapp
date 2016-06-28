@@ -12,6 +12,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import ua.romenskyi.webapp.shopping.domain.EntityInterface;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
@@ -21,7 +22,8 @@ import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
  * @author dmytro.romenskyi - Jun 28, 2016
  *
  */
-public abstract class DAO {
+@Repository
+public class DefaultDAO {
 	
 	@Autowired
 	private SessionFactory sessionFactory;

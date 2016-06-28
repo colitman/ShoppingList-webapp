@@ -13,9 +13,9 @@ import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import ua.romenskyi.webapp.shopping.data.NameColumn;
-import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
+import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
 
-public class User implements NamedEntityInterface, UserDetails {
+public class User implements UniqueNamedEntityInterface, UserDetails {
 
 	private static final long serialVersionUID = 1L;
 	
