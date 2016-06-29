@@ -1,5 +1,12 @@
 $(document).ready(function() {
 	
+	var data = "";
+	var username = "";
+	
+	controlSidebarLayoutController(data, username);
+	skinLayoutController(data, username);
+	
+	/*
 	var username = $('.user-menu>a').text();
 	
 	$.ajax({
@@ -11,4 +18,5 @@ $(document).ready(function() {
 		controlSidebarLayoutController(data, username);
 		skinLayoutController(data, username);
 	});
+	*/
 });

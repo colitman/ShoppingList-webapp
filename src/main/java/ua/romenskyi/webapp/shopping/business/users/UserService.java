@@ -9,6 +9,7 @@ import java.util.List;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import ua.romenskyi.webapp.shopping.business.DefaultService;
 import ua.romenskyi.webapp.shopping.business.ResourceNotFoundException;
@@ -25,6 +26,7 @@ public class UserService
 					implements UserDetailsService {
 
 	@Override
+	@Transactional
 	public User loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		Long userKey = null;

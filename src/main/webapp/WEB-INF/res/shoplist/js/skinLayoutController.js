@@ -1,10 +1,12 @@
 function skinLayoutController(data, username) {
 	var currentSkin;
 	
-	currentSkin = data.defaultSkinName;
+	//currentSkin = data.defaultSkinName;
+	currentSkin = "skin-black-light";
 		
 	$('body').addClass(currentSkin);
 
+	/*
 	$('.skin-list a').click(function(){
 		
 		var newSkin = $(this).data('skin');
@@ -22,4 +24,5 @@ function skinLayoutController(data, username) {
 			dataType: "json"
 		});
 	});
+	*/
 }

@@ -32,7 +32,7 @@
 					</div>
 				</c:if>
 				
-				<form action="${app }/sign" method="post">
+				<form action="${app }/signin" method="post">
 					<sec:csrfInput/>
 					<div class="form-group has-feedback">
 						<input type="text" class="form-control" name="username" placeholder="Username" autofocus="autofocus" required="required"/>
@@ -42,10 +42,10 @@
 						<input type="password" class="form-control" name="password" placeholder="Password" required="required"/>
 						<i class="fa fa-user-secret form-control-feedback"></i>
 					</div>
-					<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</span></button>
+					<button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
 				</form>
 				
-				<a href="${app }/signup">Sign Up</a>
+				<a href="${app }/signup">Sign Up</a><br>
 				<a href="${app }/password_reset">Reset password</a>
 			</div>
 			<p class="text-center">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
