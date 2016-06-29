@@ -23,9 +23,7 @@ public class BaseRouterController {
 
 	@RequestMapping(path="/")
 	public ModelAndView root(ModelAndView mv, @CurrentUser User user) {
-		if(user != null) {
-			mv.addObject("currentUser", user);
-		}
+		mv.addObject("currentUser", user);
 		mv.setViewName("main");
 		
 		return mv;
