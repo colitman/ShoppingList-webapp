@@ -23,7 +23,7 @@
 					<input placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
 					<input placeholder="Password" type="password" name="password" class="form-control" required="required"/>
 					<input placeholder="Password again" type="password" name="password" class="form-control" required="required"/>
-					<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+					<button type="submit" class="btn btn-success btn-block">Sign Up</button>
 				</div>
 				
 				<div class="auth-form-footer">
