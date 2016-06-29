@@ -18,6 +18,7 @@
 	
 	<div class="navbar-custom-menu">
 		<ul class="nav navbar-nav">
+			<sec:authorize access="isAuthenticated()">
 			<li class="dropdown notifications-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-bell-o"></i>
@@ -91,25 +92,35 @@
 					</c:if>
 				</ul>
 			</li> <!-- .tasks-menu -->
+			</sec:authorize>
 			
 			<li class="dropdown user-menu">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 					<i class="fa fa-user"></i>
-					${principal.name }
+					${not empty user ? user.username : 'Guest' }
 				</a>
 				<ul class="dropdown-menu">
 					<li class="user-footer">
 						<div class="pull-left">
+							<sec:authorize access="isAuthenticated()">
 							<a class="btn btn-default btn-flat" href="${app }/users/${principal.name }">
 								Profile
 							</a>
+							</sec:authorize>
+							<sec:authorize access="isAnonymous()">
+							<a class="btn btn-default btn-flat" href="${app }/signin">
+								Sign In
+							</a>
+							</sec:authorize>
 						</div>
+						<sec:authorize access="isAuthenticated()">
 						<div class="pull-right">
 							<form action="${app }/logout" method="post">
 								<sec:csrfInput/>
 								<button type="submit" class="btn btn-default btn-flat">Logout</button>
 							</form>
 						</div>
+						</sec:authorize>
 					</li>
 				</ul>
 			</li> <!-- .user-menu -->

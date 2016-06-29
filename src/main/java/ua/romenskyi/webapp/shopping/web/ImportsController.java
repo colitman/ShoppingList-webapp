@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ua.romenskyi.webapp.shopping.config.CurrentUser;
+import ua.romenskyi.webapp.shopping.domain.users.User;
+
 /**
  * @author dmytro.romenskyi - Jun 29, 2016
  *
@@ -19,7 +22,8 @@ import org.springframework.web.servlet.ModelAndView;
 public class ImportsController {
 
 	@RequestMapping(path="/{importName}")
-	public ModelAndView getImport(@PathVariable String importName, ModelAndView mv) {
+	public ModelAndView getImport(@PathVariable String importName, ModelAndView mv, @CurrentUser User user) {
+		mv.addObject("currentUser", user);
 		mv.setViewName("imports/" + importName);
 		
 		return mv;
