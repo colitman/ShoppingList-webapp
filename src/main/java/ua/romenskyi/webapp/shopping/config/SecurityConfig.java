@@ -42,6 +42,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		
 		http
 			.csrf().disable()
+			.requiresChannel()
+				.antMatchers("/signin*").requiresSecure()
+				.and()
 			.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/signup", "/favicon.ico" , WebMvcConfig.RESOURCES_BASE_URL).permitAll()
 				.and()

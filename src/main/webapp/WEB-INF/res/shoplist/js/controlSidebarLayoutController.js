@@ -1,10 +1,12 @@
 function controlSidebarLayoutController(data, username) {
 	var currentLayout;
 	
-	currentLayout = data.defaultControlSidebarLayoutName;
+	//currentLayout = data.defaultControlSidebarLayoutName;
+	currentLayout = "control-sidebar-dark";
 	
 	$('.control-sidebar').addClass(currentLayout);
 
+	/*
 	$('input[data-sidebarskin="toggle"]').click(function(){
 		$('.control-sidebar').toggleClass('control-sidebar-light');
 		$('.control-sidebar').toggleClass('control-sidebar-dark');
@@ -25,4 +27,5 @@ function controlSidebarLayoutController(data, username) {
 			dataType: "json"
 		});
 	});
+	*/
 }

@@ -16,7 +16,7 @@
 		<springVersion>4.2.5.RELEASE</springVersion>
 		<springSecurityVersion>4.0.4.RELEASE</springSecurityVersion>
 		<jasyptVersion>1.9.2</jasyptVersion>
-		<log4j2Version>2.3</log4j2Version>
+		<log4j2Version>2.6.1</log4j2Version>
 		<hibernateVersion>5.1.0.Final</hibernateVersion>
 		<swaggerVersion>2.5.0</swaggerVersion>
 	</properties>
@@ -56,6 +56,12 @@
 		<dependency>
 			<groupId>org.apache.logging.log4j</groupId>
 			<artifactId>log4j-core</artifactId>
+			<version>${log4j2Version}</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-jcl</artifactId>
 			<version>${log4j2Version}</version>
 		</dependency>
 		

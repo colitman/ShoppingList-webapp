@@ -19,7 +19,7 @@
 		<link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
 	</head>
 	<body class="error-404-page">
-		<i class="fa fa-meh-o fa-6"></i>
+		<i class="fa fa-meh-o fa-pulse" style="font-size:20em"></i>
 		Not Found
 		
 		<footer class="main-footer text-center">
