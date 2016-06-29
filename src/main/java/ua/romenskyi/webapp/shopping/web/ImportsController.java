@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
@@ -22,7 +23,11 @@ import ua.romenskyi.webapp.shopping.domain.users.User;
 public class ImportsController {
 
 	@RequestMapping(path="/{importName}")
-	public ModelAndView getImport(@PathVariable String importName, ModelAndView mv, @CurrentUser User user) {
+	public ModelAndView getImport(@PathVariable String importName,
+									@RequestParam(name="pageTitle", required=false) String title,
+									ModelAndView mv,
+									@CurrentUser User user) {
+		mv.addObject("pageTitle", title);
 		mv.addObject("currentUser", user);
 		mv.setViewName("imports/" + importName);
 		
