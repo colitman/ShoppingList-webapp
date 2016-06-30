@@ -124,4 +124,10 @@ public class DefaultDAO {
 		
 		return entities;
 	}
+	
+	public <ENTITY extends EntityInterface> Long create(ENTITY entity) {
+		Session session = getSession();
+		
+		return (Long) session.save(entity);
+	}
 }

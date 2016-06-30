@@ -8,6 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
@@ -30,10 +31,13 @@ public class BaseRouterController {
 	}
 	
 	@RequestMapping(path="/signin")
-	public ModelAndView getSignIn(ModelAndView mv, Authentication auth) {
+	public ModelAndView getSignIn(ModelAndView mv,
+									@RequestParam(required=false) String username,
+									Authentication auth) {
 		if(auth != null && auth.isAuthenticated()) {
 			mv.setViewName("redirect:/");
 		} else {
+			mv.addObject("username", username);
 			mv.setViewName("signin");
 		}
 		
