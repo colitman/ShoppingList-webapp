@@ -8,35 +8,27 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<c:import url="/imports/head?pageTitle=Sign In"></c:import>
+		<c:import url="/imports/head?pageTitle=Sign Up"></c:import>
 		<link rel="stylesheet" href="${app }/res/shoplist/css/auth.css">
 	</head>
 	
 	<body class="auth-page">
 		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
-			<form class="auth-form" action="${app }/signin" method="post">
+			<form class="auth-form" action="${app }/signup" method="post">
 				<div class="auth-form-header">
-					<c:if test="${param.error != null}">
-						<div class="alert alert-danger">
-							<h4>Sign in failure</h4>
-							<c:if test="${SPRING_SECURITY_LAST_EXCEPTION != null}">
-								<p><c:out value="${SPRING_SECURITY_LAST_EXCEPTION.message}" /></p>
-							</c:if>
-						</div>
-					</c:if>
-					<h3>Please Sign In</h3>
+					<h3>Please Sign Up</h3>
 				</div>
 				
 				<div class="auth-form-body">
 					<input placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
 					<input placeholder="Password" type="password" name="password" class="form-control" required="required"/>
-					<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+					<input placeholder="Password again" type="password" name="password" class="form-control" required="required"/>
+					<button type="submit" class="btn btn-success btn-block">Sign Up</button>
 				</div>
 				
 				<div class="auth-form-footer">
-					<a href="${app }/signup">Sign Up</a>
-					<a class="pull-right" href="${app }/password_reset">Reset password</a>
+					<a href="${app }/signin">Sign In</a>
 				</div>
 			</form>
 		</div>
