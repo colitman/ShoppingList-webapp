@@ -25,9 +25,11 @@ public class ImportsController {
 	@RequestMapping(path="/{importName}")
 	public ModelAndView getImport(@PathVariable String importName,
 									@RequestParam(name="pageTitle", required=false) String title,
+									@RequestParam(name="root", defaultValue="false") String root,
 									ModelAndView mv,
 									@CurrentUser User user) {
 		mv.addObject("pageTitle", title);
+		mv.addObject("root", root);
 		mv.addObject("currentUser", user);
 		mv.setViewName("imports/" + importName);
 		

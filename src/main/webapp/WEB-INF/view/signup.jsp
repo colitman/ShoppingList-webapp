@@ -14,6 +14,7 @@
 	
 	<body class="auth-page">
 		<div class="container">
+			<c:import url="/imports/mainTopNav"></c:import>
 			<form class="auth-form" action="${app }/signup" method="post">
 				<div class="auth-form-header">
 					<h3>Please Sign Up</h3>
@@ -30,8 +31,9 @@
 					<a href="${app }/signin">Sign In</a>
 				</div>
 			</form>
-			<p class="text-center">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
 		</div>
+		
+		<c:import url="/imports/mainFooter"></c:import>
 		
 		<script src="${app }/res/jquery/jquery.min.js"></script>
 		<script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>

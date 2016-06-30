@@ -14,6 +14,7 @@
 	
 	<body class="auth-page">
 		<div class="container">
+			<c:import url="/imports/mainTopNav"></c:import>
 			<form class="auth-form" action="${app }/signin" method="post">
 				<div class="auth-form-header">
 					<c:if test="${param.error != null}">
@@ -38,8 +39,9 @@
 					<a class="pull-right" href="${app }/password_reset">Reset password</a>
 				</div>
 			</form>
-			<p class="text-center">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
 		</div>
+		
+		<c:import url="/imports/mainFooter"></c:import>
 		
 		<script src="${app }/res/jquery/jquery.min.js"></script>
 		<script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>

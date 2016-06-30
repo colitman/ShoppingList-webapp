@@ -4,6 +4,10 @@
 	background-color: #eee;
 }
 
+.auth-page nav {
+	margin-top: -40px;
+}
+
 .auth-page .auth-form {
 	max-width: 330px;
 	margin: auto;
