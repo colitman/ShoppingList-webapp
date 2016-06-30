@@ -17,11 +17,17 @@
 			<c:import url="/imports/mainTopNav"></c:import>
 			<form class="auth-form" action="${app }/api/users" method="post">
 				<div class="auth-form-header">
+					
+					<div class="alert alert-danger hidden">
+						<h4>Sign up failure</h4>
+						<p id="sign-up-error-message"></p>
+					</div>
+					
 					<h3>Please Sign Up</h3>
 				</div>
 				
 				<div class="auth-form-body">
-					<input placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
+					<input placeholder="Username" type="text" id="username" name="username" class="form-control" required="required" autofocus="autofocus"/>
 					<div id="passwords" class="has-feedback">
 						<input placeholder="Password" type="password" id="password" name="password" class="form-control" required="required"/>
 						<span class="glyphicon form-control-feedback"></span>
@@ -40,5 +46,6 @@
 		
 		<c:import url="/imports/scripts"></c:import>
 		<script type="text/javascript" src="${app }/res/shoplist/js/passwordsCheck.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/signup.js"></script>
 	</body>
 </html>

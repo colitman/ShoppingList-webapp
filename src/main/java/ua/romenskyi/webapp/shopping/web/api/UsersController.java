@@ -8,6 +8,8 @@ import org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.LinkedMultiValueMap;
+import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -44,6 +46,9 @@ public class UsersController {
 			return new ResponseEntity<String>("Username already exists",HttpStatus.CONFLICT);
 		}
 		
-		return new ResponseEntity<String>(String.valueOf(key), HttpStatus.CREATED);
+		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
+		headers.add("Location", String.valueOf(key));
+		
+		return new ResponseEntity<String>(String.valueOf(key), headers,HttpStatus.CREATED);
 	}
 }
