@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
  *
  */
 @RestController
+@RequestMapping(path="api/")
 public class EnvironmentController {
 	
 	private static final String PROC_ARCH = "PROCESSOR_ARCHITECTURE";
@@ -29,7 +30,7 @@ public class EnvironmentController {
 	private static final String COMP_NAME = "COMPUTERNAME";
 
 
-	@RequestMapping(path="api/environment", method=RequestMethod.GET)
+	@RequestMapping(path="environment", method=RequestMethod.GET)
 	public ResponseEntity<Map<String, String>> getEnv() {
 		Map<String,String> environment = new Hashtable<String,String>();
 		
@@ -45,7 +46,7 @@ public class EnvironmentController {
 		return response;
 	}
 	
-	@RequestMapping(path="api/environment", method=RequestMethod.PUT)
+	@RequestMapping(path="environment", method=RequestMethod.PUT)
 	public ResponseEntity<Map<String, String>> putEnv() {
 		Map<String,String> environment = new Hashtable<String,String>();
 		
@@ -61,7 +62,7 @@ public class EnvironmentController {
 		return response;
 	}
 	
-	@RequestMapping(path="api/environment", method=RequestMethod.DELETE)
+	@RequestMapping(path="environment", method=RequestMethod.DELETE)
 	public ResponseEntity<Map<String, String>> deleteEnv() {
 		Map<String,String> environment = new Hashtable<String,String>();
 		
@@ -77,7 +78,7 @@ public class EnvironmentController {
 		return response;
 	}
 	
-	@RequestMapping(path="api/environment", method=RequestMethod.POST)
+	@RequestMapping(path="environment", method=RequestMethod.POST)
 	public ResponseEntity<Map<String, String>> postEnv() {
 		Map<String,String> environment = new Hashtable<String,String>();
 		

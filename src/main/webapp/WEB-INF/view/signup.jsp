@@ -15,7 +15,7 @@
 	<body class="auth-page">
 		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
-			<form class="auth-form" action="${app }/signup" method="post">
+			<form class="auth-form" action="${app }/api/users" method="post">
 				<div class="auth-form-header">
 					<h3>Please Sign Up</h3>
 				</div>

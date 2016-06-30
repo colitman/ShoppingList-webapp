@@ -29,7 +29,7 @@
 				</div>
 				
 				<div class="auth-form-body">
-					<input placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
+					<input value="${username }" placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
 					<input placeholder="Password" type="password" name="password" class="form-control" required="required"/>
 					<button type="submit" class="btn btn-primary btn-block">Sign In</button>
 				</div>

@@ -38,7 +38,7 @@
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="${app }/${anon? 'signin' : 'users/' + currentUser.key}">${anon ? 'Sign In' : 'Profile' }</a>
+							<a href="${app }/${anon? 'signin' : 'users/' += currentUser.key}">${anon ? 'Sign In' : 'Profile' }</a>
 						</li>
 						<c:if test="${not anon }">
 							<li>

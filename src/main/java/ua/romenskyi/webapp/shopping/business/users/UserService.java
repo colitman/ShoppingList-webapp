@@ -6,7 +6,6 @@ package ua.romenskyi.webapp.shopping.business.users;
 
 import java.util.List;
 
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,7 +22,7 @@ import ua.romenskyi.webapp.shopping.domain.users.User;
 @Service
 public class UserService 
 					extends DefaultService<User>
-					implements UserDetailsService {
+					implements UserServiceInterface {
 
 	@Override
 	@Transactional
@@ -46,14 +45,32 @@ public class UserService
 		return user;
 	}
 
+	@Override
+	@Transactional
 	public boolean exists(Long key) {
 		return super.exists(User.class, key);
 	}
+	
+	@Override
+	@Transactional
+	public boolean exists(String username) {
+		Long key = null;;
+		try {
+			key = getDAO().getKeyByName(User.class, username);
+		} catch (ObjectNotExistsException e) {
+			return false;
+		}
+		return super.exists(User.class, key);
+	}
 
+	@Override
+	@Transactional
 	public User get(Long key) throws ResourceNotFoundException {
 		return super.get(User.class, key);
 	}
 
+	@Override
+	@Transactional
 	public List<User> list() {
 		return super.list(User.class);
 	}
