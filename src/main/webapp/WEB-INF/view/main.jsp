@@ -19,7 +19,6 @@
 		
 		<c:import url="/imports/mainFooter"></c:import>
 		
-		<script src="${app }/res/jquery/jquery.min.js"></script>
-		<script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>
+		<c:import url="/imports/scripts"></c:import>
 	</body>
 </html>

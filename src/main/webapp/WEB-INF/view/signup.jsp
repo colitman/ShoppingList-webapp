@@ -22,8 +22,11 @@
 				
 				<div class="auth-form-body">
 					<input placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
-					<input placeholder="Password" type="password" name="password" class="form-control" required="required"/>
-					<input placeholder="Password again" type="password" name="password" class="form-control" required="required"/>
+					<div id="passwords" class="has-feedback">
+						<input placeholder="Password" type="password" id="password" name="password" class="form-control" required="required"/>
+						<span class="glyphicon form-control-feedback"></span>
+						<input placeholder="Password again" type="password" id="password2" name="password2" class="form-control" required="required" disabled="disabled"/>
+					</div>
 					<button type="submit" class="btn btn-success btn-block">Sign Up</button>
 				</div>
 				
@@ -35,7 +38,7 @@
 		
 		<c:import url="/imports/mainFooter"></c:import>
 		
-		<script src="${app }/res/jquery/jquery.min.js"></script>
-		<script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>
+		<c:import url="/imports/scripts"></c:import>
+		<script type="text/javascript" src="${app }/res/shoplist/js/passwordsCheck.js"></script>
 	</body>
 </html>
