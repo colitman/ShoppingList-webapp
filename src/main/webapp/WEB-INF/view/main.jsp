@@ -15,10 +15,26 @@
 	<body>
 		<div class="container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
+			
+			<div class="row lists">
+				<div class="list-wrapper list-new col-sm-6 col-md-4">
+					<div class="panel panel-primary">
+						<div class="panel-heading">
+							New List
+						</div>
+						<div class="panel-body">
+							What is needed?
+						</div>
+						<c:import url="/imports/newListBody"></c:import>
+						<div class="panel-footer">
+							Link here
+						</div>
+					</div>
+				</div>
+			</div>
 		</div>
 		
 		<c:import url="/imports/mainFooter"></c:import>
-		
 		<c:import url="/imports/scripts"></c:import>
 	</body>
 </html>
