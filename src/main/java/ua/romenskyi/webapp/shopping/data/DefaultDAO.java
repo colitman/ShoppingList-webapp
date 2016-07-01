@@ -16,6 +16,7 @@ import org.springframework.stereotype.Repository;
 
 import ua.romenskyi.webapp.shopping.domain.EntityInterface;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
+import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
 
 /**
@@ -71,7 +72,7 @@ public class DefaultDAO {
 		return id;
 	}
 	
-	public <ENTITY extends NamedEntityInterface> List<Long> getKeysByName(Class<ENTITY> clazz, String name) throws ObjectNotExistsException {
+	public <ENTITY extends NamedEntityInterface> List<Long> getKeysByName(Class<ENTITY> clazz, String name) {
 		if (name == null) {
 			throw new IllegalArgumentException(
 					"Invalid entity name value provided.",
@@ -85,6 +86,54 @@ public class DefaultDAO {
 		@SuppressWarnings("unchecked")
 		List<Long> ids = session.createCriteria(clazz)
 									.add(Restrictions.eq(nameColumnAlias, name))
+									.setProjection(Projections.property(keyColumnAlias))
+									.list();
+		
+		if(ids == null) {
+			ids = Collections.emptyList();
+		}
+		
+		return ids;
+	}
+	
+	public <ENTITY extends OwnedEntityInterface> List<Long> getKeysByOwner(Class<ENTITY> clazz, Long owner) {
+		if (owner == null) {
+			throw new IllegalArgumentException(
+					"Invalid entity owner value provided.",
+					new NullPointerException("Entity owner provided is NULL."));
+		}
+		
+		String ownerColumnAlias = Utils.resolveOwnerColumnAlias(clazz);
+		String keyColumnAlias = Utils.resolveKeyColumnAlias(clazz);
+		
+		Session session = getSession();
+		@SuppressWarnings("unchecked")
+		List<Long> ids = session.createCriteria(clazz)
+									.add(Restrictions.eq(ownerColumnAlias, owner))
+									.setProjection(Projections.property(keyColumnAlias))
+									.list();
+		
+		if(ids == null) {
+			ids = Collections.emptyList();
+		}
+		
+		return ids;
+	}
+	
+	public <ENTITY extends OwnedEntityInterface> List<Long> getKeysByAnonymousOwner(Class<ENTITY> clazz, String owner) {
+		if (owner == null) {
+			throw new IllegalArgumentException(
+					"Invalid anonymous entity owner value provided.",
+					new NullPointerException("Anonymous entity owner provided is NULL."));
+		}
+		
+		String ownerColumnAlias = Utils.resolveAnonymousOwnerColumnAlias(clazz);
+		String keyColumnAlias = Utils.resolveKeyColumnAlias(clazz);
+		
+		Session session = getSession();
+		@SuppressWarnings("unchecked")
+		List<Long> ids = session.createCriteria(clazz)
+									.add(Restrictions.eq(ownerColumnAlias, owner))
 									.setProjection(Projections.property(keyColumnAlias))
 									.list();
 		

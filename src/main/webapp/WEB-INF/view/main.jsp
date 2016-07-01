@@ -31,10 +31,28 @@
 						</div>
 					</div>
 				</div>
+
+				<c:forEach items="${anonLists }" var="anonList">
+					<div class="list-wrapper list-saved col-sm-6 col-md-4">
+						<div class="panel panel-success">
+							<div class="panel-heading">
+								${anonList.key }
+							</div>
+							<div class="panel-body">
+								List Items: ${anonList.content }
+							</div>
+							<c:import url="/imports/newListBody"></c:import>
+							<div class="panel-footer">
+								<a href="${app }/lists/${anonList.key}">/lists/${anonList.key }</a>
+							</div>
+						</div>
+					</div>
+				</c:forEach>
 			</div>
 		</div>
 		
 		<c:import url="/imports/mainFooter"></c:import>
 		<c:import url="/imports/scripts"></c:import>
+		<script type="text/javascript" src="${app }/res/shoplist/js/listController.js"></script>
 	</body>
 </html>

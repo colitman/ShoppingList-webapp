@@ -15,7 +15,7 @@
 }
 
 .auth-page .auth-form .auth-form-body input {
-	border-radius: 0px;
+	border-radius: 0;
 	margin-bottom: -1px;
 }
 
