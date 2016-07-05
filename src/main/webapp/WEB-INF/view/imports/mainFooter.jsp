@@ -3,8 +3,6 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:set value="${pageContext.servletContext.contextPath}" var="app"></c:set>
 
-<footer class="footer">
-	<div class="container">
-		<p class="text-center text-muted">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
-	</div>
+<footer>
+	<p class="text-center text-muted">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
 </footer>

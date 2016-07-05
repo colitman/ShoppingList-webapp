@@ -11,9 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Type;
 
-import ua.romenskyi.webapp.shopping.domain.IdentifiedEntityInterface;
+import ua.romenskyi.webapp.shopping.data.AnonymousOwnerColumn;
+import ua.romenskyi.webapp.shopping.data.OwnerColumn;
+import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 
 /**
  * @author dmytro.romenskyi - Jun 29, 2016
@@ -21,7 +24,7 @@ import ua.romenskyi.webapp.shopping.domain.IdentifiedEntityInterface;
  */
 @Entity
 @Table(name="lists")
-public class List implements IdentifiedEntityInterface {
+public class List implements OwnedEntityInterface {
 
 	@Id
 	@Column(name="key")
@@ -31,6 +34,15 @@ public class List implements IdentifiedEntityInterface {
 	@Column(name="content")
 	@Type(type = "text")
 	private String content;
+	
+	@Column(name="owner")
+	@OwnerColumn
+	private Long owner;
+	
+	@Column(name="anonymousOwner")
+	@Type(type="text")
+	@AnonymousOwnerColumn
+	private String anonymousOwner;
 
 	@Override
 	public Long getKey() {
@@ -48,6 +60,26 @@ public class List implements IdentifiedEntityInterface {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	@Override
+	public Long getOwner() {
+		return owner;
+	}
+
+	@Override
+	public void setOwner(Long owner) {
+		this.owner = owner;
+	}
+
+	@Override
+	public String getAnonymousOwner() {
+		return anonymousOwner;
+	}
+
+	@Override
+	public void setAnonymousOwner(String anonymousOwner) {
+		this.anonymousOwner = anonymousOwner;
 	}
 
 }
