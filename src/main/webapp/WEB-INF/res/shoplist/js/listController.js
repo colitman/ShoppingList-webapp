@@ -33,16 +33,23 @@ function populateSavedLists() {
 				snippet = $('tr',item);
 
 				for (var i = 0; i < list.products.length; i++) {
-					var listEntry;
-					if(i === 0) {
-						listEntry = snippet;
-					} else {
-						listEntry = snippet.clone();
-					}
+					var listEntry = $(snippet).clone();
 
 					$('.table',item).append(listEntry);
 					$('.product-name', listEntry).text(list.products[i].name);
+
+					var productName = $('.product-name', listEntry);
+					if(list.products[i].bought) {
+						$(productName).wrapInner('<s></s>');
+						$('.product-actions i', listEntry).addClass('fa-minus');
+						$('.product-actions button', listEntry).addClass('btn-warning return-product-to-shelf-btn')
+					} else {
+						$('.product-actions i', listEntry).addClass('fa-cart-plus');
+						$('.product-actions button', listEntry).addClass('btn-success add-product-to-cart-btn')
+					}
 				}
+
+				$(snippet).remove();
 			});
 			
 		})
