@@ -10,12 +10,14 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CookieValue;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ua.romenskyi.webapp.shopping.business.ResourceAlreadyExistsException;
+import ua.romenskyi.webapp.shopping.business.ResourceNotFoundException;
 import ua.romenskyi.webapp.shopping.business.lists.ListServiceInterface;
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
 import ua.romenskyi.webapp.shopping.domain.list.List;
@@ -53,5 +55,24 @@ public class ListsController {
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", String.valueOf(key));
 		return new ResponseEntity<String>(String.valueOf(key), headers, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)
+	public ResponseEntity<List> getListByKey(@PathVariable String listKey) {
+		if(listKey == null || listKey.isEmpty()) {
+			return new ResponseEntity<List>(HttpStatus.BAD_REQUEST);
+		}
+		
+		List list = null;
+		
+		try {
+			list = listService.get(Long.valueOf(listKey));
+		} catch (NumberFormatException e) {
+			return new ResponseEntity<List>(HttpStatus.BAD_REQUEST);
+		} catch (ResourceNotFoundException e) {
+			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+		}
+		
+		return new ResponseEntity<List>(list, HttpStatus.OK);
 	}
 }

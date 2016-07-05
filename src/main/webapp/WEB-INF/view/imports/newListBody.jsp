@@ -8,7 +8,7 @@
 		<div id="new-list-product-entry" class="input-group input-group-sm">
 			<input id="new-list-product" type="text" class="form-control" placeholder="Product and amount" autofocus="autofocus">
 			<span class="input-group-btn">
-				<button id="save-new-product-btn" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
+				<button id="add-new-product-btn" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
 			</span>
 		</div>
 	</div>

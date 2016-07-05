@@ -5,3 +5,5 @@
 
 <script src="${app }/res/jquery/jquery.min.js"></script>
 <script src="${app }/res/bootstrap/js/bootstrap.min.js"></script>
+<script src="${app }/res/shoplist/js/models/models.js"></script>
+<script src="${app }/res/shoplist/js/app.js"></script>

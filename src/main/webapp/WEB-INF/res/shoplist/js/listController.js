@@ -1,36 +1,83 @@
 $(document).ready(function(){
 	var newProduct = $('#new-list-product');
-	var saveProductButton = $('#save-new-product-btn');
-	var removeSavedProductButton = '#remove-saved-product-btn';
-	var root = $('meta[name="contextPath"]').attr('content');
+	var addProductButton = $('#add-new-product-btn');
+	var removeAddedProductButton = '#remove-added-product-btn';
 
-	addSaveNewListButtonListener(root);
-	bindEnterPressForProductAdding(newProduct, saveProductButton);
-	addSaveProductButtonListener(root, newProduct, saveProductButton, removeSavedProductButton);
+	addSaveNewListButtonListener();
+	bindEnterPressForProductAdding(newProduct, addProductButton);
+	addAddProductButtonListener(newProduct, addProductButton, removeAddedProductButton);
+	populateSavedLists();
 });
 
-function addSaveNewListButtonListener(root) {
+function populateSavedLists() {
+	$('.list-saved').each(function(index, item) {
+		var listId = $('.panel', item).attr('id');
+
+		$.ajax({
+			url: ROOT + '/api/lists/' + listId,
+			type: 'GET',
+			dataType: 'json'
+		})
+		.done(function(data) {
+			var list = JSON.parse(data.content);
+			$('.wait-sign', item).remove();
+
+			var snippet;
+			$.ajax({
+				url: ROOT + '/snippets/savedProductSnippet',
+				type: 'GET',
+				dataType: 'html'
+			})
+			.done(function(data) {
+				$('.table',item).append(data);
+				snippet = $('tr',item);
+
+				for (var i = 0; i < list.products.length; i++) {
+					var listEntry;
+					if(i === 0) {
+						listEntry = snippet;
+					} else {
+						listEntry = snippet.clone();
+					}
+
+					$('.table',item).append(listEntry);
+					$('.product-name', listEntry).text(list.products[i].name);
+				}
+			});
+			
+		})
+		.fail(function(jqXHR, textStatus, errorThrown) {
+			alert(jqXHR.responseText);
+		});
+		
+	});
+}
+
+function addSaveNewListButtonListener() {
 	$('.save-new-list-btn').click(function(event) {
 
-		var list = {
-			products:[]
-		};
-
+		var list = new List();
+		
 		$('input', '.list-new').each(function(index, item) {
 			if($(item).val() !== "") {
-				list.products.push($(item).val());
+				var product = new Product($(item).val());
+				list.products.push(product);
 			}
 		});
 
+		if(list.products.length === 0) {
+			return;
+		}
+
 		$.ajax({
-			url: root + '/api/lists',
+			url: ROOT + '/api/lists',
 			type: 'POST',
 			dataType: 'json',
 			data: 'content=' + JSON.stringify(list)
 		})
 		.done(function(data) {
 			//refresh the main page, display the saved list next to new one form 
-			window.location.replace(window.location.protocol + "//" + window.location.host + root + "/");
+			window.location.replace(window.location.protocol + "//" + window.location.host + /*root*/ROOT + "/");
 		})
 		.fail(function() {
 			//TODO: think on this
@@ -39,37 +86,41 @@ function addSaveNewListButtonListener(root) {
 	});
 }
 
-function bindEnterPressForProductAdding(newProduct, saveProductButton) {
+function bindEnterPressForProductAdding(newProduct, addProductButton) {
 	$(newProduct).keyup(function(event) {
 		if(event.keyCode == 13 || event.which == 13) {
-			$(saveProductButton).click();
+			$(addProductButton).click();
 		}
 	});
 }
 
-function addSaveProductButtonListener(root, newProduct, saveProductButton, removeSavedProductButton) {
-	$(saveProductButton).click(function(event) {
-		var savedProduct;
+function addAddProductButtonListener(newProduct, addProductButton, removeAddedProductButton) {
+	$(addProductButton).click(function(event) {
+		if($(newProduct).val() == '') {
+			return;
+		}
+
+		var addedProduct;
 
 		$.ajax({
-			url: root + '/snippets/savedProductSnippet',
+			url: ROOT + '/snippets/addedProductSnippet',
 			type: 'GET',
 			dataType: 'html'
 		}).done(function(data) {
-			$('.list-group .list-group-item:last-child').before(data);
+			$('.list-new .list-group .list-group-item:last-child').before(data);
 			
-			savedProduct = $('.list-group .list-group-item:nth-last-child(2)');
+			addedProduct = $('.list-new .list-group .list-group-item:nth-last-child(2)');
 
 			var id = new Date().getTime();
-			$(savedProduct).attr('id', id);
-			$(removeSavedProductButton, savedProduct).data('target', id);
+			$(addedProduct).attr('id', id);
+			$(removeAddedProductButton, addedProduct).data('target', id);
 
-			$(removeSavedProductButton, savedProduct).click(function(event) {
+			$(removeAddedProductButton, addedProduct).click(function(event) {
 				var target = $(this).data('target');
 				$('#' + target).remove();
 			});
 			
-			$('input', savedProduct).val($(newProduct).val());
+			$('input', addedProduct).val($(newProduct).val());
 			$(newProduct).val('');
 			$(newProduct).focus();
 		});
