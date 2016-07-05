@@ -20,6 +20,7 @@ function populateSavedLists() {
 		})
 		.done(function(data) {
 			var list = JSON.parse(data.content);
+			$('.panel-body', item).text($('.panel-body', item).text() + ' ' + list.products.length);
 			$('.wait-sign', item).remove();
 
 			var snippet;
