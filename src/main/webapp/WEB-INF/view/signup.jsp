@@ -46,6 +46,9 @@
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>
+		<script type="text/javascript" src="${app}/res/shoplist/js/eventHandlers/keyup/controlSecondPasswordInputDisableState.js"></script>
+		<script type="text/javascript" src="${app}/res/shoplist/js/eventHandlers/keyup/controlPasswordsEqualityState.js"></script>
+		<script type="text/javascript" src="${app}/res/shoplist/js/eventHandlers/submit/submitSignUpForm.js"></script>
 		<script type="text/javascript" src="${app}/res/shoplist/js/controllers/signupPageController.js"></script>
 	</body>
 </html>

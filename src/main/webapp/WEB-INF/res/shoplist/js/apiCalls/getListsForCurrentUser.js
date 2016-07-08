@@ -1,7 +1,7 @@
 'use strict';
 
-export function getListsForCurrentUser () {
-	let shopper = Cookie.get('shopper');
+function getListsForCurrentUser () {
+	var shopper = Cookies.get('shopper');
 
 	return $.ajax({
 		url: ROOT + '/api/lists',

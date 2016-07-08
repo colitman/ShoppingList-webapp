@@ -1,9 +1,9 @@
 'use strict';
 
-export function controlPasswordsEqualityState (password, password2, signUpButton) {
-	let entered = $(password).val();
-	let entered2 = $(password2).val();
-	let password2Disabled = $(password2).attr('disabled')
+function controlPasswordsEqualityState (password, password2, signUpButton) {
+	var entered = $(password).val();
+	var entered2 = $(password2).val();
+	var password2Disabled = $(password2).attr('disabled')
 	
 	if(entered !== entered2 && !password2Disabled ) {
 		signUpButton.attr('disabled', true);

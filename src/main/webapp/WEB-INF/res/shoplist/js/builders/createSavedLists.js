@@ -1,12 +1,12 @@
 'use strict';
 
-export function createSavedLists (lists) {
-	let listSkeleton = $('.sl-lists .sl-list-wrapper:nth-child(2)');
-	let listSnippet = $(listSkeleton).clone();
+function createSavedLists (lists) {
+	var listSkeleton = $('.sl-lists .sl-list-wrapper:nth-child(2)');
+	var listSnippet = $(listSkeleton).clone();
 
-	for (let [listIndex, list] of lists.entries()) {
-		let target;
-		let shouldCreate = listIndex > 0;
+	for (var i = 0; i < lists.length; i++) {
+		var target;
+		var shouldCreate = i > 0;
 		
 		target = shouldCreate? listSnippet.clone() : listSkeleton;
 
@@ -14,23 +14,24 @@ export function createSavedLists (lists) {
 			$('.sl-lists .sl-list-wrapper:last-child').after(target);
 		}
 
-		populateData(target, list);
+		populateData(target, lists[i]);
 	}
-
 }
 
 function populateData (target, listData) {
-	let key = listData.key;
-	let products = JSON.parse(listData.content);
-	let productExample;
+	var key = listData.key;
+	var products = JSON.parse(listData.content);
+	var productExample;
 
-	for (let product of products) {
+	for (var i = 0; i < products.length; i++) {
+		var product = products[i];
+
 		$(target).attr('id', key);
 		$('.panel-heading', target).text(key);
 		$('.panel-body', target).text($('.panel-body', target).text() + ' ' + products.length);
 
 		productExample = $('.table tr:first', target);
-		let savedProductSkeleton = $(productExample, target).clone();
+		var savedProductSkeleton = $(productExample, target).clone();
 
 		$(productExample).after(savedProductSkeleton);
 		$('.sl-product-name', savedProductSkeleton).text(product.name);

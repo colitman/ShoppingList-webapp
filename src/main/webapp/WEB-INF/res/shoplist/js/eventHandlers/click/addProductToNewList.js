@@ -1,11 +1,11 @@
 'use strict';
 
-export function addProductToNewList (product) {
+function addProductToNewList (product) {
 	if($(product).val() == '') {
 		return;
 	}
 
-	let addedProduct;
+	var addedProduct;
 
 	$.ajax({
 		url: ROOT + '/snippets/addedProductSnippet',
@@ -16,12 +16,12 @@ export function addProductToNewList (product) {
 		
 		addedProduct = $('#sl-new-list .list-group .list-group-item:nth-last-child(2)');
 
-		let id = new Date().getTime();
+		var id = new Date().getTime();
 		$(addedProduct).attr('id', id);
 		$('.sl-remove-product-btn', addedProduct).data('target', id);
 
 		$('.sl-remove-product-btn', addedProduct).click(function(event) {
-			let target = $(this).data('target');
+			var target = $(this).data('target');
 			$('#' + target).remove();
 		});
 		

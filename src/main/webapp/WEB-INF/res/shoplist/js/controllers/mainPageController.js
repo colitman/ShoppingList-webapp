@@ -1,15 +1,14 @@
 'use strict';
 
-import addProductToNewList from '../eventHandlers/click/addProductToNewList';
-import addProductToNewList from '../eventHandlers/click/saveList';
-import getListsForCurrentUser from '../eventHandlers/apiCalls/getListsForCurrentUser';
-import createSavedLists from '../builders/createSavedLists';
-
 $(document).ready(function() {
-	let addProductButton = $('#sl-add-product-btn');
-	let newProduct = $('#sl-new-product');
-	let saveListButton = $('#sl-save-list-btn');
-	let hasSavedLists = $('meta[name="hasSavedLists"]').attr('content');
+	mainPageController()
+});
+
+function mainPageController() {
+	var addProductButton = $('#sl-add-product-btn');
+	var newProduct = $('#sl-new-product');
+	var saveListButton = $('#sl-save-list-btn');
+	var hasSavedLists = $('meta[name="hasSavedLists"]').attr('content');
 
 	$(addProductButton).click(function(event) {
 		addProductToNewList(newProduct);
@@ -26,14 +25,14 @@ $(document).ready(function() {
 	});
 
 	if(hasSavedLists) {
-		let lists = {};
+		var lists = {};
 		getListsForCurrentUser()
 			.done(function(data) {
 				lists = data;
 				createSavedLists(lists);
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
- 				alert('fail getting lists for current user');
+				alert('fail getting lists for current user');
 			});
 	}
-});
+}

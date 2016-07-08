@@ -1,13 +1,11 @@
 'use strict';
 
-import * from '../../models/index';
-
-export function saveList () {
-	let list = new List();
+function saveList () {
+	var list = new List();
 		
 	$('input', '#sl-new-list').each(function(index, item) {
 		if($(item).val() !== "") {
-			let product = new Product($(item).val());
+			var product = new Product($(item).val());
 			list.products.push(product);
 		}
 	});
