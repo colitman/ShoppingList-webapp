@@ -2,27 +2,28 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
-<c:set value="${pageContext.servletContext.contextPath}" var="app"></c:set>
-<c:set var="anon" value="${empty currentUser}"></c:set>
+
+<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="isAnon" value="${empty currentUser}"></c:set>
 
 <nav class="navbar navbar-default">
 	<div class="container-fluid">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="${app }/">ShoppingList</a>
+			<a class="navbar-brand" href="${app}/">ShoppingList</a>
 			<button type="button"
 					class="navbar-toggle collapsed"
 					data-toggle="collapse"
-					data-target="#main-top-navbar">
+					data-target="#sl-main-top-navbar">
 			
 				<i class="fa fa-bars"></i>
 			</button>
 		</div>
 		
-		<div class="collapse navbar-collapse" id="main-top-navbar">
+		<div class="collapse navbar-collapse" id="sl-main-top-navbar">
 			<form class="navbar-form navbar-left form-inline">
 				<div class="form-group">
-					<label for="list-id">/</label>
-					<input type="search" id="list-id" class="form-control" placeholder="List ID" />
+					<label for="list_id">/</label>
+					<input type="search" id="list_id" name="list_id" class="form-control" placeholder="List ID" />
 				</div>
 				<button type="button" class="btn btn-default">Find</button>
 			</form>
@@ -33,16 +34,16 @@
 						class="dropdown-toggle" 
 						data-toggle="dropdown">
 						<i class="fa fa-user"></i>
-						${anon ? 'Guest' : currentUser.username}
+						${isAnon? 'Guest' : currentUser.username}
 						<i class="fa fa-caret-down"></i>
 					</a>
 					<ul class="dropdown-menu">
 						<li>
-							<a href="${app }/${anon? 'signin' : 'users/' += currentUser.key}">${anon ? 'Sign In' : 'Profile' }</a>
+							<a href="${app}/${isAnon? 'signin' : 'users/' += currentUser.key}">${isAnon? 'Sign In' : 'Profile'}</a>
 						</li>
-						<c:if test="${not anon }">
+						<c:if test="${not isAnon}">
 							<li>
-								<form action="${app }/signout" method="post">
+								<form action="${app}/signout" method="post">
 									<button class="btn btn-default" type="submit">Sign Out</button>
 								</form>
 							</li>
@@ -51,7 +52,7 @@
 				</li>
 			</ul>
 			
-			<c:if test="${not root }">
+			<c:if test="${not root}">
 				<button type="button" class="btn btn-primary navbar-btn navbar-right">Create List</button>
 			</c:if>
 		</div>

@@ -1,3 +1,5 @@
+'use strict';
+
 function List() {
 	this.products = [];
 	Object.seal(this);

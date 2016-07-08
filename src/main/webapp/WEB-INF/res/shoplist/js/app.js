@@ -1,3 +1,5 @@
+'use strict';
+
 var ROOT = $('meta[name="contextPath"]').attr('content');
 
 $(document).ready(function() {
@@ -8,9 +10,9 @@ $(document).ready(function() {
 });
 
 function setMinHeight() {
-	var nav = $('.page nav');
-	var content = $('.page .main-content');
-	var footer = $('.page footer');
+	var nav = $('.sl-page nav');
+	var content = $('.sl-page .sl-main-content');
+	var footer = $('.sl-page footer');
 
 	var contentMinHeight;
 
