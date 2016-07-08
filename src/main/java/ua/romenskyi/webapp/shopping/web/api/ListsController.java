@@ -4,8 +4,6 @@
  */
 package ua.romenskyi.webapp.shopping.web.api;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +42,7 @@ public class ListsController {
 		List list = new List();
 		list.setContent(content);
 		list.setOwner(currentUser == null? -1L : currentUser.getKey());
-		list.setAnonymousOwner(currentUser == null ? shopper == null ? "" : shopper : "");
+		list.setAnonymousOwner(shopper == null? "" : shopper);
 		
 		Long key = null;
 		
@@ -66,7 +64,9 @@ public class ListsController {
 			return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
 		}
 		
-		return new ResponseEntity<java.util.List<List>>(new ArrayList<List>(), HttpStatus.OK);
+		java.util.List<List> lists = listService.list();
+		
+		return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)

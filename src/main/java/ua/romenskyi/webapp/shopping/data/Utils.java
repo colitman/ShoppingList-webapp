@@ -11,7 +11,6 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 
 import ua.romenskyi.webapp.shopping.domain.EntityConfigurationException;
-import ua.romenskyi.webapp.shopping.domain.EntityInterface;
 import ua.romenskyi.webapp.shopping.domain.IdentifiedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;

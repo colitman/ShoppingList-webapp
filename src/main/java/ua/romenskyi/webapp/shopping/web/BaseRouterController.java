@@ -21,7 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ua.romenskyi.webapp.shopping.business.lists.ListServiceInterface;
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
-import ua.romenskyi.webapp.shopping.domain.list.List;
 import ua.romenskyi.webapp.shopping.domain.users.User;
 
 /**
@@ -42,7 +41,7 @@ public class BaseRouterController {
 							HttpServletRequest req,
 							HttpServletResponse resp) {
 		
-		if(shopper == null || shopper.trim().equals("")) {
+		if(shopper == null || shopper.isEmpty()) {
 			String cookie = String.valueOf(new Date().getTime()) + req.getRemoteAddr();
 			cookie = String.valueOf(cookie.hashCode());
 			resp.addCookie(new Cookie("shopper", cookie));
