@@ -4,6 +4,8 @@
  */
 package ua.romenskyi.webapp.shopping.web.api;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -55,6 +57,16 @@ public class ListsController {
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
 		headers.add("Location", String.valueOf(key));
 		return new ResponseEntity<String>(String.valueOf(key), headers, HttpStatus.CREATED);
+	}
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ResponseEntity<java.util.List<List>> getLists(@RequestParam(required=false) String shopper) {
+		if(shopper != null && !shopper.isEmpty()) {
+			java.util.List<List> lists = listService.getByAnonymousOwner(shopper);
+			return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
+		}
+		
+		return new ResponseEntity<java.util.List<List>>(new ArrayList<List>(), HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)

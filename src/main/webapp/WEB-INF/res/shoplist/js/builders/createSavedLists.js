@@ -13,22 +13,27 @@ function createSavedLists (lists) {
 		if(shouldCreate) {
 			$('.sl-lists .sl-list-wrapper:last-child').after(target);
 		}
-
+		
 		populateData(target, lists[i]);
 	}
+	
+	$('.sl-saved-product').removeClass('hidden');
+	$('.sl-wait-sign').remove();
 }
 
 function populateData (target, listData) {
 	var key = listData.key;
-	var products = JSON.parse(listData.content);
+	var products = JSON.parse(listData.content).products;
 	var productExample;
+	
+	$(target).attr('id', key);
+	$('.panel-heading', target).text(key);
+	$('.panel-body', target).text($('.panel-body', target).text() + ' ' + products.length);
 
 	for (var i = 0; i < products.length; i++) {
 		var product = products[i];
 
-		$(target).attr('id', key);
-		$('.panel-heading', target).text(key);
-		$('.panel-body', target).text($('.panel-body', target).text() + ' ' + products.length);
+		
 
 		productExample = $('.table tr:first', target);
 		var savedProductSkeleton = $(productExample, target).clone();
@@ -46,5 +51,5 @@ function populateData (target, listData) {
 	}
 
 	$(productExample).remove();
-	$('.sl-saved-product', target).removeClass('hidden');
+	//$('.sl-saved-product', target).removeClass('hidden');
 }

@@ -47,8 +47,8 @@ public class BaseRouterController {
 			cookie = String.valueOf(cookie.hashCode());
 			resp.addCookie(new Cookie("shopper", cookie));
 		} else {
-			java.util.List<List> anonLists = listService.getByAnonymousOwner(shopper);
-			mv.addObject("anonLists", anonLists);
+			int savedListsCount = listService.getByAnonymousOwner(shopper).size();
+			mv.addObject("savedListsCount", savedListsCount);
 		}
 		
 		mv.addObject("currentUser", user);

@@ -14,3 +14,4 @@
 <link rel="stylesheet" href="${app }/res/fa/css/font-awesome.css">
 
 <link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
+<link rel="stylesheet" href="${app }/res/shoplist/css/app.css">
