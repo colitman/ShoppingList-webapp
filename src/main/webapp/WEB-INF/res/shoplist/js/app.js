@@ -1,4 +1,4 @@
-var ROOT = $('meta[name="contextPath"]').attr('content');
+const ROOT = $('meta[name="contextPath"]').attr('content');
 
 $(document).ready(function() {
 	setMinHeight();
@@ -8,11 +8,11 @@ $(document).ready(function() {
 });
 
 function setMinHeight() {
-	var nav = $('.page nav');
-	var content = $('.page .main-content');
-	var footer = $('.page footer');
+	let nav = $('.sl-page nav');
+	let content = $('.sl-page .sl-main-content');
+	let footer = $('.sl-page footer');
 
-	var contentMinHeight;
+	let contentMinHeight;
 
 	contentMinHeight = $(window).height() - $(nav).outerHeight(true) - $(footer).outerHeight(true);
 

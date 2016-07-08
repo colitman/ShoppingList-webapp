@@ -32,15 +32,7 @@ footer {
 	background-color: #f5f5f5;
 }
 
-.list-group-item .row {
-	padding-right: 15px;
-}
-
-.list-group-item .list-part {
-	padding: 0 0 0 10px;
-}
-
-.list-wrapper .save-new-list-btn {
+.sl-list-wrapper #sl-save-list-btn {
 	border-radius: 0;
 }
 

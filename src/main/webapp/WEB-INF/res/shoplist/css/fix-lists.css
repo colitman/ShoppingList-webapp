@@ -1,16 +1,16 @@
 @media (max-width: 767px) {
-  .list-wrapper:nth-child(1n+2) {
+  .sl-list-wrapper:nth-child(1n+2) {
     clear: left;
   }
 }
 
 @media (min-width:768px) and (max-width: 991px) {
-  .list-wrapper:nth-child(2n+3) {
+  .sl-list-wrapper:nth-child(2n+3) {
     clear: left;
   }
 }
 @media (min-width: 992px) {
-  .list-wrapper:nth-child(3n+4) {
+  .sl-list-wrapper:nth-child(3n+4) {
     clear: left;
   }  
 }
