@@ -7,6 +7,7 @@ package ua.romenskyi.webapp.shopping.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.util.ClassUtils;
+import org.springframework.web.bind.annotation.CookieValue;
 
 import springfox.documentation.builders.PathSelectors;
 import springfox.documentation.builders.RequestHandlerSelectors;
@@ -35,7 +36,9 @@ public class SwaggerConfig {
 				.apis(RequestHandlerSelectors.basePackage(apiBasePackage))
 				.paths(PathSelectors.ant("/api/**"))
 				.build()
-				.apiInfo(apiInfo());
+			.apiInfo(apiInfo())
+			.ignoredParameterTypes(CurrentUser.class,
+									CookieValue.class);
 		
 		return docket;
 	}

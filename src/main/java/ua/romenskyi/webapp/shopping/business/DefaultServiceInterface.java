@@ -22,5 +22,7 @@ public interface DefaultServiceInterface<ENTITY extends EntityInterface> {
 	List<ENTITY> list(Class<ENTITY> clazz);
 	
 	Long add(ENTITY entity) throws ResourceAlreadyExistsException;
+	
+	boolean update(ENTITY entity) throws ResourceNotFoundException;
 
 }

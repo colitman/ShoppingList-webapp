@@ -71,4 +71,14 @@ public class DefaultService<ENTITY extends EntityInterface> implements DefaultSe
 		
 		return getDAO().create(entity);
 	}
+	
+	@Override
+	@Transactional
+	public boolean update(ENTITY entity) throws ResourceNotFoundException {
+		try {
+			return getDAO().update(entity);
+		} catch (ObjectNotExistsException e) {
+			throw new ResourceNotFoundException(e.getMessage(), e);
+		}
+	}
 }

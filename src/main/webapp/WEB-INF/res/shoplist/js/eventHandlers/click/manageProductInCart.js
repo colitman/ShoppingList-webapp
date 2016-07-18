@@ -1,6 +1,6 @@
 'use strict';
 
-function addProductToCart (savedListElement, button) {
+function manageProductInCart (savedListElement, button) {
 	
 	var targetId = $(button).data('target');
 
@@ -24,10 +24,10 @@ function addProductToCart (savedListElement, button) {
 		dataType: 'json',
 		data: 'content=' + JSON.stringify(list)
 	})
-	.done(function() {
+	.done(function(data) {
 		console.log("success");
 	})
-	.fail(function() {
+	.fail(function(jqXHR, textStatus, errorThrown) {
 		console.log("error");
 	});
 	

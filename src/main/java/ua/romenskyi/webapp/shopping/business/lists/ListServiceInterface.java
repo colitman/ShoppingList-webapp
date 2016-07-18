@@ -19,6 +19,5 @@ public interface ListServiceInterface extends DefaultServiceInterface<List> {
 	java.util.List<List> list();
 	java.util.List<List> getByOwner(Long owner);
 	java.util.List<List> getByAnonymousOwner(String owner);
-	
 
 }

@@ -24,7 +24,7 @@ function saveList () {
 		//refresh the main page, display the saved list next to new one form 
 		window.location.replace(window.location.protocol + "//" + window.location.host + ROOT + "/");
 	})
-	.fail(function() {
+	.fail(function(jqXHR, textStatus, errorThrown) {
 		//TODO: think on this
 	})
 }

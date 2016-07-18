@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import ua.romenskyi.webapp.shopping.domain.EntityInterface;
+import ua.romenskyi.webapp.shopping.domain.IdentifiedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
@@ -178,5 +179,24 @@ public class DefaultDAO {
 		Session session = getSession();
 		
 		return (Long) session.save(entity);
+	}
+	
+	public <ENTITY extends EntityInterface> boolean update(ENTITY entity) throws ObjectNotExistsException {
+		if(entity == null) {
+			throw new IllegalArgumentException(
+					"Invalid entity provided.",
+					new NullPointerException("Entity provided is NULL."));
+		}
+		
+		IdentifiedEntityInterface iEntity = (IdentifiedEntityInterface)entity;
+		
+		if(iEntity.getKey() == null || !exists(iEntity.getClass(), iEntity.getKey())) {
+			throw new ObjectNotExistsException(iEntity.getClass().getSimpleName() + " entity, requested for update does not exist");
+		}
+		
+		Session session = getSession();
+		
+		
+		return session.merge(entity) != null;
 	}
 }

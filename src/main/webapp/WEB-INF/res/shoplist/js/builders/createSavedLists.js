@@ -48,23 +48,22 @@ function populateData (target, listData) {
 			$(savedProductSkeleton).addClass('sl-bought-product');
 			$('.sl-product-actions i', savedProductSkeleton).addClass('fa-minus');
 			$('.sl-product-actions button', savedProductSkeleton).addClass('btn-warning sl-return-product-btn');
-
-			$('.sl-product-actions button', savedProductSkeleton).click(function(event) {
-				returnProductToShelf(target, this);
-			});
 		} else {
 			$('.sl-product-actions i', savedProductSkeleton).addClass('fa-cart-plus');
 			$('.sl-product-actions button', savedProductSkeleton).addClass('btn-success sl-add-to-cart-btn');
-
-			$('.sl-product-actions button', savedProductSkeleton).click(function(event) {
-				addProductToCart(target, this);
-			});
 		}
+		
+		$('.sl-product-actions button', savedProductSkeleton).click(function(event) {
+			manageProductInCart(target, this);
+		});
 
 		$('.sl-product-actions button', savedProductSkeleton).data('target', tempKey);
-
+		
 	}
 
+	var publicLink = $('.panel-footer a', target);
+	$(publicLink).attr('href', $(publicLink).attr('href') + key);
+	$(publicLink).text($(publicLink).text() + key);
 	$(productExample).remove();
 	//$('.sl-saved-product', target).removeClass('hidden');
 }

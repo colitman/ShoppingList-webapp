@@ -73,8 +73,7 @@
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/addProductToCart.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/returnProductToShelf.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/manageProductInCart.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/apiCalls/getListsForCurrentUser.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/builders/createSavedLists.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/addProductToNewList.js"></script>
