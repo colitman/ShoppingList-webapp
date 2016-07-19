@@ -23,7 +23,7 @@ function createSavedLists (lists) {
 
 function populateData (target, listData) {
 	var key = listData.key;
-	var products = JSON.parse(listData.content).products;
+	var products = JSON.parse(listData.content)/*.products*/;
 	var productExample;
 	
 	$(target).attr('id', key);

@@ -1,7 +1,11 @@
 'use strict';
 
 function List() {
-	this.products = [];
+	this.key = -1;
+	this.content = [];
+	this.bought = false;
+	this.anonymousOwner = "";
+	this.owner = -1;
 	Object.seal(this);
 }
 
