@@ -27,6 +27,11 @@ function populateData (target, listData) {
 	var productExample;
 	
 	$(target).attr('id', key);
+	
+	if(listData.bought) {
+		$('.panel', target).toggleClass('panel-success panel-default')
+	}
+	
 	$('.panel-heading', target).text(key);
 	$('.panel-body', target).text($('.panel-body', target).text() + ' ' + products.length);
 
@@ -53,17 +58,27 @@ function populateData (target, listData) {
 			$('.sl-product-actions button', savedProductSkeleton).addClass('btn-success sl-add-to-cart-btn');
 		}
 		
+		$('.sl-product-actions button', savedProductSkeleton).data('target', tempKey);
+		
 		$('.sl-product-actions button', savedProductSkeleton).click(function(event) {
 			manageProductInCart(target, this);
 		});
-
-		$('.sl-product-actions button', savedProductSkeleton).data('target', tempKey);
-		
 	}
 
 	var publicLink = $('.panel-footer a', target);
 	$(publicLink).attr('href', $(publicLink).attr('href') + key);
 	$(publicLink).text($(publicLink).text() + key);
+	
+	var buyButton = $('.buy-list-btn', target).data('target', key);
+	
+	$('.buy-list-btn').each(function(index, item) {
+		var targetListKey = $(item).data('target');
+		
+		$(item).click(function(event){
+			buyList(targetListKey);
+		});
+	});
+	
 	$(productExample).remove();
 	//$('.sl-saved-product', target).removeClass('hidden');
 }

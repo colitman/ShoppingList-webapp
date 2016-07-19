@@ -78,6 +78,7 @@
 		<script type="text/javascript" src="${app }/res/shoplist/js/builders/createSavedLists.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/addProductToNewList.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/saveList.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/buyList.js"></script>
  		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/mainPageController.js"></script>
 	</body>
 </html>

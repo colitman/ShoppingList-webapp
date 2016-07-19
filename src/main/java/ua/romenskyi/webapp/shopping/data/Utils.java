@@ -39,7 +39,8 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			alias = field.getAnnotation(Column.class).name();
+			//alias = field.getAnnotation(Column.class).name();
+			alias = field.getName();
 			return alias;
 		}
 		
@@ -52,14 +53,15 @@ public class Utils {
 		}
 		
 		if(methodFound) {
-			alias = method.getAnnotation(Column.class).name();
+			//alias = method.getAnnotation(Column.class).name();
+			alias = method.getName();
 			return alias;
 		}
 		
 		throw new EntityConfigurationException(clazz.getSimpleName() + " does not have the NAME property marked.");
 	}
 
-	public static String resolveKeyColumnAlias(Class<? extends IdentifiedEntityInterface> clazz) {
+	static String resolveKeyColumnAlias(Class<? extends IdentifiedEntityInterface> clazz) {
 		boolean fieldFound = false;
 		boolean methodFound = false;
 		
@@ -77,7 +79,8 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			alias = field.getAnnotation(Column.class).name();
+			//alias = field.getAnnotation(Column.class).name();
+			alias = field.getName();
 			return alias;
 		}
 		
@@ -90,14 +93,15 @@ public class Utils {
 		}
 		
 		if(methodFound) {
-			alias = method.getAnnotation(Column.class).name();
+			//alias = method.getAnnotation(Column.class).name();
+			alias = method.getName();
 			return alias;
 		}
 		
 		throw new EntityConfigurationException(clazz.getSimpleName() + " does not have the ID property marked.");
 	}
 	
-	public static String resolveOwnerColumnAlias(Class<? extends OwnedEntityInterface> clazz) {
+	static String resolveOwnerColumnAlias(Class<? extends OwnedEntityInterface> clazz) {
 		boolean fieldFound = false;
 		boolean methodFound = false;
 		
@@ -115,7 +119,8 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			alias = field.getAnnotation(Column.class).name();
+			//alias = field.getAnnotation(Column.class).name();
+			alias = field.getName();
 			return alias;
 		}
 		
@@ -128,14 +133,15 @@ public class Utils {
 		}
 		
 		if(methodFound) {
-			alias = method.getAnnotation(Column.class).name();
+			//alias = method.getAnnotation(Column.class).name();
+			alias = method.getName();
 			return alias;
 		}
 		
 		throw new EntityConfigurationException(clazz.getSimpleName() + " does not have the owner property marked.");
 	}
 	
-	public static String resolveAnonymousOwnerColumnAlias(Class<? extends OwnedEntityInterface> clazz) {
+	static String resolveAnonymousOwnerColumnAlias(Class<? extends OwnedEntityInterface> clazz) {
 		boolean fieldFound = false;
 		boolean methodFound = false;
 		
@@ -153,7 +159,8 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			alias = field.getAnnotation(Column.class).name();
+			//alias = field.getAnnotation(Column.class).name();
+			alias = field.getName();
 			return alias;
 		}
 		
@@ -166,7 +173,8 @@ public class Utils {
 		}
 		
 		if(methodFound) {
-			alias = method.getAnnotation(Column.class).name();
+			//alias = method.getAnnotation(Column.class).name();
+			alias = method.getName();
 			return alias;
 		}
 		

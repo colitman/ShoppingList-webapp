@@ -60,7 +60,8 @@ public class ListsController {
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.PUT)
 	public ResponseEntity<String> updateList(@PathVariable String listKey,
-												@RequestParam String content,
+												@RequestParam(required=false) String content,
+												@RequestParam(required=false, defaultValue="false") boolean bought,
 												@CurrentUser @ApiParam(hidden=true) User currentUser,
 												@CookieValue(required=false) String shopper) {
 		
@@ -78,7 +79,11 @@ public class ListsController {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
 		
-		list.setContent(content);
+		if(content != null && !content.isEmpty()) {
+			list.setContent(content);
+		}
+		
+		list.setBought(bought);
 		
 		boolean updated = false;
 		

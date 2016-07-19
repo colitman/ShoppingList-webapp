@@ -30,18 +30,26 @@ public class List implements OwnedEntityInterface {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long key;
 	
-	@Column(name="content")
+	@Column(name="content", nullable=false)
 	@Type(type = "text")
 	private String content;
+	
+	@Column(name="bought", nullable=false)
+	private boolean bought;
 	
 	@Column(name="owner")
 	@OwnerColumn
 	private Long owner;
 	
-	@Column(name="anonymousOwner")
+	@Column(name="anon_owner")
 	@Type(type="text")
 	@AnonymousOwnerColumn
 	private String anonymousOwner;
+	
+	public List() {
+		this.content = "";
+		this.bought = false;
+	}
 
 	@Override
 	public Long getKey() {
@@ -59,6 +67,14 @@ public class List implements OwnedEntityInterface {
 
 	public void setContent(String content) {
 		this.content = content;
+	}
+
+	public boolean isBought() {
+		return bought;
+	}
+
+	public void setBought(boolean bought) {
+		this.bought = bought;
 	}
 
 	@Override
@@ -79,6 +95,31 @@ public class List implements OwnedEntityInterface {
 	@Override
 	public void setAnonymousOwner(String anonymousOwner) {
 		this.anonymousOwner = anonymousOwner;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 17;
+		result = prime * result + ((key == null) ? 0 : key.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		List other = (List) obj;
+		if (key == null) {
+			if (other.key != null)
+				return false;
+		} else if (!key.equals(other.key))
+			return false;
+		return true;
 	}
 
 }
