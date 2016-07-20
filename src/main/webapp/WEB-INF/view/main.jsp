@@ -30,7 +30,19 @@
 							<div class="panel-body">
 								What is needed?
 							</div>
-							<c:import url="/imports/newListBody"></c:import>
+							
+							<div class="list-group">
+								<div class="list-group-item">
+									<div id="sl-new-product-entry" class="input-group input-group-sm">
+										<input id="sl-new-product" type="text" class="form-control" placeholder="Product and amount" autofocus="autofocus">
+										<span class="input-group-btn">
+											<button id="sl-add-product-btn" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
+										</span>
+									</div>
+								</div>
+							</div>
+							<button id="sl-save-list-btn" type="button" class="btn btn-success btn-sm btn-block">Save</button>
+							
 						</div>
 					</div>
 
