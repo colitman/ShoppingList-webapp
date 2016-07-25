@@ -7,6 +7,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": ".travis.yml",
+			"settings":
+			{
+				"buffer_size": 946,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Procfile",
+			"settings":
+			{
+				"buffer_size": 87,
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -15,13 +31,13 @@
 	"build_varint": "",
 	"command_palette":
 	{
-		"height": 58.0,
+		"height": 360.0,
 		"last_filter": "pack",
 		"selected_items":
 		[
 			[
 				"pack",
-				"Preferences: Browse Packages"
+				"Package Control: Install Package"
 			]
 		],
 		"width": 384.0
@@ -44,10 +60,28 @@
 	},
 	"expanded_folders":
 	[
-		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp"
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/bootstrap",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/bootstrap/css",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/fa",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/fa/css",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/jquery",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/css",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/controllers",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/models",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/services",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/views",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/views/rootPage",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view"
 	],
 	"file_history":
 	[
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/views/rootPage/index.js",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view/main.jsp"
 	],
 	"find":
 	{
@@ -82,8 +116,87 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": ".travis.yml",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 946,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								888,
+								888
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/YAML/YAML.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Procfile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 87,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								87,
+								87
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -118,6 +231,10 @@
 		]
 	},
 	"menu_visible": true,
+	"output.CSS Extended Completions":
+	{
+		"height": 0.0
+	},
 	"output.find_results":
 	{
 		"height": 0.0
@@ -164,7 +281,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 150.0,
+	"side_bar_width": 282.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
