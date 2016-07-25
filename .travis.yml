@@ -14,3 +14,7 @@ deploy:
   app: 
     master: shop-list
     dev: shop-list-dev
+
+# notifications
+notifications:
+  slack: hobbydev:7tCTaiIZ7bAh4HqQZGy8yl0C
