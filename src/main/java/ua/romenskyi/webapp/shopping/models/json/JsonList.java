@@ -4,7 +4,6 @@
  */
 package ua.romenskyi.webapp.shopping.models.json;
 
-import ua.romenskyi.webapp.shopping.domain.EntityInterface;
 import ua.romenskyi.webapp.shopping.domain.list.List;
 
 /**

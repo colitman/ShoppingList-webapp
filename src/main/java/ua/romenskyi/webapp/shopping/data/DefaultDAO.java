@@ -44,10 +44,7 @@ public class DefaultDAO {
 		
 		ENTITY entity = session.get(clazz, key);
 		
-		if(entity == null) {
-			return false;
-		}
-		return true;
+		return entity != null;
 	}
 	
 	public <ENTITY extends UniqueNamedEntityInterface> Long getKeyByName(Class<ENTITY> clazz, String name) throws ObjectNotExistsException {

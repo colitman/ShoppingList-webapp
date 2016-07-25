@@ -54,7 +54,7 @@ public class UserService
 	@Override
 	@Transactional
 	public boolean exists(String username) {
-		Long key = null;;
+		Long key = null;
 		try {
 			key = getDAO().getKeyByName(User.class, username);
 		} catch (ObjectNotExistsException e) {
