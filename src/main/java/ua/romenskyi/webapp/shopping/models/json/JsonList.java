@@ -48,7 +48,7 @@ public class JsonList implements JsonModel {
 			
 			JsonProduct p = getContent()[i];
 			
-			data += "{\"name\": \"" + p.getName() + "\", \"bought\": " + String.valueOf(p.isBought()) + "}";
+			data += "{\"key\": \"" + p.getKey() + "\", \"name\": \"" + p.getName() + "\", \"bought\": " + String.valueOf(p.isBought()) + "}";
 			
 			if(i != getContent().length - 1) {
 				data += ", ";

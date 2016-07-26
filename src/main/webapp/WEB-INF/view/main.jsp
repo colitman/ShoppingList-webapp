@@ -22,66 +22,22 @@
 			
 			<div class="sl-main-content">
 				<div class="row sl-lists">
-					<div class="sl-list-wrapper col-sm-6 col-md-4">
-						<div id="sl-new-list" class="panel panel-primary">
-							<div class="panel-heading">
-								New List
-							</div>
-							<div class="panel-body">
-								What is needed?
-							</div>
-							
-							<div class="list-group">
-								<div class="list-group-item">
-									<div id="sl-new-product-entry" class="input-group input-group-sm">
-										<input id="sl-new-product" type="text" class="form-control" placeholder="Product and amount" autofocus="autofocus">
-										<span class="input-group-btn">
-											<button id="sl-add-product-btn" class="btn btn-default" type="button"><i class="fa fa-plus"></i></button>
-										</span>
-									</div>
-								</div>
-							</div>
-							<button id="sl-save-list-btn" type="button" class="btn btn-success btn-sm btn-block">Save</button>
-							
-						</div>
-					</div>
-
-					<c:if test="${hasSavedLists}">
-						<div class="sl-list-wrapper col-sm-6 col-md-4">
-							<div class="sl-saved-list panel panel-success">
-								<div class="panel-heading">
-									
-								</div>
-								<div class="panel-body">
-									List Items:
-								</div>
-
-								<table class="table table-condensed">
-									<tr class="sl-saved-product hidden">
-										<td class="col-xs-10 sl-product-name"></td>
-										<td class="col-xs-2 sl-product-actions">
-											<button class="btn" type="button"><i class="fa"></i></button>
-										</td>
-									</tr>
-									<tr class="sl-wait-sign">
-										<td>
-											<p class="text-center">
-												<i class="fa fa-refresh fa-spin fa-2x"></i>
-											</p>
-										</td>
-									</tr>
-								</table>
-								<button type="button" class="btn btn-primary btn-sm btn-block buy-list-btn">Buy</button>
-
-								<div class="panel-footer">
-									<a href="${app }/lists/">/lists/</a>
-								</div>
-							</div>
-						</div>						
-					</c:if>
+					
+					<c:import url="/imports/newListForm"></c:import>
+				
 				</div>
 			</div>
 			<c:import url="/imports/mainFooter"></c:import>
+		</div>
+
+		<div class="sl-modals">
+			
+		</div>
+
+		<div class="sl-snippets">
+			<c:import url="/imports/addedProductSnippet"></c:import>
+			<c:import url="/imports/savedListSnippet"></c:import>
+			<c:import url="/imports/savedProductSnippet"></c:import>
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>

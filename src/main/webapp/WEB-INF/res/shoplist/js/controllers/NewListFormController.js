@@ -25,6 +25,7 @@ NewListFormController.prototype
 		// assign "remove product" event
 		var productId = new Date().getTime();
 		$(product).attr('id', productId);
+		$('input', product).data('product-id', productId);
 		$(REMOVE_PRODUCT_BTN_CLASS, product).data('target', productId);
 
 		$(REMOVE_PRODUCT_BTN_CLASS, product).click(function(event) {
@@ -53,6 +54,7 @@ NewListFormController.prototype
 
 			if(productName !== "") {
 				var product = new Product(productName);
+				product.key = $(item).data('product-id');
 				list.content.push(product);
 			}
 		});

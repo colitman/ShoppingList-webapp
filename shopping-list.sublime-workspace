@@ -4,6 +4,66 @@
 		"selected_items":
 		[
 			[
+				"Da",
+				"Date()"
+			],
+			[
+				"list",
+				"listData	ListsController.js"
+			],
+			[
+				"lis",
+				"listData	ListsController.js"
+			],
+			[
+				"sl-",
+				"sl-list-wrapper	(main.jsp)"
+			],
+			[
+				"pre",
+				"prepend	.prepend()"
+			],
+			[
+				"removeCl",
+				"removeClass	.removeClass()"
+			],
+			[
+				"lists",
+				"listsData"
+			],
+			[
+				"for",
+				"for	for (…) {…}"
+			],
+			[
+				"le",
+				"length"
+			],
+			[
+				"bu",
+				"buyList	(SavedListFormController.js)"
+			],
+			[
+				"save",
+				"savedListController"
+			],
+			[
+				"sa",
+				"savedListController"
+			],
+			[
+				"SAVE",
+				"SAVED_LIST_CLASS	(app.js)"
+			],
+			[
+				"Lis",
+				"ListsController()	listscontroller.js"
+			],
+			[
+				"Sa",
+				"SAVED_LIST_CLASS	(app.js)"
+			],
+			[
 				"Li",
 				"ListsController()	listscontroller.js"
 			]
@@ -15,7 +75,7 @@
 			"file": "src/main/webapp/WEB-INF/res/shoplist/js/views/rootPage/index.js",
 			"settings":
 			{
-				"buffer_size": 608,
+				"buffer_size": 1134,
 				"line_ending": "Unix"
 			}
 		},
@@ -23,7 +83,7 @@
 			"file": "src/main/webapp/WEB-INF/res/shoplist/js/app.js",
 			"settings":
 			{
-				"buffer_size": 1414,
+				"buffer_size": 1343,
 				"line_ending": "Windows"
 			}
 		},
@@ -31,16 +91,56 @@
 			"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/ListsController.js",
 			"settings":
 			{
-				"buffer_size": 979,
+				"buffer_size": 1544,
 				"line_ending": "Windows",
 				"name": "ListsController"
+			}
+		},
+		{
+			"file": "src/main/webapp/WEB-INF/res/shoplist/js_old/builders/createSavedLists.js",
+			"settings":
+			{
+				"buffer_size": 2472,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/webapp/WEB-INF/res/shoplist/js/models/models.js",
+			"settings":
+			{
+				"buffer_size": 280,
+				"line_ending": "Windows"
 			}
 		},
 		{
 			"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/SavedListFormController.js",
 			"settings":
 			{
-				"buffer_size": 132,
+				"buffer_size": 270,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/webapp/WEB-INF/res/shoplist/js/services/ListService.js",
+			"settings":
+			{
+				"buffer_size": 656,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/NewListFormController.js",
+			"settings":
+			{
+				"buffer_size": 1821,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "src/main/webapp/WEB-INF/view/main.jsp",
+			"settings":
+			{
+				"buffer_size": 3812,
 				"line_ending": "Unix"
 			}
 		}
@@ -61,7 +161,7 @@
 				"Package Control: Install Package"
 			]
 		],
-		"width": 416.0
+		"width": 400.0
 	},
 	"console":
 	{
@@ -96,6 +196,7 @@
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/controllers",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/models",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/services",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/apiCalls",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/builders",
@@ -104,17 +205,21 @@
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/eventHandlers/click",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/eventHandlers/keyup",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/eventHandlers/submit",
-		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view"
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view/errors",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view/imports"
 	],
 	"file_history":
 	[
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/app.js",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view/main.jsp",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/controllers/NewListFormController.js",
+		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/services/ListService.js",
+		"/C/Users/dmytro.romenskyi/AppData/Roaming/Sublime Text 3/Packages/AutoCompleteJS/AutoCompleteJS.sublime-settings",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/models/models.js",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js_old/app.js",
-		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/app.js",
 		"/C/Users/dmytro.romenskyi/AppData/Roaming/Sublime Text 3/Packages/Package Control/Package Control.sublime-settings",
 		"/C/Users/dmytro.romenskyi/AppData/Roaming/Sublime Text 3/Packages/User/AutoCompleteJS.sublime-settings",
-		"/C/Users/dmytro.romenskyi/AppData/Roaming/Sublime Text 3/Packages/AutoCompleteJS/AutoCompleteJS.sublime-settings",
-		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/view/main.jsp",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/src/main/webapp/WEB-INF/res/shoplist/js/views/rootPage/index.js",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/Procfile",
 		"/D/Personal/HobbyDev/WorkSpaces/ShoppingList/shopping-list/pom.xml",
@@ -123,7 +228,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"find_in_files":
 	{
@@ -137,6 +242,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"savedListController",
+			"newListController",
+			"		\n"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -154,7 +262,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -163,15 +271,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 608,
+						"buffer_size": 1134,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								606,
-								606
+								589,
+								616
 							]
 						],
 						"settings":
@@ -195,10 +303,10 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 90.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 7,
 					"type": "text"
 				},
 				{
@@ -207,7 +315,211 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1414,
+						"buffer_size": 1343,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								286,
+								286
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 90.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/ListsController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1544,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1167,
+								1167
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"auto_name": "ListsController",
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js_old/builders/createSavedLists.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2472,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								595,
+								595
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 360.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js/models/models.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 280,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								193,
+								193
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/SavedListFormController.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 270,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								228,
+								228
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								},
+								{
+									"characters": ".#",
+									"selector": "text.html"
+								}
+							],
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 8,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js/services/ListService.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 656,
 						"regions":
 						{
 						},
@@ -238,24 +550,24 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/ListsController.js",
+					"buffer": 7,
+					"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/NewListFormController.js",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 979,
+						"buffer_size": 1821,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								976,
-								976
+								337,
+								337
 							]
 						],
 						"settings":
@@ -271,32 +583,31 @@
 									"selector": "text.html"
 								}
 							],
-							"auto_name": "ListsController",
 							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 45.0,
+						"translation.y": 585.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 3,
-					"file": "src/main/webapp/WEB-INF/res/shoplist/js/controllers/SavedListFormController.js",
+					"buffer": 8,
+					"file": "src/main/webapp/WEB-INF/view/main.jsp",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 132,
+						"buffer_size": 3812,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								130,
-								130
+								2979,
+								2979
 							]
 						],
 						"settings":
@@ -310,20 +621,16 @@
 								{
 									"characters": ".#",
 									"selector": "text.html"
-								},
-								{
-									"characters": ".#",
-									"selector": "text.html"
 								}
 							],
-							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"syntax": "Packages/Java/Java Server Pages (JSP).sublime-syntax",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 990.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 0,
 					"type": "text"
 				}
 			]
@@ -331,7 +638,7 @@
 	],
 	"incremental_find":
 	{
-		"height": 0.0
+		"height": 23.0
 	},
 	"input":
 	{
@@ -372,7 +679,7 @@
 	"project": "shopping-list.sublime-project",
 	"replace":
 	{
-		"height": 0.0
+		"height": 42.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -410,7 +717,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 282.0,
+	"side_bar_width": 412.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
