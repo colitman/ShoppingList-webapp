@@ -16,8 +16,16 @@ ListService.prototype
 	};
 
 ListService.prototype
-	.updateList = function(listForm){
-	 // tries to update list and returns a promise  
+	.updateList = function(list){
+	 // tries to update list and returns a promise
+	 return
+			$.ajax({
+				url: ROOT + '/api/lists/' + list.key,
+				type: 'PUT',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(list)
+			});  
 	};
 
 ListService.prototype
