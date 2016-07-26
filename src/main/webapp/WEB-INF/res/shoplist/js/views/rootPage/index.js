@@ -1,7 +1,8 @@
 'use strict';
 
-var newListController = new NewListFormController();
-var savedListController = new SavedListFormController();
+var newListFormController = new NewListFormController();
+var savedListFormController = new SavedListFormController();
+var listsController = new ListsController();
 
 $(document).ready(function() {
 	init();
@@ -10,7 +11,7 @@ $(document).ready(function() {
 function init() {
 
 	$(ADD_PRODUCT_BTN).click(function(event) {
-		newListController.addProduct(NEW_PRODUCT); //+
+		newListFormController.addProduct(NEW_PRODUCT); //+
 	});
 
 	$(NEW_PRODUCT).keyup(function(event) {
@@ -20,10 +21,22 @@ function init() {
 	});
 
 	$(SAVE_LIST_BTN).click(function(event) {
-		newListController.saveList(NEW_LIST); //+
+		newListFormController.saveList(NEW_LIST); //+
 	});
 
-	if(HAS_SAVED_LISTS) {
-		savedListController.getListsForCurrentUser();
-	}
+	listsController.getSavedListsForCurrentUser();
+
+	$(SAVED_LIST_CLASS).each(function(index, slSavedList) {
+		$(CHANGE_PRODUCT_STATUS_BTN_CLASS, slSavedList).each(function(index, slChangeProductStatusBtn) {
+			$(slChangeProductStatusBtn).click(function(event) {
+				savedListFormController.changeProductStatus(slSavedList, slChangeProductStatusBtn);
+			});
+		});
+
+		$(BUY_LIST_BTN_CLASS, slSavedList).each(function(index, slBuyListBtn) {
+			$(slBuyListBtn).click(function(event) {
+				savedListFormController.buyList(slSavedList, slBuyListBtn);
+			});
+		});
+	});
 }

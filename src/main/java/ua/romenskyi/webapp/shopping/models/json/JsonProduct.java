@@ -4,33 +4,45 @@
  */
 package ua.romenskyi.webapp.shopping.models.json;
 
+import java.util.Date;
+
 /**
  * @author dmytro.romenskyi - Jul 19, 2016
  *
  */
 public class JsonProduct implements JsonModel {
 	
+	private Long key;
 	private String name;
 	private boolean bought;
 
-	private JsonProduct() {
+	public  JsonProduct() {
+		this.key = new Date().getTime();
 		this.name = "";
 		this.bought = false;
 	}
 
-	String getName() {
+	public Long getKey() {
+		return key;
+	}
+
+	public void setKey(Long key) {
+		this.key = key;
+	}
+
+	public String getName() {
 		return name;
 	}
 
-	void setName(String name) {
+	public void setName(String name) {
 		this.name = name;
 	}
 
-	boolean isBought() {
+	public boolean isBought() {
 		return bought;
 	}
 
-	void setBought(boolean bought) {
+	public void setBought(boolean bought) {
 		this.bought = bought;
 	}
 }
