@@ -31,9 +31,28 @@ ListService.prototype
 ListService.prototype
 	.getListsByAnonymousOwner = function(shopper){
 	 // sends ajax api call and returns a promise 
+	return
+	 		$.ajax({
+	 			url: ROOT + '/api/lists',
+	 			type: 'GET',
+	 			dataType: 'json',
+	 			data:{
+	 				shopper: shopper
+	 			}
+	 		});
+	 		
 	};
 
 ListService.prototype
 	.getListsByOwner = function(owner){
-	 // sends ajax api call and returns a promise 
+	 // sends ajax api call and returns a promise
+	return
+	 		$.ajax({
+	 			url: ROOT + '/api/lists',
+	 			type: 'GET',
+	 			dataType: 'json',
+	 			data:{
+	 				owner: owner
+	 			}
+	 		});
 	};
