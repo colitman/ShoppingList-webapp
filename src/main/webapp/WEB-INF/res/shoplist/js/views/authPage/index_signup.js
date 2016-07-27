@@ -1,8 +1,6 @@
 'use strict';
 
-var newListFormController = new NewListFormController();
-var savedListFormController = new SavedListFormController();
-var listsController = new ListsController();
+var signUpFormController = new SignUpFormController(AUTH_FORM);
 
 $(document).ready(function() {
 	init();
@@ -10,33 +8,21 @@ $(document).ready(function() {
 
 function init() {
 
-	$(ADD_PRODUCT_BTN).click(function(event) {
-		newListFormController.addProduct(NEW_PRODUCT); //+
+	var password = $('#password', AUTH_FORM);
+	var password2 = $('#password2', AUTH_FORM);
+	var signUpButton = $('button[type="submit"]', AUTH_FORM);
+
+	$(password).keyup(function(event) {
+		signUpFormController.checkPasswordsEqual();
+		signUpFormController.toggleSecondPasswordAccessibility();
 	});
 
-	$(NEW_PRODUCT).keyup(function(event) {
-		if(event.keyCode == 13 || event.which == 13) {
-			$(ADD_PRODUCT_BTN).click();
-		}
+	$(password2).keyup(function(event) {
+		signUpFormController.checkPasswordsEqual();
 	});
 
-	$(SAVE_LIST_BTN).click(function(event) {
-		newListFormController.saveList(NEW_LIST); //+
-	});
-
-	listsController.getSavedListsForCurrentUser();
-
-	$(SAVED_LIST_CLASS).each(function(index, slSavedList) {
-		$(CHANGE_PRODUCT_STATUS_BTN_CLASS, slSavedList).each(function(index, slChangeProductStatusBtn) {
-			$(slChangeProductStatusBtn).click(function(event) {
-				savedListFormController.changeProductStatus(slSavedList, slChangeProductStatusBtn);
-			});
-		});
-
-		$(BUY_LIST_BTN_CLASS, slSavedList).each(function(index, slBuyListBtn) {
-			$(slBuyListBtn).click(function(event) {
-				savedListFormController.buyList(slSavedList, slBuyListBtn);
-			});
-		});
+	$(AUTH_FORM).submit(function(event) {
+		event.preventDefault();
+		signUpFormController.submitForm();
 	});
 }

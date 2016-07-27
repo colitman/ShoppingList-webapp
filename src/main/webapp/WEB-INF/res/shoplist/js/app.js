@@ -5,6 +5,8 @@ var CURRENT_USER = $('meta[name="currentUser"]').attr('content');
 var CURRENT_ANON_USER = Cookies.get('shopper');
 var IS_ANON = (!CURRENT_USER || CURRENT_USER.length === 0)? true: false;
 
+var AUTH_FORM = $('.sl-auth-form');
+
 var NEW_LIST = $('#sl-new-list');
 var NEW_PRODUCT = $('#sl-new-product', NEW_LIST);
 var ADD_PRODUCT_BTN = $('#sl-add-product-btn', NEW_LIST);
