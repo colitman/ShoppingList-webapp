@@ -1,5 +1,9 @@
 'use strict';
 
+var LOGGER = new Logger();
+LOGGER.enabled = true;
+LOGGER.debugEnabled = true;
+
 var ROOT = $('meta[name="contextPath"]').attr('content');
 var CURRENT_USER = $('meta[name="currentUser"]').attr('content');
 var CURRENT_ANON_USER = Cookies.get('shopper');

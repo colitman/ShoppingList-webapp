@@ -1,7 +1,7 @@
 'use strict';
 
 function NewListFormController () {
-	var listservice = new ListService();
+	this.listService = new ListService();
 }
 
 NewListFormController.prototype
@@ -28,8 +28,10 @@ NewListFormController.prototype
 		$('input', product).data('product-id', productId);
 		$(REMOVE_PRODUCT_BTN_CLASS, product).data('target', productId);
 
+		var instance = this;
+
 		$(REMOVE_PRODUCT_BTN_CLASS, product).click(function(event) {
-			removeProduct(this);
+			instance.removeProduct(this);
 		});
 	};
 
@@ -48,6 +50,9 @@ NewListFormController.prototype
 
 		var list = new List();
 
+		list.owner = IS_ANON? -1: CURRENT_USER;
+		list.anonymousOwner = CURRENT_ANON_USER;
+
 		$('input', listForm).each(function(index, item) {
 			
 			var productName = $(item).val();
@@ -63,7 +68,7 @@ NewListFormController.prototype
 			return;
 		}
 
-		listService.saveList(list)
+		this.listService.saveList(list)
 			.done(function(data) {
 				//refresh the main page, display the saved list next to new one form 
 				window.location.replace(window.location.protocol + "//" + window.location.host + ROOT + "/");

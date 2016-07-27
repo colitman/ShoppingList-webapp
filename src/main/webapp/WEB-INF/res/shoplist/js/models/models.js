@@ -1,5 +1,16 @@
 'use strict';
 
+function Logger() {
+	this.enabled = false;
+	this.debugEnabled = false;
+}
+
+Logger.prototype.debug = function(text) {
+	if(this.enabled && this.debug) {
+		console.log(text);
+	}
+};
+
 function List() {
 	this.key = -1;
 	this.content = [];

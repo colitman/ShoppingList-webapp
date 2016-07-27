@@ -24,7 +24,7 @@
 				</td>
 			</tr>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm btn-block buy-list-btn">Buy</button>
+		<button type="button" class="btn btn-primary btn-sm btn-block sl-buy-list-btn">Buy</button>
 
 		<div class="panel-footer">
 			<a href="${app }/lists/">/lists/</a>

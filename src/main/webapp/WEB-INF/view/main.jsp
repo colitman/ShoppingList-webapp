@@ -35,18 +35,20 @@
 		</div>
 
 		<div class="sl-snippets">
-			<c:import url="/imports/addedProductSnippet"></c:import>
-			<c:import url="/imports/savedListSnippet"></c:import>
-			<c:import url="/imports/savedProductSnippet"></c:import>
+			<c:import url="/snippets/addedProductSnippet"></c:import>
+			<c:import url="/snippets/savedListSnippet"></c:import>
+			<c:import url="/snippets/savedProductSnippet"></c:import>
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/manageProductInCart.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/apiCalls/getListsForCurrentUser.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/builders/createSavedLists.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/addProductToNewList.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/saveList.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/buyList.js"></script>
- 		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/mainPageController.js"></script>
+
+		<script type="text/javascript" src="${app }/res/shoplist/js/services/ListService.js"></script>
+
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/ListsController.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/NewListFormController.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/SavedListFormController.js"></script>
+		
+		<script type="text/javascript" src="${app }/res/shoplist/js/views/rootPage/index.js"></script>
+
 	</body>
 </html>
