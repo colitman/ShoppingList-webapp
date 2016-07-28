@@ -10,7 +10,9 @@ branches:
   - dev
 
 # deployment
-before_deploy: ./heroku_deploy.sh
+before_deploy:
+  - ./heroku_deploy.sh
+  - git commit -a
 
 deploy:
   provider: heroku
