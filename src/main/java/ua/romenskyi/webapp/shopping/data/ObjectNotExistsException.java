@@ -10,13 +10,11 @@ package ua.romenskyi.webapp.shopping.data;
  */
 public class ObjectNotExistsException extends Exception {
 
+	private static final long serialVersionUID = 1L;
 	/**
 	 * @param message - exception message
 	 */
 	public ObjectNotExistsException(String message) {
 		super(message);
 	}
-
-	private static final long serialVersionUID = 1L;
-
 }

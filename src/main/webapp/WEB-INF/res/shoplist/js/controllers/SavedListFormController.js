@@ -51,7 +51,7 @@ SavedListFormController.prototype
 														LOGGER.debug('Failed to update list');
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
-			})
+			});
 
 	};
 
