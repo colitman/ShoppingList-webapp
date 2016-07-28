@@ -15,7 +15,7 @@ function List() {
 	this.key = -1;
 	this.content = [];
 	this.bought = false;
-	this.anonymousOwner = "";
+	this.anonymousOwner = '';
 	this.owner = -1;
 	Object.seal(this);
 }

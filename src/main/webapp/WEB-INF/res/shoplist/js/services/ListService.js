@@ -20,8 +20,8 @@ ListService.prototype
 ListService.prototype
 	.updateList = function(list){
 														LOGGER.debug('Sending update list ajax');
-	 // tries to update list and returns a promise
-	 return $.ajax({
+		// tries to update list and returns a promise
+		return $.ajax({
 				url: ROOT + '/api/lists/' + list.key,
 				type: 'PUT',
 				dataType: 'json',
@@ -33,16 +33,15 @@ ListService.prototype
 ListService.prototype
 	.getListsByAnonymousOwner = function(shopper){
 														LOGGER.debug('Sending get lists by anonymous owner ajax');
-	 // sends ajax api call and returns a promise 
+		// sends ajax api call and returns a promise 
 	return $.ajax({
-	 			url: ROOT + '/api/lists',
-	 			type: 'GET',
-	 			dataType: 'json',
-	 			data:{
-	 				shopper: shopper
-	 			}
-	 		});
-	 		
+			url: ROOT + '/api/lists',
+			type: 'GET',
+			dataType: 'json',
+			data:{
+				shopper: shopper
+			}
+		});
 	};
 
 ListService.prototype
@@ -50,11 +49,11 @@ ListService.prototype
 														LOGGER.debug('Sending get lists by owner ajax');
 	 // sends ajax api call and returns a promise
 	return $.ajax({
-	 			url: ROOT + '/api/lists',
-	 			type: 'GET',
-	 			dataType: 'json',
-	 			data:{
-	 				owner: owner
+				url: ROOT + '/api/lists',
+				type: 'GET',
+				dataType: 'json',
+				data:{
+					owner: owner
 	 			}
 	 		});
 	};

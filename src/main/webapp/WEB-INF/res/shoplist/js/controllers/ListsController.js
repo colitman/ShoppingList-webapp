@@ -45,7 +45,7 @@ ListsController.prototype
 					instance.createSavedLists(lists);
 				}
 			});
-	}
+	};
 
 ListsController.prototype
 	.createSavedLists = function(listsData) {
@@ -123,4 +123,4 @@ ListsController.prototype
 
 		$(SAVED_PRODUCT_CLASS).removeClass('hidden');
 		$('.sl-wait-sign').remove();
-	}
+	};

@@ -10,13 +10,11 @@ package ua.romenskyi.webapp.shopping.domain;
  */
 public class EntityConfigurationException extends RuntimeException {
 
+	private static final long serialVersionUID = 1L;
 	/**
 	 * @param message - exception message
 	 */
 	public EntityConfigurationException(String message) {
 		super(message);
 	}
-
-	private static final long serialVersionUID = 1L;
-
 }

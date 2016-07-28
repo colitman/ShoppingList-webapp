@@ -10,7 +10,7 @@ SignUpFormController.prototype
 		var entered1 = $('#password', this.form).val();
 		var entered2 = $('#password2', this.form).val();
 		var signUpButton = $('button[type="submit"]', this.form);
-		var password2Disabled = $('#password2', this.form).attr('disabled')
+		var password2Disabled = $('#password2', this.form).attr('disabled');
 		
 		var equal = !(entered1 !== entered2 && !password2Disabled);
 
@@ -42,7 +42,7 @@ SignUpFormController.prototype
 		this.userService.signUpUser(this.form)
 			.done(function(data){
 				var username = $('input#username').val();
-				window.location.replace(window.location.protocol + "//" + window.location.host + ROOT + "/signin?username=" + username);
+				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/signin?username=' + username);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
 				$('#sl-sign-up-error-message').text(jqXHR.responseText);
 				$('.sl-auth-form-header .alert').removeClass('hidden');

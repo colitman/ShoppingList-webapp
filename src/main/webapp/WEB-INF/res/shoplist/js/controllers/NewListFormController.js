@@ -57,7 +57,7 @@ NewListFormController.prototype
 			
 			var productName = $(item).val();
 
-			if(productName !== "") {
+			if(productName !== '') {
 				var product = new Product(productName);
 				product.key = $(item).data('product-id');
 				list.content.push(product);
@@ -71,10 +71,10 @@ NewListFormController.prototype
 		this.listService.saveList(list)
 			.done(function(data) {
 				//refresh the main page, display the saved list next to new one form 
-				window.location.replace(window.location.protocol + "//" + window.location.host + ROOT + "/");
+				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
-			})
+			});
 	};
