@@ -1,0 +1,22 @@
+language: java
+
+# build safelist
+branches:
+  only:
+  - master
+  - dev
+
+# deployment
+before_deploy: ./heroku_deploy.sh
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: JFE/VA+NfCi1/eBgn7MTwTfwmx6fNOoS5dw6HMEeApG+6PpxHi3Ms3utOvhmehvbfnZ5kUJubzckyI5wdAlhoiFWby0f56fc5scILy6GzrStQG0uR9Bg+0njHCIxvIvmmwRO1pbNQap7oQURhnWX6pAhPIOhjG92gWFsW3CyAQecu01h6OphDERV4KsHJrPSyu3Yzji4NCMjX0BOR8FEBM2PSp3SqmM9hcD8sg69D5sE5DiOzdY5+QyiYb1xBeG5qacvJIjMcI7cT/NeUfOU7+aGD79tJ/IRrHZ5lq+7rSgQaWDW2kkPv9hVZh8xH+xbiYjcw/diyYTMGFAI7Kve3k7ZXcxilZUdNVvGICHwQ8vGWBhhZ/vIMMCoVUBbVzsdjKXa579D9j5HV70+ZwsGR5CQYGlVyO2Te5RUtfJPaxWIlO9+/4p67UWT/JZqTCiA6zPgfPU9WzxlxMw/uEKEU+D+UkOT02vkZ4XgjleEkTmBFojNmAZw15JU4F0U8X7MMFJYWPzjKatkeyQGQPbBgw6FmIvUNgcLIFY6sYWF9n6Jxit+WTxxeJnjQxoIRNrTDuJ+bRRFa+LkhltZOwk+BLD/zltvRDwzpoCRLfc3NLB8GhgQc+LfwHMB6NHP48EWR4yBv0NthG7X+dA1dGVrcP4y+MdZaQUZTnQmhtK68IQ=
+  app: 
+    master: shop-list
+    dev: shop-list-dev
+
+# notifications
+notifications:
+  slack: hobbydev:7tCTaiIZ7bAh4HqQZGy8yl0C

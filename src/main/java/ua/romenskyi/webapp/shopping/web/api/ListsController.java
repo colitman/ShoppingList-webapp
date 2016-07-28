@@ -11,6 +11,7 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -23,6 +24,7 @@ import ua.romenskyi.webapp.shopping.business.lists.ListServiceInterface;
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
 import ua.romenskyi.webapp.shopping.domain.list.List;
 import ua.romenskyi.webapp.shopping.domain.users.User;
+import ua.romenskyi.webapp.shopping.models.json.JsonList;
 
 /**
  * @author dmytro.romenskyi - Jul 1, 2016
@@ -36,14 +38,22 @@ public class ListsController {
 	private ListServiceInterface listService;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<String> postNewList(@RequestParam String content,
+	public ResponseEntity<String> postNewList(/*@RequestParam String content,*/
+												@RequestBody JsonList listModel,
 												@CurrentUser User currentUser,
 												@CookieValue(required=false) String shopper) {
-		
+		/*
 		List list = new List();
 		list.setContent(content);
 		list.setOwner(currentUser == null? -1L : currentUser.getKey());
 		list.setAnonymousOwner(shopper == null? "" : shopper);
+		*/
+		
+		if(listModel == null) {
+			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
+		}
+		
+		List list = listModel.toDomain();
 		
 		Long key = null;
 		
@@ -60,17 +70,20 @@ public class ListsController {
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.PUT)
 	public ResponseEntity<String> updateList(@PathVariable String listKey,
-												@RequestParam(required=false) String content,
-												@RequestParam(required=false, defaultValue="false") boolean bought,
+												/*@RequestParam(required=false) String content,
+												@RequestParam(required=false, defaultValue="false") boolean bought,*/
+												@RequestBody JsonList listModel,
 												@CurrentUser @ApiParam(hidden=true) User currentUser,
 												@CookieValue(required=false) String shopper) {
 		
-		if(listKey == null || listKey.isEmpty()) {
+		if(listKey == null || listKey.isEmpty() || listModel == null) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
-		List list = null;
+		//List list = null;
+		List list = listModel.toDomain();
 		
+		/*
 		try {
 			list = listService.get(Long.valueOf(listKey));
 		} catch (NumberFormatException e) {
@@ -78,12 +91,15 @@ public class ListsController {
 		} catch (ResourceNotFoundException e) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
 		}
+		*/
 		
+		/*
 		if(content != null && !content.isEmpty()) {
 			list.setContent(content);
 		}
 		
 		list.setBought(bought);
+		*/
 		
 		boolean updated = false;
 		

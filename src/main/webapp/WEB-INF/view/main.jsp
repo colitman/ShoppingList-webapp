@@ -22,63 +22,33 @@
 			
 			<div class="sl-main-content">
 				<div class="row sl-lists">
-					<div class="sl-list-wrapper col-sm-6 col-md-4">
-						<div id="sl-new-list" class="panel panel-primary">
-							<div class="panel-heading">
-								New List
-							</div>
-							<div class="panel-body">
-								What is needed?
-							</div>
-							<c:import url="/imports/newListBody"></c:import>
-						</div>
-					</div>
-
-					<c:if test="${hasSavedLists}">
-						<div class="sl-list-wrapper col-sm-6 col-md-4">
-							<div class="sl-saved-list panel panel-success">
-								<div class="panel-heading">
-									
-								</div>
-								<div class="panel-body">
-									List Items:
-								</div>
-
-								<table class="table table-condensed">
-									<tr class="sl-saved-product hidden">
-										<td class="col-xs-10 sl-product-name"></td>
-										<td class="col-xs-2 sl-product-actions">
-											<button class="btn" type="button"><i class="fa"></i></button>
-										</td>
-									</tr>
-									<tr class="sl-wait-sign">
-										<td>
-											<p class="text-center">
-												<i class="fa fa-refresh fa-spin fa-2x"></i>
-											</p>
-										</td>
-									</tr>
-								</table>
-								<button type="button" class="btn btn-primary btn-sm btn-block buy-list-btn">Buy</button>
-
-								<div class="panel-footer">
-									<a href="${app }/lists/">/lists/</a>
-								</div>
-							</div>
-						</div>						
-					</c:if>
+					
+					<c:import url="/imports/newListForm"></c:import>
+				
 				</div>
 			</div>
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 
+		<div class="sl-modals">
+			
+		</div>
+
+		<div class="sl-snippets hidden">
+			<c:import url="/snippets/addedProductSnippet"></c:import>
+			<c:import url="/snippets/savedListSnippet"></c:import>
+			<c:import url="/snippets/savedProductSnippet"></c:import>
+		</div>
+
 		<c:import url="/imports/scripts"></c:import>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/manageProductInCart.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/apiCalls/getListsForCurrentUser.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/builders/createSavedLists.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/addProductToNewList.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/saveList.js"></script>
-		<script type="text/javascript" src="${app }/res/shoplist/js/eventHandlers/click/buyList.js"></script>
- 		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/mainPageController.js"></script>
+
+		<script type="text/javascript" src="${app }/res/shoplist/js/services/ListService.js"></script>
+
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/ListsController.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/NewListFormController.js"></script>
+		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/SavedListFormController.js"></script>
+		
+		<script type="text/javascript" src="${app }/res/shoplist/js/views/rootPage/index.js"></script>
+
 	</body>
 </html>

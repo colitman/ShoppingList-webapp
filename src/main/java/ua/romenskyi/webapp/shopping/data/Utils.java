@@ -7,7 +7,6 @@ package ua.romenskyi.webapp.shopping.data;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-import javax.persistence.Column;
 import javax.persistence.Id;
 
 import ua.romenskyi.webapp.shopping.domain.EntityConfigurationException;
