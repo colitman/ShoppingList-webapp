@@ -1,5 +1,4 @@
 #!/bin/bash
 
-echo "environment.heroku=true" >> ./src/main/resources/application.properties
-
-exit 0
+herokuEnv=true
+sed -i "s/\(environment\.heroku=\).*\$/\1${herokuEnv}/" ./src/main/resources/application.properties
