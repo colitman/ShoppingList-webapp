@@ -14,7 +14,7 @@ before_deploy:
   - ./heroku_deploy.sh
   - git config user.email "you@example.com"
   - git config user.name "Your Name"
-  - git commit -a
+  - git commit -a -m "adding heroku env def"
 
 deploy:
   provider: heroku
