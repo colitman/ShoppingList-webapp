@@ -7,7 +7,7 @@ function NewListFormController () {
 NewListFormController.prototype
 	.addProduct = function(productInput){
 
-		if($(productInput).val() == '') {
+		if($(productInput).val() === '') {
 			return;
 		}
 		// pick added product snippet,

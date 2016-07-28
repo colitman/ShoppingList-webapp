@@ -21,7 +21,7 @@ function init() {
 																				LOGGER.debug('Assigning New product input keyup event');
 	$(NEW_PRODUCT).keyup(function(event) {
 																				LOGGER.debug('New product input keyup event triggered');
-		if(event.keyCode == 13 || event.which == 13) {
+		if(event.keyCode === 13 || event.which === 13) {
 																				LOGGER.debug('Add product button click simulated');
 			$(ADD_PRODUCT_BTN).click();
 		}
