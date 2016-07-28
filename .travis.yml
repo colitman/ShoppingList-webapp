@@ -1,5 +1,8 @@
 language: java
 
+before_install:
+  - chmod +x ./heroku_deploy.sh
+
 # build safelist
 branches:
   only:
