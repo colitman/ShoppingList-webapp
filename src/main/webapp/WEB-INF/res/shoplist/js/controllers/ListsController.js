@@ -66,7 +66,7 @@ ListsController.prototype
 			}*/
 
 			//pick up a snippet
-			var listForm = $('.sl-snippet[data-name="saved-list"]').clone();
+			var listForm = $('.sl-snippet[data-name="saved-list"]').clone(true, true);
 			$(listForm).removeClass('sl-snippet');
 														LOGGER.debug('Picked up a snippet for saved list.');
 
@@ -96,10 +96,10 @@ ListsController.prototype
 														LOGGER.debug('Start iterating over list products data');
 			// populate list products data
 			for (var j = 0; j < listProducts.length; j++) {
-				var listProduct = listProducts[i];
+				var listProduct = listProducts[j];
 														LOGGER.debug('List product index [' + j + ']');
 				// pick up a snippet
-				var productForm = $('.sl-snippet[data-name="saved-product"]').clone();
+				var productForm = $('.sl-snippet[data-name="saved-product"]').clone(true, true);
 				$(productForm).removeClass('sl-snippet');
 																		LOGGER.debug('Picked up a snippet for list product.');
 
@@ -111,6 +111,7 @@ ListsController.prototype
 				$(productForm).attr('id', listProduct.key);
 
 				$(CHANGE_PRODUCT_STATUS_BTN_CLASS, productForm).data('target', listProduct.key);
+				$(CHANGE_PRODUCT_STATUS_BTN_CLASS, productForm).data('targetList', listKey);
 
 				var bought = listProduct.bought;
 

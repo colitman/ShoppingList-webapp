@@ -6,9 +6,14 @@ function SavedListFormController () {
 }
 
 SavedListFormController.prototype
-	.changeProductStatus = function (listForm, button) {
+	.changeProductStatus = function (/*listForm, */clicked) {
 														LOGGER.debug('Trying to change product status');
+		var button = $(clicked).is('button')? clicked : $(clicked).parent();
+
 		var targetProductId = $(button).data('target');
+		var targetListId = $(button).data('targetList');
+														LOGGER.debug('Searching for targets - Product[' + targetProductId + ']; List[' + targetListId + ']');
+		var listForm = $('.sl-list-wrapper#' + targetListId);
 
 		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
 		$(button).toggleClass('btn-success btn-warning');
@@ -16,16 +21,16 @@ SavedListFormController.prototype
 														LOGGER.debug('Starting building a new list state');
 		var list = new List();
 
-		list.key = listForm.attr('id');
+		list.key = $(listForm).attr('id');
 		list.bought = $('.panel', listForm).hasClass('panel-default');
 		list.owner = IS_ANON? -1: CURRENT_USER;
 		list.anonymousOwner = CURRENT_ANON_USER;
-
+														LOGGER.debug('Starting adding products to list');
 		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
-														LOGGER.debug('Starting adding prosucts to list');
+
 			var productName = $('.sl-product-name', item).text();
 			var product = new Product(productName);
-			product.key = targetProductId;
+			product.key = $(item).attr('id');
 			product.bought = $(item).hasClass('sl-bought-product');
 			list.content.push(product);
 		});
@@ -51,24 +56,26 @@ SavedListFormController.prototype
 	};
 
 SavedListFormController.prototype
-	.buyList = function (listForm, button) {
+	.buyList = function (/*listForm,*/ button) {
 
 														LOGGER.debug('Trying to buy a list');
+		var listId = $(button).data('target');
+		var listForm = $('.sl-list-wrapper#' + listId);
 
 		$('.panel', listForm).removeClass('panel-success');
 		$('.panel', listForm).addClass('panel-default');
 														LOGGER.debug('Starting building a new list state');
 		var list = new List();
 
-		list.key = listForm.attr('id');
+		list.key = $(listForm).attr('id');
 		list.bought = $('.panel', listForm).hasClass('panel-default');
 		list.owner = IS_ANON? -1: CURRENT_USER;
 		list.anonymousOwner = CURRENT_ANON_USER;
-														LOGGER.debug('Starting adding prosucts to list');
+														LOGGER.debug('Starting adding products to list');
 		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
 			var productName = $('.sl-product-name', item).text();
 			var product = new Product(productName);
-			product.key = targetProductId;
+			product.key = $(item).attr('id');
 			product.bought = $(item).hasClass('sl-bought-product');
 			list.content.push(product);
 		});
