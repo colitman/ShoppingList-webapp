@@ -16,12 +16,12 @@ ListsController.prototype
 														LOGGER.debug('Anonymous promise getting failed');
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
-			})
-	}
+			});
+	};
 
 ListsController.prototype
 	.populateList = function(listData) {
-		var listForm = $("#" + listData.key + SAVED_LIST_CLASS).parents('.sl-list-wrapper');
+		var listForm = $('#' + listData.key + SAVED_LIST_CLASS).parents('.sl-list-wrapper');
 		
 		//populate list data
 		var listKey = listData.key;

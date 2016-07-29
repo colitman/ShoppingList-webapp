@@ -23,7 +23,7 @@ var SAVED_PRODUCT_CLASS = '.sl-saved-product';
 var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
 var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
 
-var LIST_SEARCH_FORM = $('#sl-list-search-form')
+var LIST_SEARCH_FORM = $('#sl-list-search-form');
 
 var ALERT_SUCCESS = $('footer .alert-success');
 var ALERT_INFO = $('footer .alert-info');
