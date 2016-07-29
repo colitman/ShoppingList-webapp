@@ -47,5 +47,6 @@
 		</div>
 		
 		<c:import url="/imports/scripts"></c:import>
+		<script type="text/javascript" src="${app }/res/shoplist/js/views/authPage/index_signin.js"></script>
 	</body>
 </html>
