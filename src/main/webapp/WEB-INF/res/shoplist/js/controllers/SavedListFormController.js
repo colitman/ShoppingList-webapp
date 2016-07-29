@@ -13,7 +13,7 @@ SavedListFormController.prototype
 		var targetProductId = $(button).data('target');
 		var targetListId = $(button).data('targetList');
 														LOGGER.debug('Searching for targets - Product[' + targetProductId + ']; List[' + targetListId + ']');
-		var listForm = $('.sl-list-wrapper#' + targetListId);
+		var listForm = $('#' + targetListId + '.sl-list-wrapper');
 
 		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
 		$(button).toggleClass('btn-success btn-warning');
@@ -60,7 +60,7 @@ SavedListFormController.prototype
 
 														LOGGER.debug('Trying to buy a list');
 		var listId = $(button).data('target');
-		var listForm = $('.sl-list-wrapper#' + listId);
+		var listForm = $('#' + listId + '.sl-list-wrapper');
 
 		$('.panel', listForm).removeClass('panel-success');
 		$('.panel', listForm).addClass('panel-default');
