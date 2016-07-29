@@ -39,7 +39,6 @@ public class Beans {
 	public PropertySourcesPlaceholderConfigurer properties() {
 		
 		PropertySourcesPlaceholderConfigurer properties = new PropertySourcesPlaceholderConfigurer();
-		//properties.setLocation(new ClassPathResource("application.properties"));
 		
 		return properties;
 	}

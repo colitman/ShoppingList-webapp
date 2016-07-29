@@ -6,14 +6,12 @@
 
 <c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
 <c:set var="isAnon" value="${empty currentUser}"></c:set>
-<c:set var="hasSavedLists" value="${savedListsCount > 0}"></c:set>
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
 		<link rel="stylesheet" href="${app}/res/shoplist/css/fix-lists.css">
-		<meta name="hasSavedLists" content="${hasSavedLists}">
 	</head>
 	
 	<body>

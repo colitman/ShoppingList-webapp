@@ -46,32 +46,5 @@ function init() {
 		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
 	});
 
-
-	//listsController.getSavedListsForCurrentUser();
-
-																				/*LOGGER.debug('Start iterating over saved lists');
-	$(SAVED_LIST_CLASS).each(function(index, slSavedList) {
-																				LOGGER.debug('Saved list [' + index + ']');
-																				LOGGER.debug('Start iterating over Buy list buttons for list [' + index + ']');
-		$(BUY_LIST_BTN_CLASS, slSavedList).each(function(index2, slBuyListBtn) {
-																				LOGGER.debug('Buy list button [' + index2 + ']');
-																				LOGGER.debug('Assigning Buy list button click event');
-			$(slBuyListBtn).click(function(event) {
-																				LOGGER.debug('Buy list button clicked');
-				savedListFormController.buyList(slSavedList, slBuyListBtn);
-			});
-		});
-	});
-
-																				LOGGER.debug('Start iterating over change status buttons');
-	$(CHANGE_PRODUCT_STATUS_BTN_CLASS).each(function(index1, slChangeProductStatusBtn) {
-																				LOGGER.debug('Change status button [' + index1 + ']');
-																				LOGGER.debug('Assigning Change product status button click event');
-		$(slChangeProductStatusBtn).click(function(event) {
-																				LOGGER.debug('Change product status button clicked');
-			savedListFormController.changeProductStatus(slSavedList, slChangeProductStatusBtn);
-		});
-	});*/
-
 	listsController.getSavedListsForCurrentUser();
 }

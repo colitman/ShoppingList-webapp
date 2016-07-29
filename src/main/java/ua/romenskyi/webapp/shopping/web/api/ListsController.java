@@ -38,16 +38,9 @@ public class ListsController {
 	private ListServiceInterface listService;
 	
 	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<String> postNewList(/*@RequestParam String content,*/
-												@RequestBody JsonList listModel,
+	public ResponseEntity<String> postNewList(@RequestBody JsonList listModel,
 												@CurrentUser User currentUser,
 												@CookieValue(required=false) String shopper) {
-		/*
-		List list = new List();
-		list.setContent(content);
-		list.setOwner(currentUser == null? -1L : currentUser.getKey());
-		list.setAnonymousOwner(shopper == null? "" : shopper);
-		*/
 		
 		if(listModel == null) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
@@ -70,8 +63,6 @@ public class ListsController {
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.PUT)
 	public ResponseEntity<String> updateList(@PathVariable String listKey,
-												/*@RequestParam(required=false) String content,
-												@RequestParam(required=false, defaultValue="false") boolean bought,*/
 												@RequestBody JsonList listModel,
 												@CurrentUser @ApiParam(hidden=true) User currentUser,
 												@CookieValue(required=false) String shopper) {
@@ -80,26 +71,7 @@ public class ListsController {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
-		//List list = null;
 		List list = listModel.toDomain();
-		
-		/*
-		try {
-			list = listService.get(Long.valueOf(listKey));
-		} catch (NumberFormatException e) {
-			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
-		} catch (ResourceNotFoundException e) {
-			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
-		}
-		*/
-		
-		/*
-		if(content != null && !content.isEmpty()) {
-			list.setContent(content);
-		}
-		
-		list.setBought(bought);
-		*/
 		
 		boolean updated = false;
 		

@@ -6,7 +6,7 @@ function SavedListFormController () {
 }
 
 SavedListFormController.prototype
-	.changeProductStatus = function (/*listForm, */clicked) {
+	.changeProductStatus = function (clicked) {
 														LOGGER.debug('Trying to change product status');
 		var button = $(clicked).is('button')? clicked : $(clicked).parent();
 
@@ -56,7 +56,7 @@ SavedListFormController.prototype
 	};
 
 SavedListFormController.prototype
-	.buyList = function (/*listForm,*/ button) {
+	.buyList = function (button) {
 
 														LOGGER.debug('Trying to buy a list');
 		var listId = $(button).data('target');
