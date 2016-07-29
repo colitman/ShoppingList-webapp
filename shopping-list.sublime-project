@@ -3,6 +3,9 @@
 	[
 		{
 			"path": "src\\main\\webapp"
+		},
+		{
+			"path": "ta"
 		}
 	]
 }

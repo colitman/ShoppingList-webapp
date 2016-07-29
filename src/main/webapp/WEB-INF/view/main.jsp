@@ -16,7 +16,7 @@
 		<meta name="hasSavedLists" content="${hasSavedLists}">
 	</head>
 	
-	<body>
+	<body id="root-page">
 		<div class="sl-page container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
 			

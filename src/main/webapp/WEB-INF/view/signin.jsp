@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="${app}/res/shoplist/css/auth.css">
 	</head>
 	
-	<body class="sl-auth-page">
+	<body id="sign-in-page" class="sl-auth-page">
 		<div class="sl-page container">
 			<c:import url="/imports/mainTopNav"></c:import>
 
@@ -32,14 +32,14 @@
 					</div>
 					
 					<div class="sl-auth-form-body">
-						<input value="${username}" placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
-						<input placeholder="Password" type="password" name="password" class="form-control" required="required"/>
-						<button type="submit" class="btn btn-primary btn-block">Sign In</button>
+						<input id="username" value="${username}" placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
+						<input id="password" placeholder="Password" type="password" name="password" class="form-control" required="required"/>
+						<button type="submit" class="btn btn-primary btn-block sl-auth-button">Sign In</button>
 					</div>
 					
 					<div class="sl-auth-form-footer">
-						<a href="${app}/signup">Sign Up</a>
-						<a class="pull-right" href="${app}/password_reset">Reset password</a>
+						<a href="${app}/signup" id="sign-up-link">Sign Up</a>
+						<a class="pull-right" href="${app}/password_reset" id="reset-pwd-link">Reset password</a>
 					</div>
 				</form>
 			</div>

@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="${app}/res/shoplist/css/auth.css">
 	</head>
 	
-	<body class="sl-auth-page">
+	<body id="sign-up-page" class="sl-auth-page">
 		<div class="sl-page container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			<div class="sl-main-content">
@@ -34,11 +34,11 @@
 							<span class="glyphicon form-control-feedback"></span>
 							<input placeholder="Password again" type="password" id="password2" name="password2" class="form-control" required="required" disabled="disabled"/>
 						</div>
-						<button type="submit" class="btn btn-success btn-block">Sign Up</button>
+						<button type="submit" class="btn btn-success btn-block sl-auth-button">Sign Up</button>
 					</div>
 					
 					<div class="sl-auth-form-footer">
-						<a href="${app}/signin">Sign In</a>
+						<a id="sign-in-link" href="${app}/signin">Sign In</a>
 					</div>
 				</form>
 			</div>
