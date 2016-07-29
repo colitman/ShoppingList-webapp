@@ -71,7 +71,7 @@ ListsController.prototype
 		}
 
 		$('.sl-wait-sign').remove();
-	}
+	};
 
 ListsController.prototype
 	.getSavedListsForCurrentUser = function () {
