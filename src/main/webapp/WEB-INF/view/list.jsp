@@ -38,6 +38,8 @@
 
 		<script type="text/javascript" src="${app }/res/shoplist/js/services/ListService.js"></script>
 
+		<script type="text/javascript" src="${app }/res/shoplist/js/builders/ListBuilder.js"></script>
+
 		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/ListsController.js"></script>
 		<script type="text/javascript" src="${app }/res/shoplist/js/controllers/SavedListFormController.js"></script>
 		

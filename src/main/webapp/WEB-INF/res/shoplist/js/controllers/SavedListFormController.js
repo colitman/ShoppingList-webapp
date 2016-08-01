@@ -3,6 +3,7 @@
 function SavedListFormController () {
 														LOGGER.debug('SavedListFormController initialized');
 	this.listService = new ListService();
+	this.listBuilder = new ListBuilder();
 }
 
 SavedListFormController.prototype
@@ -19,21 +20,7 @@ SavedListFormController.prototype
 		$(button).toggleClass('btn-success btn-warning');
 		$('i', button).toggleClass('fa-cart-plus fa-minus');
 														LOGGER.debug('Starting building a new list state');
-		var list = new List();
-
-		list.key = $(listForm).attr('id');
-		list.bought = $('.panel', listForm).hasClass('panel-default');
-		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = CURRENT_ANON_USER;
-														LOGGER.debug('Starting adding products to list');
-		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
-
-			var productName = $('.sl-product-name', item).text();
-			var product = new Product(productName);
-			product.key = $(item).attr('id');
-			product.bought = $(item).hasClass('sl-bought-product');
-			list.content.push(product);
-		});
+		var list = this.listBuilder.parse(listForm);
 
 		if (list.content.length === 0) {
 														LOGGER.debug('No products in a list. Exiting.');
@@ -65,20 +52,7 @@ SavedListFormController.prototype
 		$('.panel', listForm).removeClass('panel-success');
 		$('.panel', listForm).addClass('panel-default');
 														LOGGER.debug('Starting building a new list state');
-		var list = new List();
-
-		list.key = $(listForm).attr('id');
-		list.bought = $('.panel', listForm).hasClass('panel-default');
-		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = CURRENT_ANON_USER;
-														LOGGER.debug('Starting adding products to list');
-		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
-			var productName = $('.sl-product-name', item).text();
-			var product = new Product(productName);
-			product.key = $(item).attr('id');
-			product.bought = $(item).hasClass('sl-bought-product');
-			list.content.push(product);
-		});
+		var list = this.listBuilder.parse(listForm);
 
 		if (list.content.length === 0) {
 														LOGGER.debug('No products in a list. Exiting.');
