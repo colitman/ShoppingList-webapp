@@ -75,43 +75,25 @@ ListsController.prototype
 
 ListsController.prototype
 	.getSavedListsForCurrentUser = function () {
-														LOGGER.debug('Trying to get saved lists for current user');
-		var anonPromise = this.listService.getListsByAnonymousOwner(CURRENT_ANON_USER);
-														LOGGER.debug('Received anonymous promise');
-		var ownerPromise = IS_ANON? null : this.listService.getListsByOwner(CURRENT_USER);
-														LOGGER.debug('Received owner promise');
+
+		var promise = IS_ANON?
+						this.listService.getListsByAnonymousOwner(CURRENT_ANON_USER):
+						this.listService.getListsByOwner(CURRENT_USER);
 
 		var lists = [];
 		var instance = this;
 
-		anonPromise
+		promise
 			.done(function (data) {
-														LOGGER.debug('Merging anonymous lists');
 				$.merge(lists, data);
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
-														LOGGER.debug('Anonymous promise getting failed');
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
-			}).always(function() {
-				if (ownerPromise) {
-					ownerPromise
-						.done(function (data) {
-														LOGGER.debug('Merging owned lists');
-							$.merge(lists, data);
-						})
-						.fail(function (jqXHR, textStatus, errorThrown) {
-														LOGGER.debug('Owner promise getting failed');
-							$(ALERT_WARNING).text(errorThrown);
-							$(ALERT_WARNING).toggleClass('hidden');
-						}).always(function() {
-														LOGGER.debug('Initiating DOM creation for saved lists');
-							instance.createSavedLists(lists);
-						});
-				} else {
-														LOGGER.debug('Initiating DOM creation for saved lists');
-					instance.createSavedLists(lists);
-				}
+			})
+			.always(function() {
+											LOGGER.debug('Initiating DOM creation for saved lists');
+				instance.createSavedLists(lists);
 			});
 	};
 
@@ -126,12 +108,6 @@ ListsController.prototype
 		for (var i = 0; i < listsData.length; i++) {
 			var listData = listsData[i];
 														LOGGER.debug('List index [' + i + ']');
-
-			/*if($(SAVED_LIST_CLASS + '#' + listData.key) === undefined) {
-				LOGGER.debug('List with key [' + listData.key + '] already created. Loop index = ' + i);
-				LOGGER.debug($(SAVED_LIST_CLASS + '#' + listData.key).html());
-				continue;
-			}*/
 
 			//pick up a snippet
 			var listForm = $('.sl-snippet[data-name="saved-list"]').clone(true, true);

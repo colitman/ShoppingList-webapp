@@ -4,6 +4,8 @@
  */
 package ua.romenskyi.webapp.shopping.web.api;
 
+import java.util.ArrayList;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -46,7 +48,11 @@ public class ListsController {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
+		boolean anonymous = currentUser == null;
+		
 		List list = listModel.toDomain();
+		list.setOwner(anonymous? -1L: currentUser.getKey());
+		list.setAnonymousOwner(anonymous? shopper: "");
 		
 		Long key = null;
 		
@@ -62,12 +68,12 @@ public class ListsController {
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.PUT)
-	public ResponseEntity<String> updateList(@PathVariable String listKey,
+	public ResponseEntity<String> updateList(@PathVariable Long listKey,
 												@RequestBody JsonList listModel,
-												@CurrentUser @ApiParam(hidden=true) User currentUser,
+												@CurrentUser User currentUser,
 												@CookieValue(required=false) String shopper) {
 		
-		if(listKey == null || listKey.isEmpty() || listModel == null) {
+		if(listKey == null || listKey <= 0 || listModel == null) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
 		
@@ -82,18 +88,37 @@ public class ListsController {
 		}
 		
 		MultiValueMap<String, String> headers = new LinkedMultiValueMap<String, String>();
-		headers.add("Location", listKey);
+		headers.add("Location", listKey.toString());
 		return new ResponseEntity<String>(String.valueOf(updated), headers, HttpStatus.OK);
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<java.util.List<List>> getLists(@RequestParam(required=false) String shopper) {
-		if(shopper != null && !shopper.isEmpty()) {
-			java.util.List<List> lists = listService.getByAnonymousOwner(shopper);
-			return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
+	public ResponseEntity<java.util.List<List>> getLists(@RequestParam(required=false) Long owner,
+															@RequestParam(required=false) String shopper,
+															@CurrentUser User currentUser) {
+		
+		Long currentUserKey = (currentUser == null)? -1: currentUser.getKey();
+		
+		java.util.List<List> lists = new ArrayList<List>();
+		
+		boolean processShopper = false;
+		
+		java.util.List<List> ownedLists = new ArrayList<List>();
+		java.util.List<List> anonLists = new ArrayList<List>();
+		
+		if(owner != null && owner > 0 && owner == currentUserKey) {
+			ownedLists = listService.getByOwner(owner);
+			lists.addAll(ownedLists);
 		}
 		
-		java.util.List<List> lists = listService.list();
+		if(owner == null || owner == -1) {
+			processShopper = true;
+		}
+		
+		if(processShopper && shopper != null && !shopper.isEmpty()) {
+			anonLists = listService.getByAnonymousOwner(shopper);
+			lists.addAll(anonLists);
+		}
 		
 		return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
 	}
