@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import io.swagger.annotations.ApiParam;
 import ua.romenskyi.webapp.shopping.business.ResourceAlreadyExistsException;
 import ua.romenskyi.webapp.shopping.business.ResourceNotFoundException;
 import ua.romenskyi.webapp.shopping.business.lists.ListServiceInterface;
@@ -124,7 +123,8 @@ public class ListsController {
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)
-	public ResponseEntity<List> getListByKey(@PathVariable String listKey) {
+	public ResponseEntity<List> getListByKey(@PathVariable String listKey,
+												@CurrentUser User currentUser) {
 		if(listKey == null || listKey.isEmpty()) {
 			return new ResponseEntity<List>(HttpStatus.BAD_REQUEST);
 		}
@@ -136,6 +136,10 @@ public class ListsController {
 		} catch (NumberFormatException e) {
 			return new ResponseEntity<List>(HttpStatus.BAD_REQUEST);
 		} catch (ResourceNotFoundException e) {
+			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+		}
+		
+		if(list.getOwner() > 0 && (currentUser == null || currentUser.getKey() != list.getOwner())) {
 			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
 		}
 		

@@ -4,5 +4,9 @@
 <c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
 
 <footer>
+	<div class="alert alert-success hidden"></div>
+	<div class="alert alert-info hidden"></div>
+	<div class="alert alert-warning hidden"></div>
+	<div class="alert alert-danger hidden"></div>
 	<p class="text-center text-muted">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
 </footer>
