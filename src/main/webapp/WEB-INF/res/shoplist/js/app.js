@@ -23,6 +23,8 @@ var SAVED_PRODUCT_CLASS = '.sl-saved-product';
 var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
 var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
 
+var LIST_SEARCH_FORM = $('#sl-list-search-form');
+
 var ALERT_SUCCESS = $('footer .alert-success');
 var ALERT_INFO = $('footer .alert-info');
 var ALERT_WARNING = $('footer .alert-warning');
@@ -33,6 +35,12 @@ $(document).ready(function() {
 	setMinHeight();
 	$(window).resize(function(event) {
 		setMinHeight();
+	});
+
+	$(LIST_SEARCH_FORM).submit(function(event) {
+		event.preventDefault();
+		var id = $('#listId', this).val();
+		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
 	});
 });
 

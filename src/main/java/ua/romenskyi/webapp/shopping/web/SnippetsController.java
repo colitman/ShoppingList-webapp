@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
@@ -19,7 +20,10 @@ import org.springframework.web.servlet.ModelAndView;
 public class SnippetsController {
 
 	@RequestMapping(path="/{snippetName}")
-	public ModelAndView getSnippet(ModelAndView mv, @PathVariable String snippetName) {
+	public ModelAndView getSnippet(ModelAndView mv,
+									@PathVariable String snippetName,
+									@RequestParam(required=false) String id) {
+		mv.addObject("id", id);
 		mv.setViewName("snippets/" + snippetName);
 		
 		return mv;

@@ -20,12 +20,12 @@
 		</div>
 		
 		<div class="collapse navbar-collapse" id="sl-main-top-navbar">
-			<form class="navbar-form navbar-left form-inline">
+			<form id="sl-list-search-form" class="navbar-form navbar-left form-inline" action="${app}/lists/" method="get">
 				<div class="form-group">
-					<label for="list_id">/</label>
-					<input type="search" id="list_id" name="list_id" class="form-control" placeholder="List ID" />
+					<label for="listId">/</label>
+					<input type="search" id="listId" name="listId" class="form-control" placeholder="List ID" />
 				</div>
-				<button type="button" class="btn btn-default">Find</button>
+				<button type="submit" class="btn btn-default">Find</button>
 			</form>
 			
 			<ul class="nav navbar-nav navbar-right">

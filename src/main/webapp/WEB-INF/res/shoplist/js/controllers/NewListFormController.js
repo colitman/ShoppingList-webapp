@@ -51,7 +51,7 @@ NewListFormController.prototype
 		var list = new List();
 
 		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = CURRENT_ANON_USER;
+		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
 
 		$('input', listForm).each(function(index, item) {
 			
@@ -66,6 +66,10 @@ NewListFormController.prototype
 
 		if (list.content.length === 0) {
 			return;
+		}
+
+		if(!IS_ANON) {
+			list.publicList = confirm('Do you want to make this list accessible for other users?');
 		}
 
 		this.listService.saveList(list)

@@ -7,7 +7,7 @@
 <c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
 
 <div data-name="saved-list" class="sl-snippet sl-list-wrapper col-sm-6 col-md-4">
-	<div class="sl-saved-list panel">
+	<div id="${id}" class="sl-saved-list panel">
 		<div class="panel-heading">
 			
 		</div>

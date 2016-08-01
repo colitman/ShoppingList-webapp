@@ -6,6 +6,13 @@ footer {
 	margin: 10px 0 10px 0;
 }
 
+footer .alert {
+	position: absolute;
+	bottom: 40px;
+	left: 0;
+	width: 100%;
+}
+
 .dropdown-menu button {
 	display: inline-block;
 	width: 100%;

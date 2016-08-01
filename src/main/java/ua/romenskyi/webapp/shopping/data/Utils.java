@@ -38,7 +38,6 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			//alias = field.getAnnotation(Column.class).name();
 			alias = field.getName();
 			return alias;
 		}
@@ -78,7 +77,6 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			//alias = field.getAnnotation(Column.class).name();
 			alias = field.getName();
 			return alias;
 		}
@@ -118,7 +116,6 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			//alias = field.getAnnotation(Column.class).name();
 			alias = field.getName();
 			return alias;
 		}
@@ -158,7 +155,6 @@ public class Utils {
 		}
 		
 		if(fieldFound) {
-			//alias = field.getAnnotation(Column.class).name();
 			alias = field.getName();
 			return alias;
 		}
