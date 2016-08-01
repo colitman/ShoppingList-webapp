@@ -13,7 +13,7 @@ ListsController.prototype
 				instance.populateList(data);
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
-														LOGGER.debug('Anonymous promise getting failed');
+														LOGGER.debug('Promise getting failed');
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
 			});
@@ -108,6 +108,10 @@ ListsController.prototype
 		for (var i = 0; i < listsData.length; i++) {
 			var listData = listsData[i];
 														LOGGER.debug('List index [' + i + ']');
+
+			if(listData.bought) {
+				continue;
+			}
 
 			//pick up a snippet
 			var listForm = $('.sl-snippet[data-name="saved-list"]').clone(true, true);
