@@ -9,7 +9,7 @@ ListBuilder.prototype
 		list.key = $(listForm).attr('id');
 		list.bought = $('.panel', listForm).hasClass('panel-default');
 		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = CURRENT_ANON_USER;
+		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
 														LOGGER.debug('Starting adding products to list');
 		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
 
