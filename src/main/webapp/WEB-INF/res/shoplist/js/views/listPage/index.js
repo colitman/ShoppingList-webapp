@@ -18,12 +18,6 @@ function init() {
 		savedListFormController.changeProductStatus(event.target);
 	});
 
-	$(LIST_SEARCH_FORM).submit(function(event) {
-		event.preventDefault();
-		var id = $('#listId', this).val();
-		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
-	});
-
 	var listId = $('body').attr('id');
 
 	listsController.getList(listId);

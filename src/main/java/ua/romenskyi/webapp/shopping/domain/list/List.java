@@ -37,6 +37,9 @@ public class List implements OwnedEntityInterface {
 	@Column(name="bought", nullable=false)
 	private boolean bought;
 	
+	@Column(name="public", nullable=false)
+	private boolean publicList;
+	
 	@Column(name="owner", updatable=false)
 	@OwnerColumn
 	private Long owner;
@@ -75,6 +78,14 @@ public class List implements OwnedEntityInterface {
 
 	public void setBought(boolean bought) {
 		this.bought = bought;
+	}
+
+	public boolean isPublicList() {
+		return publicList;
+	}
+
+	public void setPublicList(boolean publicList) {
+		this.publicList = publicList;
 	}
 
 	@Override

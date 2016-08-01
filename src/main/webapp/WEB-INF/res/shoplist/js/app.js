@@ -36,6 +36,12 @@ $(document).ready(function() {
 	$(window).resize(function(event) {
 		setMinHeight();
 	});
+
+	$(LIST_SEARCH_FORM).submit(function(event) {
+		event.preventDefault();
+		var id = $('#listId', this).val();
+		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
+	});
 });
 
 function setMinHeight() {

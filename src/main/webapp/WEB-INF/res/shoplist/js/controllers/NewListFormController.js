@@ -68,6 +68,10 @@ NewListFormController.prototype
 			return;
 		}
 
+		if(!IS_ANON) {
+			list.publicList = confirm('Do you want to make this list accessible for other users?');
+		}
+
 		this.listService.saveList(list)
 			.done(function(data) {
 				//refresh the main page, display the saved list next to new one form 

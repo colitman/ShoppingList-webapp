@@ -139,7 +139,7 @@ public class ListsController {
 			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
 		}
 		
-		if(list.getOwner() > 0 && (currentUser == null || currentUser.getKey() != list.getOwner())) {
+		if(list.getOwner() > 0 && (currentUser == null || currentUser.getKey() != list.getOwner()) && !list.isPublicList()) {
 			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
 		}
 		

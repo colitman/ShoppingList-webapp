@@ -12,12 +12,6 @@ function init() {
 	var password2 = $('#password2', AUTH_FORM);
 	var signUpButton = $('button[type="submit"]', AUTH_FORM);
 
-	$(LIST_SEARCH_FORM).submit(function(event) {
-		event.preventDefault();
-		var id = $('#listId', this).val();
-		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
-	});
-
 	$(password).keyup(function(event) {
 		signUpFormController.checkPasswordsEqual();
 		signUpFormController.toggleSecondPasswordAccessibility();
