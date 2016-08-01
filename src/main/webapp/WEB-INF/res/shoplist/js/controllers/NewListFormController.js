@@ -51,7 +51,7 @@ NewListFormController.prototype
 		var list = new List();
 
 		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = CURRENT_ANON_USER;
+		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
 
 		$('input', listForm).each(function(index, item) {
 			
