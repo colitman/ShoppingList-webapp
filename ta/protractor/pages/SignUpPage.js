@@ -5,7 +5,7 @@ var SignUpPage = (function(){
 		this.usernameField = element(by.css('input#username'));
 		this.passwordField = element(by.css('input#password'));
 		this.password2Field = element(by.css('input#password2'));
-		this.signUnButton = element(by.css('.sl-auth-button'));
+		this.signUpButton = element(by.css('.sl-auth-button'));
 		this.signIpLink = element(by.css('#sign-in-link'));
 	}
 
