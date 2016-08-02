@@ -18,6 +18,7 @@ ListsController.prototype
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
 														LOGGER.debug('Promise getting failed');
+				$(SAVED_LIST_CLASS).parents('.sl-list-wrapper').remove();
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
 			});
