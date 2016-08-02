@@ -16,6 +16,10 @@ SavedListFormController.prototype
 														LOGGER.debug('Searching for targets - Product[' + targetProductId + ']; List[' + targetListId + ']');
 		var listForm = $('#' + targetListId + '.sl-list-wrapper');
 
+		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+		$(button).toggleClass('btn-success btn-warning');
+		$('i', button).toggleClass('fa-cart-plus fa-minus');
+
 														LOGGER.debug('Starting building a new list state');
 		var list = this.listBuilder.parse(listForm);
 
@@ -28,15 +32,17 @@ SavedListFormController.prototype
 		this.listService.updateList(list)
 			.done(function(data) {
 														LOGGER.debug('List successfully updated');
-				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
-				$(button).toggleClass('btn-success btn-warning');
-				$('i', button).toggleClass('fa-cart-plus fa-minus');
 
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 														LOGGER.debug('Failed to update list');
+
+				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+				$(button).toggleClass('btn-success btn-warning');
+				$('i', button).toggleClass('fa-cart-plus fa-minus');
+
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
 			});
@@ -50,6 +56,10 @@ SavedListFormController.prototype
 		var listId = $(button).data('target');
 		var listForm = $('#' + listId + '.sl-list-wrapper');
 														LOGGER.debug('Starting building a new list state');
+
+		$('.panel', listForm).removeClass('panel-success');
+		$('.panel', listForm).addClass('panel-default');
+
 		var list = this.listBuilder.parse(listForm);
 
 		if (list.content.length === 0) {
@@ -61,14 +71,14 @@ SavedListFormController.prototype
 			.done(function(data) {
 														LOGGER.debug('List successfully updated');
 
-				$('.panel', listForm).removeClass('panel-success');
-				$('.panel', listForm).addClass('panel-default');
-
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 														LOGGER.debug('Failed to update list');
+				$('.panel', listForm).removeClass('panel-default');
+				$('.panel', listForm).addClass('panel-success');
+
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
 			});

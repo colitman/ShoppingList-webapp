@@ -71,7 +71,7 @@ public class ListsController {
 												@RequestBody JsonList listModel,
 												@CurrentUser User currentUser,
 												@CookieValue(required=false) String shopper) {
-		
+
 		if(listKey == null || listKey <= 0 || listModel == null) {
 			return new ResponseEntity<String>(HttpStatus.BAD_REQUEST);
 		}
