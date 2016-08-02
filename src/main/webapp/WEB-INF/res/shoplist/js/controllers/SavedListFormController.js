@@ -16,9 +16,6 @@ SavedListFormController.prototype
 														LOGGER.debug('Searching for targets - Product[' + targetProductId + ']; List[' + targetListId + ']');
 		var listForm = $('#' + targetListId + '.sl-list-wrapper');
 
-		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
-		$(button).toggleClass('btn-success btn-warning');
-		$('i', button).toggleClass('fa-cart-plus fa-minus');
 														LOGGER.debug('Starting building a new list state');
 		var list = this.listBuilder.parse(listForm);
 
@@ -31,6 +28,10 @@ SavedListFormController.prototype
 		this.listService.updateList(list)
 			.done(function(data) {
 														LOGGER.debug('List successfully updated');
+				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+				$(button).toggleClass('btn-success btn-warning');
+				$('i', button).toggleClass('fa-cart-plus fa-minus');
+
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
@@ -48,9 +49,6 @@ SavedListFormController.prototype
 														LOGGER.debug('Trying to buy a list');
 		var listId = $(button).data('target');
 		var listForm = $('#' + listId + '.sl-list-wrapper');
-
-		$('.panel', listForm).removeClass('panel-success');
-		$('.panel', listForm).addClass('panel-default');
 														LOGGER.debug('Starting building a new list state');
 		var list = this.listBuilder.parse(listForm);
 
@@ -62,6 +60,10 @@ SavedListFormController.prototype
 		this.listService.updateList(list)
 			.done(function(data) {
 														LOGGER.debug('List successfully updated');
+
+				$('.panel', listForm).removeClass('panel-success');
+				$('.panel', listForm).addClass('panel-default');
+
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
