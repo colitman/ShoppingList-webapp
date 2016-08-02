@@ -7,7 +7,7 @@ LOGGER.debugEnabled = true;
 var ROOT = $('meta[name="contextPath"]').attr('content');
 var CURRENT_USER = $('meta[name="currentUser"]').attr('content');
 var CURRENT_ANON_USER = Cookies.get('shopper');
-var IS_ANON = (!CURRENT_USER || CURRENT_USER.length === 0)? true: false;
+var IS_ANON = !CURRENT_USER || CURRENT_USER.length === 0;
 
 var AUTH_FORM = $('.sl-auth-form');
 
