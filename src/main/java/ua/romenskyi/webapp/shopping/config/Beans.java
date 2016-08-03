@@ -26,7 +26,7 @@ public class Beans {
 		SpringLiquibase bean = new SpringLiquibase();
 
 		bean.setDataSource(dataSource);
-		bean.setChangeLog("classpath:master.xml");
+		bean.setChangeLog("classpath:db_migrations/master.xml");
 
 		return bean;
 	}

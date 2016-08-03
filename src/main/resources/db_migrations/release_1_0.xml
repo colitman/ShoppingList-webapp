@@ -27,8 +27,59 @@
 				<constraints nullable="false" />
 			</column>
 		</createTable>
+		
+		<createTable tableName="lists">
+			<column name="key" type="bigint" defaultValueSequenceNext="lists_key_seq">
+				<constraints primaryKey="true" nullable="false" unique="true" />
+			</column>
+			<column name="content" type="text" defaultValue="[]">
+				<constraints nullable="false" />
+			</column>
+			<column name="bought" type="boolean" defaultValue="false">
+				<constraints nullable="false" />
+			</column>
+			<column name="public" type="boolean" defaultValue="true">
+				<constraints nullable="false" />
+			</column>
+			<column name="owner" type="bigint" />
+			<column name="anon_owner" type="text" />
+		</createTable>
+		
+		<createTable tableName="groups">
+			<column name="key" type="bigint" defaultValueSequenceNext="groups_key_seq">
+				<constraints primaryKey="true" nullable="false" unique="true" />
+			</column>
+			<column name="name" type="text">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<createTable tableName="groups_users">
+			<column name="groups_key" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="users_key" type="bigint">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		
+		<!--
+			Adding foreign keys
+		-->
+		<addForeignKeyConstraint constraintName="groups_users_groups_FK"
+								 baseTableName="groups_users"
+								 baseColumnNames="groups_key"
+								 referencedTableName="groups"
+								 referencedColumnNames="key"
+								 onDelete="CASCADE"
+								 onUpdate="CASCADE" />
+		
+		<addForeignKeyConstraint constraintName="groups_users_users_FK"
+								 baseTableName="groups_users"
+								 baseColumnNames="users_key"
+								 referencedTableName="users"
+								 referencedColumnNames="key"
+								 onDelete="CASCADE"
+								 onUpdate="CASCADE" />
 	</changeSet>
-	
-	
-	
 </databaseChangeLog>
