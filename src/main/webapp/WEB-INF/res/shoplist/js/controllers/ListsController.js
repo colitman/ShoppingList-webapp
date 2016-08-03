@@ -1,7 +1,7 @@
 'use strict';
 
 function ListsController () {
-														LOGGER.debug('ListsController initialized');
+
 	this.listService = new ListService();
 	this.listBuilder = new ListBuilder();
 }
@@ -17,7 +17,7 @@ ListsController.prototype
 				$('.sl-wait-sign').remove();
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
-														LOGGER.debug('Promise getting failed');
+
 				$(SAVED_LIST_CLASS).parents('.sl-list-wrapper').remove();
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
@@ -43,22 +43,20 @@ ListsController.prototype
 				$(ALERT_WARNING).toggleClass('hidden');
 			})
 			.always(function() {
-											LOGGER.debug('Initiating DOM creation for saved lists');
+				
 				instance.createSavedLists(lists);
 			});
 	};
 
 ListsController.prototype
 	.createSavedLists = function(listsData) {
-														LOGGER.debug('Trying to create saved lists DOM');
+
 		if(listsData.length === 0) {
-														LOGGER.debug('No saved lists. Exiting.');
 			return;
 		}
-														LOGGER.debug('Start iterating over saved lists data');
+
 		for (var i = 0; i < listsData.length; i++) {
 			var listData = listsData[i];
-														LOGGER.debug('List index [' + i + ']');
 
 			if(listData.bought) {
 				continue;
@@ -67,7 +65,6 @@ ListsController.prototype
 			//pick up a snippet
 			var listForm = $('.sl-snippet[data-name="saved-list"]').clone(true, true);
 			$(listForm).removeClass('sl-snippet');
-														LOGGER.debug('Picked up a snippet for saved list.');
 
 			//insert to proper place
 			$('.sl-lists .sl-list-wrapper:first-child').after(listForm);

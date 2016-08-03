@@ -6,7 +6,7 @@ function Logger() {
 }
 
 Logger.prototype.debug = function(text) {
-	if(this.enabled && this.debug) {
+	if(this.enabled && this.debugEnabled) {
 		console.log(text);
 	}
 };
