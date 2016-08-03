@@ -6,6 +6,7 @@ package ua.romenskyi.webapp.shopping.config;
 
 import org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -32,6 +33,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private AccessDeniedHandler accessDeniedHandler;
 	
+	private @Value("${environment.heroku}") boolean onHeroku;
+	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
@@ -40,8 +43,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         filter.setForceEncoding(true);
         http.addFilterBefore(filter,CsrfFilter.class);
 		
-		http
+		if(!onHeroku) {
+			http.requiresChannel().antMatchers("/sign*").requiresSecure();
+		}
+        
+        http
 			.csrf().disable()
+			//.requiresChannel()
+			//	.antMatchers("/sign*").requiresSecure()
+			//	.and()
 			.authorizeRequests()
 				.antMatchers(HttpMethod.GET, "/signup", "/favicon.ico" , WebMvcConfig.RESOURCES_BASE_URL).permitAll()
 				.and()
@@ -63,6 +73,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	}
 	
 	@Override
+	@Autowired
 	public void configure(AuthenticationManagerBuilder auth) throws Exception {
 		auth
 			.userDetailsService(userDetailsService)

@@ -4,6 +4,7 @@
  */
 package ua.romenskyi.webapp.shopping.domain;
 
-public interface IdentifiedEntityInterface extends EntityInterface<Long> {
-	
+public interface IdentifiedEntityInterface extends EntityInterface {
+	Long getKey();
+	void setKey(Long key);
 }

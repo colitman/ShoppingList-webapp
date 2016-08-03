@@ -5,6 +5,7 @@
 package ua.romenskyi.webapp.shopping.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -15,6 +16,7 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
+@ComponentScan({"ua.romenskyi.webapp.shopping.*"})
 public class WebMvcConfig extends WebMvcConfigurerAdapter {
 	
 	public static final String RESOURCES_BASE_URL = "/res/**";
@@ -39,6 +41,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
 		registry
 			.addResourceHandler(RESOURCES_BASE_URL)
 			.addResourceLocations(RESOURCES_LOCATION);
+		
+		registry
+			.addResourceHandler("swagger-ui.html")
+			.addResourceLocations("classpath:/META-INF/resources/");
+	 
+	    registry
+	    	.addResourceHandler("/webjars/**")
+	    	.addResourceLocations("classpath:/META-INF/resources/webjars/");
 	}
 	
 	@Override
