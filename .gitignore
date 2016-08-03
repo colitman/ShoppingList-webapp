@@ -3,3 +3,5 @@
 /.project
 /.settings
 *.sublime-workspace
+.idea
+shopping-list.iml

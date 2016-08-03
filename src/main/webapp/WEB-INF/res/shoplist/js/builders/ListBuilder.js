@@ -33,6 +33,7 @@ ListBuilder.prototype
 
 		if(listData.bought) {
 			$('.panel', listForm).addClass('panel-default');
+			$(BUY_LIST_BTN_CLASS, listForm).attr('disabled', 'disabled');
 		} else {
 			$('.panel', listForm).addClass('panel-success');
 		}
