@@ -30,7 +30,7 @@ SavedListFormController.prototype
 
 														LOGGER.debug('Initiating list update');
 		this.listService.updateList(list)
-			.done(function(data) {
+			.done(function() {
 														LOGGER.debug('List successfully updated');
 
 				$(ALERT_SUCCESS).text('Successfully');
@@ -60,6 +60,10 @@ SavedListFormController.prototype
 		$('.panel', listForm).removeClass('panel-success');
 		$('.panel', listForm).addClass('panel-default');
 
+		$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
+		$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
+		$(BUY_LIST_BTN_CLASS, listForm).attr('disabled', 'disabled');
+
 		var list = this.listBuilder.parse(listForm);
 
 		if (list.content.length === 0) {
@@ -68,7 +72,7 @@ SavedListFormController.prototype
 		}
 														LOGGER.debug('Initiating list update');
 		this.listService.updateList(list)
-			.done(function(data) {
+			.done(function() {
 														LOGGER.debug('List successfully updated');
 
 				$(ALERT_SUCCESS).text('Successfully');
@@ -78,6 +82,10 @@ SavedListFormController.prototype
 														LOGGER.debug('Failed to update list');
 				$('.panel', listForm).removeClass('panel-default');
 				$('.panel', listForm).addClass('panel-success');
+
+				$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-default');
+				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-success');
+				$(BUY_LIST_BTN_CLASS, listForm).removeAttr('disabled');
 
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
