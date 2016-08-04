@@ -14,5 +14,4 @@
 <link rel="stylesheet" href="${app }/res/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${app }/res/fa/css/font-awesome.css">
 
-<link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
-<link rel="stylesheet" href="${app }/res/shoplist/css/app.css">
+<link rel="stylesheet" href="${app }/res/shoplist/css/main.css">

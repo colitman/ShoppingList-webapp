@@ -11,11 +11,10 @@
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=${listId} :: Shopping List"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/fix-lists.css">
 	</head>
 	
 	<body class="sl-list-page" id="${listId}">
-		<div class="sl-page container">
+		<div class="js-sl-page container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			
 			<div class="sl-main-content">

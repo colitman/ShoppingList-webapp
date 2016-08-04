@@ -41,10 +41,10 @@ $(document).ready(function() {
 });
 
 function setMinHeight() {
-	var page = $('.sl-page');
+	var page = $('body > .container');
 
 	var nav = $('nav', page);
-	var content = $('.sl-main-content', page);
+	var content = $('main', page);
 	var footer = $('footer', page);
 
 	var contentMinHeight;

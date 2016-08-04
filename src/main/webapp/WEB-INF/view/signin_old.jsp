@@ -10,11 +10,10 @@
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=Sign In"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/auth.css">
 	</head>
 	
 	<body id="sign-in-page" class="sl-auth-page">
-		<div class="sl-page container">
+		<div class="js-sl-page container">
 			<c:import url="/imports/mainTopNav"></c:import>
 
 			<div class="sl-main-content">

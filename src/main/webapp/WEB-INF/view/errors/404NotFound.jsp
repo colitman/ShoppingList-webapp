@@ -10,7 +10,7 @@
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
 	</head>
 	<body class="sl-error-404-page">
-		<div class="sl-page container">
+		<div class="js-sl-page container">
 			<div class="sl-main-content">
 				<i class="fa fa-meh-o fa-pulse" style="font-size:20em"></i>
 				Not Found
