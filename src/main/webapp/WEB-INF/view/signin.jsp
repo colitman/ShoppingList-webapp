@@ -4,7 +4,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">

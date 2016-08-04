@@ -4,8 +4,7 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">

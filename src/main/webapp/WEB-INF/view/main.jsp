@@ -4,8 +4,7 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set> <!-- test -->
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +19,33 @@
 			<main>
 				<div class="row">
 					<section id="new-list">
-						<c:import url="/imports/newListForm"></c:import>
+						<article class="sl-list col-sm-6 col-md-4">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									New List
+								</div>
+								<div class="panel-body">
+									What is needed?
+								</div>
+								
+								<table class="table table-condensed">
+									<tr id="sl-new-product-form">
+										<td>
+											<div class="input-group input-group-sm">
+												<input type="text" class="form-control" placeholder="Product and amount" autofocus="autofocus">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+												</span>
+											</div>
+										</td>
+									</tr>
+								</table>
+								
+								<button type="button" class="btn btn-success btn-sm btn-block sl-list-action-btn">Save</button>
+							</div>
+						</article>
 					</section>
+					
 					<section id="saved-lists"></section>
 				</div>
 			</main>

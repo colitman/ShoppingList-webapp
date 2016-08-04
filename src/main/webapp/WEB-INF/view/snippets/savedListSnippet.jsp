@@ -4,9 +4,9 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
-<div data-name="saved-list" class="sl-snippet sl-list-wrapper col-sm-6 col-md-4">
+<article data-name="saved-list" class="sl-snippet sl-list col-sm-6 col-md-4">
 	<div id="${id}" class="sl-saved-list panel">
 		<div class="panel-heading">
 			
@@ -24,10 +24,10 @@
 				</td>
 			</tr>
 		</table>
-		<button type="button" class="btn btn-primary btn-sm btn-block sl-buy-list-btn">Buy</button>
+		<button type="button" class="btn btn-primary btn-sm btn-block sl-list-action-btn sl-buy-list-btn">Buy</button>
 
 		<div class="panel-footer">
 			<a href="${app }/lists/">/lists/</a>
 		</div>
 	</div>
-</div>
+</article>

@@ -13,7 +13,7 @@ SavedListFormController.prototype
 		var targetProductId = $(button).data('target');
 		var targetListId = $(button).data('targetList');
 
-		var listForm = $('#' + targetListId + '.sl-list-wrapper');
+		var listForm = $('#' + targetListId + '.sl-list');
 
 		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
 		$(button).toggleClass('btn-success btn-warning');
@@ -46,7 +46,7 @@ SavedListFormController.prototype
 	.buyList = function (button) {
 
 		var listId = $(button).data('target');
-		var listForm = $('#' + listId + '.sl-list-wrapper');
+		var listForm = $('#' + listId + '.sl-list');
 
 		$('.panel', listForm).removeClass('panel-success');
 		$('.panel', listForm).addClass('panel-default');

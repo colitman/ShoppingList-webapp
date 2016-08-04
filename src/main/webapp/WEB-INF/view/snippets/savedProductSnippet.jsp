@@ -4,7 +4,7 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <table>
 <tr data-name="saved-product" class="sl-snippet sl-saved-product">

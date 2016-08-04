@@ -8,9 +8,9 @@ var IS_ANON = !CURRENT_USER || CURRENT_USER.length === 0;
 var AUTH_FORM = $('.sl-auth-form');
 
 var NEW_LIST = $('#sl-new-list');
-var NEW_PRODUCT = $('#sl-new-product', NEW_LIST);
-var ADD_PRODUCT_BTN = $('#sl-add-product-btn', NEW_LIST);
-var SAVE_LIST_BTN = $('#sl-save-list-btn', NEW_LIST);
+var NEW_PRODUCT = $('#sl-new-product-form input', NEW_LIST);
+var ADD_PRODUCT_BTN = $('#sl-new-product-form button', NEW_LIST);
+var SAVE_LIST_BTN = $('.sl-list-action-btn', NEW_LIST);
 
 var REMOVE_PRODUCT_BTN_CLASS = '.sl-remove-product-btn';
 

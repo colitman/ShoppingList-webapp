@@ -11,14 +11,14 @@ ListsController.prototype
 		var instance = this;
 		this.listService.getList(id)
 			.done(function (data) {
-				var listForm = $('#' + data.key + SAVED_LIST_CLASS).parents('.sl-list-wrapper');
+				var listForm = $('#' + data.key + SAVED_LIST_CLASS).parents('.sl-list');
 				var productFormSnippet = $('.sl-snippet[data-name="saved-product"]');
 				instance.listBuilder.populate(data, listForm, productFormSnippet);
 				$('.sl-wait-sign').remove();
 			})
 			.fail(function (jqXHR, textStatus, errorThrown) {
 
-				$(SAVED_LIST_CLASS).parents('.sl-list-wrapper').remove();
+				$(SAVED_LIST_CLASS).parents('.sl-list').remove();
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
 			});

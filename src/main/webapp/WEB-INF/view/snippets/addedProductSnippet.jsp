@@ -4,7 +4,7 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <div data-name="added-product" class="sl-snippet list-group-item">
 	<div class="input-group input-group-sm sl-added-product-entry">
