@@ -8,5 +8,10 @@
 	<div class="alert alert-info hidden"></div>
 	<div class="alert alert-warning hidden"></div>
 	<div class="alert alert-danger hidden"></div>
-	<p class="text-center text-muted">ShoppingList | Dmytro Romenskyi | HobbyDev | 2016</p>
+	<p class="text-center text-muted">
+		ShoppingList |
+		<a href="https://ua.linkedin.com/in/dmytro-romenskyi-87035524">Dmytro Romenskyi</a> |
+		HobbyDev | 2016 |
+		<a href="${app}/swagger-ui.html">API Reference</a>
+	</p>
 </footer>
