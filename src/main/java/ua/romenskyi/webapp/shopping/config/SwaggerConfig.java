@@ -49,7 +49,7 @@ public class SwaggerConfig {
 				"API for public use and integration",
 				"1.0",
 				"urn:tos",
-				new Contact("Dmytro Romenskyi", "https://ua.linkedin.com/in/dmytro-romenskyi-87035524", "d@d.com"),
+				new Contact("Dmytro Romenskyi", "https://ua.linkedin.com/in/dmytro-romenskyi-87035524", "d.romenskyi@gmail.com"),
 				"This software is licensed under the terms of the MIT license.",
 				"https://github.com/colitman/ShoppingList-webapp/blob/master/LICENSE.md");
 		return apiInfo;
