@@ -5,6 +5,7 @@
 package ua.romenskyi.webapp.shopping.models.json;
 
 import ua.romenskyi.webapp.shopping.domain.list.List;
+import ua.romenskyi.webapp.shopping.domain.users.User;
 
 /**
  * @author dmytro.romenskyi - Jul 19, 2016
@@ -35,7 +36,11 @@ public class JsonList implements JsonModel {
 		domainList.setContent(getStringContent());
 		domainList.setBought(isBought());
 		domainList.setPublicList(isPublicList());
-		domainList.setOwner(getOwner());
+
+		User owner = new User();
+		owner.setKey(getOwner());
+		domainList.setOwner(owner);
+
 		domainList.setAnonymousOwner(getAnonymousOwner());
 		
 		return domainList;

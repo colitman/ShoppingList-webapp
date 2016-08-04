@@ -4,18 +4,12 @@
  */
 package ua.romenskyi.webapp.shopping.domain.list;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Type;
-
 import ua.romenskyi.webapp.shopping.data.AnonymousOwnerColumn;
-import ua.romenskyi.webapp.shopping.data.OwnerColumn;
 import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
+import ua.romenskyi.webapp.shopping.domain.users.User;
+
+import javax.persistence.*;
 
 /**
  * @author dmytro.romenskyi - Jun 29, 2016
@@ -39,10 +33,9 @@ public class List implements OwnedEntityInterface {
 	
 	@Column(name="public", nullable=false)
 	private boolean publicList;
-	
-	@Column(name="owner", updatable=false)
-	@OwnerColumn
-	private Long owner;
+
+	@ManyToOne
+	private User owner;
 	
 	@Column(name="anon_owner", updatable=false)
 	@Type(type="text")
@@ -50,8 +43,12 @@ public class List implements OwnedEntityInterface {
 	private String anonymousOwner;
 	
 	public List() {
-		this.content = "";
+		this.key = -1L;
+		this.content = "[]";
 		this.bought = false;
+		this.publicList = false;
+		this.owner = null;
+		this.anonymousOwner = "";
 	}
 
 	@Override
@@ -89,12 +86,12 @@ public class List implements OwnedEntityInterface {
 	}
 
 	@Override
-	public Long getOwner() {
+	public User getOwner() {
 		return owner;
 	}
 
 	@Override
-	public void setOwner(Long owner) {
+	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 

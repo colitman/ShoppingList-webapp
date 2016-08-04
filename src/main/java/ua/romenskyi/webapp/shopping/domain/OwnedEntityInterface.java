@@ -4,14 +4,16 @@
  */
 package ua.romenskyi.webapp.shopping.domain;
 
+import ua.romenskyi.webapp.shopping.domain.users.User;
+
 /**
  * @author dmytro.romenskyi - Jul 1, 2016
  *
  */
 public interface OwnedEntityInterface extends IdentifiedEntityInterface {
 
-	Long getOwner();
-	void setOwner(Long owner);
+	User getOwner();
+	void setOwner(User owner);
 	String getAnonymousOwner();
 	void setAnonymousOwner(String anonymousOwner);
 
