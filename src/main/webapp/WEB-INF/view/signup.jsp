@@ -29,7 +29,7 @@
 					
 					<input id="username" name="username" class="form-control" type="text" placeholder="Username" required="required" autofocus="autofocus"/>
 					
-					<div id="sl-passwords" class="has-feedback">
+					<div class="has-feedback">
 						<input id="password" name="password" class="form-control" type="password"  placeholder="Password" required="required"/>
 						<span class="glyphicon form-control-feedback"></span>
 						<input id="password2" name="password2" class="form-control" type="password" placeholder="Password again" required="required" disabled="disabled"/>

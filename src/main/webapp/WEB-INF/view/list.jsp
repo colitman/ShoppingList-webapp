@@ -13,15 +13,14 @@
 		<c:import url="/imports/head?pageTitle=${listId} :: Shopping List"></c:import>
 	</head>
 	
-	<body class="sl-list-page" id="${listId}">
-		<div class="js-sl-page container">
+	<body>
+		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			
-			<div class="sl-main-content">
-				<div class="row sl-lists">
-					<c:import url="/snippets/savedListSnippet?id=${listId}"></c:import>
-				</div>
-			</div>
+			<main>
+				<c:import url="/snippets/savedListSnippet?id=${listId}"></c:import>
+			</main>
+			
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 
@@ -29,9 +28,11 @@
 			
 		</div>
 
+		<!--
 		<div class="sl-snippets hidden">
 			<c:import url="/snippets/savedProductSnippet"></c:import>
 		</div>
+		-->
 
 		<c:import url="/imports/scripts"></c:import>
 

@@ -67,7 +67,7 @@ ListsController.prototype
 			$(listForm).removeClass('sl-snippet');
 
 			//insert to proper place
-			$('.sl-lists .sl-list-wrapper:first-child').after(listForm);
+			$('section#saved-lists').append(listForm);
 
 			var productFormSnippet = $('.sl-snippet[data-name="saved-product"]');
 

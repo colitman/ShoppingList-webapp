@@ -5,7 +5,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
 <c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set>
+<c:set var="isAnon" value="${empty currentUser}"></c:set> <!-- test -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,17 +13,18 @@
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
 	</head>
 	
-	<body id="root-page">
-		<div class="js-sl-page container">
+	<body>
+		<div class=container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
 			
-			<div class="sl-main-content">
-				<div class="row sl-lists">
-					
-					<c:import url="/imports/newListForm"></c:import>
-				
+			<main>
+				<div class="row">
+					<section id="new-list">
+						<c:import url="/imports/newListForm"></c:import>
+					</section>
+					<section id="saved-lists"></section>
 				</div>
-			</div>
+			</main>
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 
@@ -31,11 +32,13 @@
 			
 		</div>
 
+		<!--
 		<div class="sl-snippets hidden">
 			<c:import url="/snippets/addedProductSnippet"></c:import>
 			<c:import url="/snippets/savedListSnippet"></c:import>
 			<c:import url="/snippets/savedProductSnippet"></c:import>
 		</div>
+		-->
 
 		<c:import url="/imports/scripts"></c:import>
 
