@@ -10,7 +10,7 @@ ListBuilder.prototype
 		list.bought = $('.panel', listForm).hasClass('panel-default');
 		list.owner = IS_ANON? -1: CURRENT_USER;
 		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
-														LOGGER.debug('Starting adding products to list');
+	
 		$(SAVED_PRODUCT_CLASS, listForm).each(function(index, item) {
 
 			var productName = $('.sl-product-name', item).text();
@@ -33,6 +33,7 @@ ListBuilder.prototype
 
 		if(listData.bought) {
 			$('.panel', listForm).addClass('panel-default');
+			$(BUY_LIST_BTN_CLASS, listForm).attr('disabled', 'disabled');
 		} else {
 			$('.panel', listForm).addClass('panel-success');
 		}
@@ -45,15 +46,14 @@ ListBuilder.prototype
 		$(publicLink).text($(publicLink).text() + listKey);
 
 		$(BUY_LIST_BTN_CLASS, listForm).data('target', listKey);
-													LOGGER.debug('Start iterating over list products data');
+
 		// populate list products data
 		for (var j = 0; j < listProducts.length; j++) {
 			var listProduct = listProducts[j];
-													LOGGER.debug('List product index [' + j + ']');
+
 			// pick up a snippet
 			var productForm = $(productFormSnippet).clone(true, true);
 			$(productForm).removeClass('sl-snippet');
-																	LOGGER.debug('Picked up a snippet for list product.');
 
 			// insert to proper place
 			$('.sl-wait-sign', listForm).before(productForm);

@@ -4,6 +4,7 @@
  */
 package ua.romenskyi.webapp.shopping.config;
 
+import liquibase.integration.spring.SpringLiquibase;
 import org.jasypt.springsecurity3.authentication.encoding.PasswordEncoder;
 import org.jasypt.util.password.PasswordEncryptor;
 import org.jasypt.util.password.StrongPasswordEncryptor;
@@ -13,10 +14,23 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 
+import javax.sql.DataSource;
+
 @Configuration
 @PropertySource("classpath:application.properties")
 public class Beans {
-	
+
+	@Bean
+	@Autowired
+	public SpringLiquibase springLiquibase(DataSource dataSource) {
+		SpringLiquibase bean = new SpringLiquibase();
+
+		bean.setDataSource(dataSource);
+		bean.setChangeLog("classpath:db_migrations/master.xml");
+
+		return bean;
+	}
+
 	@Bean
 	public PasswordEncryptor passwordEncryptor() {
 		

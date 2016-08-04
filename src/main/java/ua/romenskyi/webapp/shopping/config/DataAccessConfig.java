@@ -4,18 +4,7 @@
  */
 package ua.romenskyi.webapp.shopping.config;
 
-import static org.hibernate.cfg.AvailableSettings.DIALECT;
-import static org.hibernate.cfg.AvailableSettings.ENABLE_LAZY_LOAD_NO_TRANS;
-import static org.hibernate.cfg.AvailableSettings.HBM2DDL_AUTO;
-import static org.hibernate.cfg.AvailableSettings.SHOW_SQL;
-
-import java.beans.PropertyVetoException;
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.Properties;
-
-import javax.sql.DataSource;
-
+import com.mchange.v2.c3p0.ComboPooledDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -26,10 +15,15 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.util.ClassUtils;
-
-import com.mchange.v2.c3p0.ComboPooledDataSource;
-
 import ua.romenskyi.webapp.shopping.Application;
+
+import javax.sql.DataSource;
+import java.beans.PropertyVetoException;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Properties;
+
+import static org.hibernate.cfg.AvailableSettings.*;
 
 @Configuration
 @EnableTransactionManagement
@@ -48,7 +42,7 @@ public class DataAccessConfig {
 	
 	private @Value("${hibernate.dialect}") String dialect;
 	private @Value("${hibernate.show_sql}") String showSQL;
-	private @Value("${hibernate.hbm2ddl.auto}") String autoDDL;
+	//private @Value("${hibernate.hbm2ddl.auto}") String autoDDL;
 	private @Value("${hibernate.enable_lazy_load_no_trans}") String lazyLoadNoTrans;
 	
 	private @Value("${environment.heroku}") boolean onHeroku;
@@ -103,7 +97,7 @@ public class DataAccessConfig {
 		Properties hibProps = new Properties();
 		hibProps.setProperty(DIALECT, dialect);
 		hibProps.setProperty(SHOW_SQL, showSQL);
-		hibProps.setProperty(HBM2DDL_AUTO, autoDDL);
+		//hibProps.setProperty(HBM2DDL_AUTO, autoDDL);
 		hibProps.setProperty(ENABLE_LAZY_LOAD_NO_TRANS, lazyLoadNoTrans);
 		
 		sessionFactory.setHibernateProperties(hibProps);

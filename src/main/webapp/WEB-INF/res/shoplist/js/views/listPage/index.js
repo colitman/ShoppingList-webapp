@@ -4,7 +4,6 @@ var listsController = new ListsController();
 var savedListFormController = new SavedListFormController();
 
 $(document).ready(function() {
-																				LOGGER.debug('Document ready');
 	init();
 });
 
