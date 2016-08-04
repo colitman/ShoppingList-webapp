@@ -10,7 +10,7 @@ $(document).ready(function() {
 
 function init() {
 	$(ADD_PRODUCT_BTN).click(function(event) {
-		newListFormController.addProduct(NEW_PRODUCT); //+
+		newListFormController.addProduct(NEW_PRODUCT);
 	});
 	
 	$(NEW_PRODUCT).keyup(function(event) {
@@ -20,9 +20,11 @@ function init() {
 	});
 
 	$(SAVE_LIST_BTN).click(function(event) {
-		newListFormController.saveList(NEW_LIST); //+
+		newListFormController.saveList(NEW_LIST);
 	});
 
+	/* end of reviwed content */
+	
 	$(BUY_LIST_BTN_CLASS).click(function(event) {
 		savedListFormController.buyList(event.target);
 	});

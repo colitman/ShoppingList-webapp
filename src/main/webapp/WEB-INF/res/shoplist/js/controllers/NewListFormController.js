@@ -10,38 +10,29 @@ NewListFormController.prototype
 		if($(productInput).val() === '') {
 			return;
 		}
-		// pick added product snippet,
-		var product = $('.sl-snippet[data-name="added-product"]').clone();
-		$(product).removeClass('sl-snippet');
+		
+		var product = new AddedProduct();
+		var productId = new Date().getTime();
+	
+		product.setId(productId);
+		product.setName($(productInput).val());
+		var entry = product.build();
 		
 		// insert to proper place,
-		$('.list-group-item:last-child', NEW_LIST).before(product);
-		
-		// populate data,
-		$('input', product).val($(productInput).val());
+		$('.sl-new-product-form').before(entry);
+	
 		$(productInput).val('');
 		$(productInput).focus();
 		
-		// assign "remove product" event
-		var productId = new Date().getTime();
-		$(product).attr('id', productId);
-		$('input', product).data('product-id', productId);
-		$(REMOVE_PRODUCT_BTN_CLASS, product).data('target', productId);
-
 		var instance = this;
 
-		$(REMOVE_PRODUCT_BTN_CLASS, product).click(function(event) {
-			instance.removeProduct(this);
+		$(REMOVE_PRODUCT_BTN_CLASS, entry).click(function(event) {
+			instance.removeProduct($(this).data('target'));
 		});
 	};
 
 NewListFormController.prototype
-	.removeProduct = function(removeButton) {
-		
-		// get button target id,
-		var target = $(removeButton).data('target');
-		
-		// remove the element with this id
+	.removeProduct = function(target) {
 		$('#' + target, NEW_LIST).remove();
 	};
 
@@ -59,7 +50,7 @@ NewListFormController.prototype
 
 			if(productName !== '') {
 				var product = new Product(productName);
-				product.key = $(item).data('product-id');
+				product.key = $(item).data('productId');
 				list.content.push(product);
 			}
 		});
@@ -73,7 +64,7 @@ NewListFormController.prototype
 		}
 
 		this.listService.saveList(list)
-			.done(function(data) {
+			.done(function() {
 				//refresh the main page, display the saved list next to new one form 
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/');
 			})

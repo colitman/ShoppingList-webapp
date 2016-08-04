@@ -23,7 +23,7 @@
 			<form id="sl-list-search-form" class="navbar-form navbar-left form-inline" action="${app}/lists/" method="get">
 				<div class="form-group">
 					<label for="listId">/</label>
-					<input type="search" id="listId" name="listId" class="form-control" placeholder="List ID" />
+					<input type="search" id="listId" class="form-control" placeholder="List ID" />
 				</div>
 				<button type="submit" class="btn btn-default">Find</button>
 			</form>

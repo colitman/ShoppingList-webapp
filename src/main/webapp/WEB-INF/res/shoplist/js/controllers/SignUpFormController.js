@@ -57,7 +57,7 @@ SignUpFormController.prototype
 SignUpFormController.prototype
 	.submitForm = function() {
 		this.userService.signUpUser()
-			.done(function(data){
+			.done(function(){
 				var username = $('input#username').val();
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/signin?username=' + username);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
