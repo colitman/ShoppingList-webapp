@@ -18,7 +18,7 @@
 			
 			<main>
 				<div class="row">
-					<section id="new-list">
+					<section id="sl-new-list">
 						<article class="sl-list col-sm-6 col-md-4">
 							<div class="panel panel-primary">
 								<div class="panel-heading">
@@ -46,7 +46,7 @@
 						</article>
 					</section>
 					
-					<section id="saved-lists"></section>
+					<section id="sl-saved-lists"></section>
 				</div>
 			</main>
 			<c:import url="/imports/mainFooter"></c:import>

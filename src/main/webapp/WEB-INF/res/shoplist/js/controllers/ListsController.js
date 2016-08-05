@@ -110,7 +110,7 @@ ListsController.prototype
 			$(listForm).removeClass('sl-snippet');
 
 			//insert to proper place
-			$('section#saved-lists').append(listForm);
+			$('section#sl-saved-lists').append(listForm);
 
 			var productFormSnippet = $('.sl-snippet[data-name="saved-product"]');
 

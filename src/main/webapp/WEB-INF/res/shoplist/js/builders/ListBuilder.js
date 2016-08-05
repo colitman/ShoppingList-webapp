@@ -5,27 +5,17 @@ function ListBuilder () {}
 ListBuilder.prototype.create = function(lists) {
 	for(var i = 0; i < lists.length; i++) {
 		var listData = lists[i];
-		var listDOM = new SavedList();
-		
-		listDOM.setKey(listData.key);
-		listDOM.setBought(listData.bought);
-		
-		var listElement = listDOM.build();
+		var listElement = new SavedList(listData.key, listData.bought);
 		
 		var listProductsData = JSON.parse(listData.content);
+		
 		for(var j = 0; j < listProductsData.length; j++) {
 			var listProductData = listProductsData[j];
-			var productDOM = new SavedProduct();
-			productDOM.setId(listProductData.key);
-			productDOM.setName(listProductData.name);
-			productDOM.setBought(listProductData.buoght);
-			
-			var productElement = productDOM.build();
+			var productElement = new SavedProduct(listProductData.key, listProductData.name, listProductData.buoght);
 			$(listElement).append(productElement);
 		}
 		
-		
-		$('.saved-lists').append(listElement);
+		$('.sl-saved-lists').append(listElement);
 	}
 }
 

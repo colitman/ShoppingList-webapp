@@ -29,21 +29,19 @@ function init() {
 	}).done(function(data) {
 		listsBuilder.create(data);
 		
-		$(CHANGE_PRODUCT_STATUS_BTN_CLASS).
+		$(CHANGE_PRODUCT_STATUS_BTN_CLASS).each(function(index, item) {
+			$(item).click(function(event) {
+				savedListFormController.changeProductStatus(event.target);
+			});
+		})
+		
+		$(BUY_LIST_BTN_CLASS).each(function(index, item) {
+			$(item).click(function(event) {
+				savedListFormController.buyList(event.target);
+			});
+		})
 	}).fail(function (jqXHR, textStatus, errorThrown) {
 		$(ALERT_WARNING).text(errorThrown);
 		$(ALERT_WARNING).toggleClass('hidden');
 	});
-
-	/* end of reviwed content */
-	
-	$(BUY_LIST_BTN_CLASS).click(function(event) {
-		savedListFormController.buyList(event.target);
-	});
-
-	$(CHANGE_PRODUCT_STATUS_BTN_CLASS).click(function(event) {
-		savedListFormController.changeProductStatus(event.target);
-	});
-
-	//listsController.getSavedListsForCurrentUser();
 }
