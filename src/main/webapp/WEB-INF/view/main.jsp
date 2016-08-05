@@ -58,7 +58,6 @@
 
 		<!--
 		<div class="sl-snippets hidden">
-			<c:import url="/snippets/addedProductSnippet"></c:import>
 			<c:import url="/snippets/savedListSnippet"></c:import>
 			<c:import url="/snippets/savedProductSnippet"></c:import>
 		</div>

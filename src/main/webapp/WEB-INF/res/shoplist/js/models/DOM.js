@@ -3,14 +3,49 @@
  */
 'use strict';
 
-function AddedProduct() {
-	var instance = function() {
-		
-		return
-	}
-	
-	return $(instance);
+function SavedList() {}
+
+function SavedProduct() {}
+
+SavedProduct.prototype.skeleton =	'<tr>' +
+										'<td>' +
+											'<div class="input-group input-group-sm">' +
+												'<input type="text" class="form-control" placeholder="Product and amount">' +
+												'<span class="input-group-btn">' +
+													'<button type="button" class="btn btn-default sl-remove-product-btn"><i class="fa fa-remove"></i></button>' +
+												'</span>' +
+											'</div>' +
+										'</td>' +
+									'</tr>';
+SavedProduct.prototype.bought = '';
+SavedProduct.prototype.name = '';
+SavedProduct.prototype.id = '';
+
+SavedProduct.prototype.setId = function(id) {
+	this.id = id;
 }
+
+SavedProduct.prototype.getId = function() {
+	return this.id;
+}
+
+SavedProduct.prototype.setName = function(name) {
+	this.name = name;
+}
+
+SavedProduct.prototype.getName = function() {
+	return this.name;
+}
+
+SavedProduct.prototype.setBought = function(bought) {
+	this.bought = bought;
+}
+
+SavedProduct.prototype.build = function() {
+
+}
+
+function AddedProduct() {}
 
 AddedProduct.prototype.skeleton =	'<tr>' +
 										'<td>' +
@@ -46,7 +81,6 @@ AddedProduct.prototype.build = function() {
 	var jTr = $(tr);
 	$(jTr).append(this.skeleton);
 	$('input', jTr).val(this.name);
-	$('input', jTr).data('product-id', this.id);
 	
 	$(jTr).attr('id', this.id);
 	

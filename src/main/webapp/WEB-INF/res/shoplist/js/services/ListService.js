@@ -2,6 +2,15 @@
 
 function ListService () {}
 
+ListService.prototype.getLists = function(options) {
+	return $.ajax({
+		url: ROOT + '/api/lists',
+		type: 'GET',
+		dataType: 'json',
+		data: options
+	});
+}
+
 ListService.prototype
 	.getList = function(id){
 		// tries to receive a list and returns a promise
@@ -37,6 +46,7 @@ ListService.prototype
 			});  
 	};
 
+/*
 ListService.prototype
 	.getListsByAnonymousOwner = function(shopper){
 		// sends ajax api call and returns a promise 
@@ -62,3 +72,4 @@ ListService.prototype
 				}
 			});
 	};
+*/

@@ -86,21 +86,25 @@ public class ListsController {
 	
 	@RequestMapping(method=RequestMethod.GET)
 	public ResponseEntity<java.util.List<List>> getLists(@RequestParam(required=false) Long owner,
-															@RequestParam(required=false) String shopper,
-															@CurrentUser User currentUser) {
+														 @RequestParam(required=false) String shopper,
+														 @RequestParam(required=false) String statuses,
+														 @RequestParam(required=false) String ignoredStatuses,
+														 @CurrentUser User currentUser) {
 		
 		Long currentUserKey = (currentUser == null)? -1: currentUser.getKey();
 		
 		java.util.List<List> lists = new ArrayList<List>();
+		java.util.List<List> filteredLists = new ArrayList<List>();
 		
 		boolean processShopper = false;
+		boolean processIgnoredStatuses = statuses == null || statuses.isEmpty();
 		
-		java.util.List<List> ownedLists = new ArrayList<List>();
-		java.util.List<List> anonLists = new ArrayList<List>();
+		/*java.util.List<List> ownedLists = new ArrayList<List>();
+		java.util.List<List> anonLists = new ArrayList<List>();*/
 		
 		if(owner != null && owner > 0 && owner == currentUserKey) {
-			ownedLists = listService.getByOwner(owner);
-			lists.addAll(ownedLists);
+			lists = listService.getByOwner(owner);
+			//lists.addAll(ownedLists);
 		}
 		
 		if(owner == null || owner == -1) {
@@ -108,11 +112,42 @@ public class ListsController {
 		}
 		
 		if(processShopper && shopper != null && !shopper.isEmpty()) {
-			anonLists = listService.getByAnonymousOwner(shopper);
-			lists.addAll(anonLists);
+			lists = listService.getByAnonymousOwner(shopper);
+			//lists.addAll(anonLists);
+		}
+
+		if(!processIgnoredStatuses) {
+			for (List list:lists) {
+				String listStatus = list.isBought()? "bought" : "active";
+				String[] statusArray = statuses.split(",");
+
+				for(String status:statusArray) {
+					if(listStatus.equalsIgnoreCase(status)) {
+						filteredLists.add(list);
+						break;
+					}
+				}
+			}
+		} else {
+			for (List list:lists) {
+				String listStatus = list.isBought()? "bought" : "active";
+				String[] statusArray = ignoredStatuses.split(",");
+
+				boolean found = false;
+				for(String status:statusArray) {
+					if(listStatus.equalsIgnoreCase(status)) {
+						found = true;
+						break;
+					}
+				}
+
+				if(!found) {
+					filteredLists.add(list);
+				}
+			}
 		}
 		
-		return new ResponseEntity<java.util.List<List>>(lists, HttpStatus.OK);
+		return new ResponseEntity<java.util.List<List>>(filteredLists, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)

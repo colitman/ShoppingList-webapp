@@ -44,9 +44,9 @@ NewListFormController.prototype
 		list.owner = IS_ANON? -1: CURRENT_USER;
 		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
 
-		$('input', listForm).each(function(index, item) {
+		$('tr', listForm).each(function(index, item) {
 			
-			var productName = $(item).val();
+			var productName = $('input', item).val();
 
 			if(productName !== '') {
 				var product = new Product(productName);

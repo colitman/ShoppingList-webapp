@@ -3,6 +3,7 @@
 var newListFormController = new NewListFormController();
 var savedListFormController = new SavedListFormController();
 var listsController = new ListsController();
+var listsBuilder = new ListBuilder();
 
 $(document).ready(function() {
 	init();
@@ -22,6 +23,17 @@ function init() {
 	$(SAVE_LIST_BTN).click(function(event) {
 		newListFormController.saveList(NEW_LIST);
 	});
+	
+	listsController.getLists({
+		ignoredStatuses:	'draft,bought'
+	}).done(function(data) {
+		listsBuilder.create(data);
+		
+		$(CHANGE_PRODUCT_STATUS_BTN_CLASS).
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		$(ALERT_WARNING).text(errorThrown);
+		$(ALERT_WARNING).toggleClass('hidden');
+	});
 
 	/* end of reviwed content */
 	
@@ -33,5 +45,5 @@ function init() {
 		savedListFormController.changeProductStatus(event.target);
 	});
 
-	listsController.getSavedListsForCurrentUser();
+	//listsController.getSavedListsForCurrentUser();
 }

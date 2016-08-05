@@ -3,9 +3,52 @@
 function ListsController () {
 
 	this.listService = new ListService();
-	this.listBuilder = new ListBuilder();
+	//this.listBuilder = new ListBuilder();
 }
 
+/**
+ * Loads a collection of lists.
+ * If none of {@link statuses} or {@link ignoredStatuses} are specified, lists with all statuses are returned
+ *
+ * @param options - lists load filtering.
+ * <ul>
+ * <li><i>isForCurrentUser</i> - whether to load lists, whose owner is a current user. Defaults to true</li>
+ * <li><i>owner</i> - lists owner. Ignored if {@link isForCurrentUser} is set to true.</li>
+ * <li><i>statuses</i> - statuses of list to filter</li>
+ * <li><i>ignoredStatuses</i> - lists with these statuses will not be loaded. Ignored if {@link statuses} are specified</li>
+ * </ul>
+ */
+ListsController.prototype.getLists = function(options) {
+	var optionValues = {
+		isForCurrentUser:	true,
+		owner:	'',
+		statuses:	'',
+		ignoredStatuses: ''
+	}
+	
+	for(var param in optionValues) {
+		if(typeof options[param] == 'undefined') options[param] = optionValues[param];
+	}
+	
+	var owner = options['isForCurrentUser']? !IS_ANON? CURRENT_USER: null: options[owner];
+	var shopper = options['isForCurrentUser']? IS_ANON? CURRENT_ANON_USER: null: null;
+	
+	return this.listService.getLists({
+		owner:	owner,
+		shopper:	shopper,
+		statuses:	options[statuses],
+		ignoredStatuses:	options[ignoredStatuses]
+	});
+}
+
+/**
+ * Loads a list with provided id
+ * @param id - id of list to load
+ */
+ListsController.prototype.getList = function(id) {
+	return this.listService.getList(id);
+}
+/* end of reviwed
 ListsController.prototype
 	.getList = function(id) {
 		var instance = this;
@@ -22,8 +65,8 @@ ListsController.prototype
 				$(ALERT_WARNING).text(errorThrown);
 				$(ALERT_WARNING).toggleClass('hidden');
 			});
-	};
-
+	};*/
+/*
 ListsController.prototype
 	.getSavedListsForCurrentUser = function () {
 
@@ -46,8 +89,8 @@ ListsController.prototype
 				
 				instance.createSavedLists(lists);
 			});
-	};
-
+	};*/
+/*
 ListsController.prototype
 	.createSavedLists = function(listsData) {
 
@@ -76,4 +119,4 @@ ListsController.prototype
 
 		$(SAVED_PRODUCT_CLASS).removeClass('hidden');
 		$('.sl-wait-sign').remove();
-	};
+	};*/

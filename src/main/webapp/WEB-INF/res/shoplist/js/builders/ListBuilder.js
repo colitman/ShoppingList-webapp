@@ -2,6 +2,34 @@
 
 function ListBuilder () {}
 
+ListBuilder.prototype.create = function(lists) {
+	for(var i = 0; i < lists.length; i++) {
+		var listData = lists[i];
+		var listDOM = new SavedList();
+		
+		listDOM.setKey(listData.key);
+		listDOM.setBought(listData.bought);
+		
+		var listElement = listDOM.build();
+		
+		var listProductsData = JSON.parse(listData.content);
+		for(var j = 0; j < listProductsData.length; j++) {
+			var listProductData = listProductsData[j];
+			var productDOM = new SavedProduct();
+			productDOM.setId(listProductData.key);
+			productDOM.setName(listProductData.name);
+			productDOM.setBought(listProductData.buoght);
+			
+			var productElement = productDOM.build();
+			$(listElement).append(productElement);
+		}
+		
+		
+		$('.saved-lists').append(listElement);
+	}
+}
+
+/* end of reviwed
 ListBuilder.prototype
 	.parse = function (listForm) {
 		var list = new List();
@@ -21,8 +49,8 @@ ListBuilder.prototype
 		});
 
 		return list;
-	};
-
+	};*/
+/*
 ListBuilder.prototype
 	.populate = function (listData, listForm, productFormSnippet) {
 		
@@ -71,4 +99,4 @@ ListBuilder.prototype
 			$('.sl-product-actions i', productForm).addClass(bought? 'fa-minus' : 'fa-cart-plus');
 			$(CHANGE_PRODUCT_STATUS_BTN_CLASS, productForm).addClass(bought? 'btn-warning' : 'btn-success');
 		}
-	};
+	};*/
