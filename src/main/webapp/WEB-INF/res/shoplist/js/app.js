@@ -13,6 +13,9 @@ var ADD_PRODUCT_BTN = $('#sl-new-product-form button', NEW_LIST);
 var REMOVE_PRODUCT_BTN_CLASS = '.sl-remove-product-btn';
 var SAVE_LIST_BTN = $('.sl-list-action-btn', NEW_LIST);
 
+var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
+var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
+
 var LIST_SEARCH_FORM = $('#sl-list-search-form');
 
 var ALERT_SUCCESS = $('footer .alert-success');
@@ -24,8 +27,7 @@ var ALERT_DANGER = $('footer .alert-danger');
 
 var SAVED_LIST_CLASS = '.sl-saved-list';
 var SAVED_PRODUCT_CLASS = '.sl-saved-product';
-var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
-var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
+
 
 
 

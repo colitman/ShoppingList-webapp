@@ -17,7 +17,7 @@
 			<c:import url="/imports/mainTopNav"></c:import>
 			
 			<main>
-				<c:import url="/snippets/savedListSnippet?id=${listId}"></c:import>
+				<section id="sl-saved-lists" data-list="${listId}"></section>
 			</main>
 			
 			<c:import url="/imports/mainFooter"></c:import>
