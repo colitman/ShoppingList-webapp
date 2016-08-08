@@ -103,7 +103,7 @@ public class ListsController {
 		java.util.List<List> anonLists = new ArrayList<List>();*/
 		
 		if(owner != null && owner > 0 && owner == currentUserKey) {
-			lists = listService.getByOwner(owner);
+			lists = listService.getByOwner(currentUser);
 			//lists.addAll(ownedLists);
 		}
 		

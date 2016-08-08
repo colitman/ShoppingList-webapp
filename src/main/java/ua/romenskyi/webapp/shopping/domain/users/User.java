@@ -4,6 +4,7 @@
  */
 package ua.romenskyi.webapp.shopping.domain.users;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
@@ -37,9 +38,11 @@ public class User implements UniqueNamedEntityInterface, UserDetails {
 	private String password;
 	
 	@ManyToMany(mappedBy="users")
+	@JsonManagedReference
 	private Collection<Group> groups;
 
 	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Collection<List> lists;
 
 	public User() {

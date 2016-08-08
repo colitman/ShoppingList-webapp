@@ -4,8 +4,10 @@
  */
 package ua.romenskyi.webapp.shopping.domain.list;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Type;
 import ua.romenskyi.webapp.shopping.data.AnonymousOwnerColumn;
+import ua.romenskyi.webapp.shopping.data.OwnerColumn;
 import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.users.User;
 
@@ -35,6 +37,9 @@ public class List implements OwnedEntityInterface {
 	private boolean publicList;
 
 	@ManyToOne
+	@JoinColumn(name="owner")
+	@OwnerColumn
+	@JsonBackReference
 	private User owner;
 	
 	@Column(name="anon_owner", updatable=false)

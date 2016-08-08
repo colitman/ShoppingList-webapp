@@ -4,21 +4,17 @@
  */
 package ua.romenskyi.webapp.shopping.data;
 
-import java.util.Collections;
-import java.util.List;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import ua.romenskyi.webapp.shopping.domain.*;
+import ua.romenskyi.webapp.shopping.domain.users.User;
 
-import ua.romenskyi.webapp.shopping.domain.EntityInterface;
-import ua.romenskyi.webapp.shopping.domain.IdentifiedEntityInterface;
-import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
-import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
-import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @author dmytro.romenskyi - Jun 28, 2016
@@ -93,8 +89,9 @@ public class DefaultDAO {
 		
 		return ids;
 	}
-	
-	public <ENTITY extends OwnedEntityInterface> List<Long> getKeysByOwner(Class<ENTITY> clazz, Long owner) {
+
+	// TODO - think on better owner definition
+	public <ENTITY extends OwnedEntityInterface> List<Long> getKeysByOwner(Class<ENTITY> clazz, User owner) {
 		if (owner == null) {
 			throw new IllegalArgumentException(
 					"Invalid entity owner value provided.",

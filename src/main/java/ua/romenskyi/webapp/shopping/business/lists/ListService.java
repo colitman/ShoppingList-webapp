@@ -4,14 +4,14 @@
  */
 package ua.romenskyi.webapp.shopping.business.lists;
 
-import java.util.ArrayList;
-
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
 import ua.romenskyi.webapp.shopping.business.DefaultService;
 import ua.romenskyi.webapp.shopping.business.ResourceNotFoundException;
 import ua.romenskyi.webapp.shopping.domain.list.List;
+import ua.romenskyi.webapp.shopping.domain.users.User;
+
+import java.util.ArrayList;
 
 /**
  * @author dmytro.romenskyi - Jun 28, 2016
@@ -36,7 +36,7 @@ public class ListService
 	
 	@Override
 	@Transactional
-	public java.util.List<List> getByOwner(Long owner) {
+	public java.util.List<List> getByOwner(User owner) {
 		java.util.List<Long> keys = getDAO().getKeysByOwner(List.class, owner);
 		
 		java.util.List<List> lists = new ArrayList<List>();

@@ -34,8 +34,8 @@ ListsController.prototype.getLists = function(options) {
 	return this.listService.getLists({
 		owner:	owner,
 		shopper:	shopper,
-		statuses:	options[statuses],
-		ignoredStatuses:	options[ignoredStatuses]
+		statuses:	options['statuses'],
+		ignoredStatuses:	options['ignoredStatuses']
 	});
 }
 
