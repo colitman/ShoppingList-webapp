@@ -16,20 +16,14 @@ var SAVE_LIST_BTN = $('.sl-list-action-btn', NEW_LIST);
 var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
 var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
 
+var SAVED_LIST = '.sl-saved-lists article';
+
 var LIST_SEARCH_FORM = $('#sl-list-search-form');
 
 var ALERT_SUCCESS = $('footer .alert-success');
 var ALERT_INFO = $('footer .alert-info');
 var ALERT_WARNING = $('footer .alert-warning');
 var ALERT_DANGER = $('footer .alert-danger');
-
-/* end of reviewed consts */
-
-var SAVED_LIST_CLASS = '.sl-saved-list';
-var SAVED_PRODUCT_CLASS = '.sl-saved-product';
-
-
-
 
 $(document).ready(function() {
 	setMinHeight();

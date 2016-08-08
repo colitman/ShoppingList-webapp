@@ -11,15 +11,9 @@ NewListFormController.prototype
 			return;
 		}
 		
-		var product = new AddedProduct();
-		var productId = new Date().getTime();
-	
-		product.setId(productId);
-		product.setName($(productInput).val());
-		var entry = product.build();
+		var product = new AddedProduct(new Date().getTime(), $(productInput).val());
 		
-		// insert to proper place,
-		$('.sl-new-product-form').before(entry);
+		$('.sl-new-product-form').before(product);
 	
 		$(productInput).val('');
 		$(productInput).focus();
@@ -65,7 +59,6 @@ NewListFormController.prototype
 
 		this.listService.saveList(list)
 			.done(function() {
-				//refresh the main page, display the saved list next to new one form 
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {

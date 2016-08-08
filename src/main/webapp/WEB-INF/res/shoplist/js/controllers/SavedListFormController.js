@@ -7,18 +7,16 @@ function SavedListFormController () {
 }
 
 SavedListFormController.prototype
-	.changeProductStatus = function (clicked) {
+	.changeProductStatus = function (listItem, clicked) {
 
 		var button = $(clicked).is('button')? clicked : $(clicked).parent();
 
 		var targetProductId = $(button).data('target');
-		var targetListId = $(button).data('targetList');
+		var targetListId = $(listItem).attr('id');
 
-		var listForm = $('#' + targetListId + '.sl-list');
+		var listForm = $('article#' + targetListId);
 
-		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
-		$(button).toggleClass('btn-success btn-warning');
-		$('i', button).toggleClass('fa-cart-plus fa-minus');
+		$('#' + targetProductId, listForm).data('bought', !$('#' + targetProductId, listForm).data('bought'));
 	
 		var list = this.listBuilder.parse(listForm);
 
@@ -28,14 +26,15 @@ SavedListFormController.prototype
 
 		this.listService.updateList(list)
 			.done(function() {
+				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+				$(button).toggleClass('btn-success btn-warning');
+				$('i', button).toggleClass('fa-cart-plus fa-minus');
+				
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
-
-				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
-				$(button).toggleClass('btn-success btn-warning');
-				$('i', button).toggleClass('fa-cart-plus fa-minus');
+				$('#' + targetProductId, listForm).data('bought', !$('#' + targetProductId, listForm).data('bought'));
 
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
@@ -47,14 +46,9 @@ SavedListFormController.prototype
 	.buyList = function (button) {
 
 		var listId = $(button).data('target');
-		var listForm = $('#' + listId + '.sl-list');
+		var listForm = $('article#' + listId);
 
-		$('.panel', listForm).removeClass('panel-success');
-		$('.panel', listForm).addClass('panel-default');
-
-		$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
-		$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
-		$(BUY_LIST_BTN_CLASS, listForm).attr('disabled', 'disabled');
+		$(listForm).data('bought', true);
 
 		var list = this.listBuilder.parse(listForm);
 
@@ -64,18 +58,19 @@ SavedListFormController.prototype
 		
 		this.listService.updateList(list)
 			.done(function() {
-
+				$('.panel', listForm).removeClass('panel-success');
+				$('.panel', listForm).addClass('panel-default');
+				
+				$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
+				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
+				$(BUY_LIST_BTN_CLASS, listForm).prop('disabled', 'disabled');
+				
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				
-				$('.panel', listForm).removeClass('panel-default');
-				$('.panel', listForm).addClass('panel-success');
-
-				$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-default');
-				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-success');
-				$(BUY_LIST_BTN_CLASS, listForm).removeAttr('disabled');
+				$(listForm).data('bought', false);
 
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');

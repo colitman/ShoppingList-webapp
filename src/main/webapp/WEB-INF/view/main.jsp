@@ -56,13 +56,6 @@
 			
 		</div>
 
-		<!--
-		<div class="sl-snippets hidden">
-			<c:import url="/snippets/savedListSnippet"></c:import>
-			<c:import url="/snippets/savedProductSnippet"></c:import>
-		</div>
-		-->
-
 		<c:import url="/imports/scripts"></c:import>
 
 		<script type="text/javascript" src="${app }/res/shoplist/js/services/ListService.js"></script>
