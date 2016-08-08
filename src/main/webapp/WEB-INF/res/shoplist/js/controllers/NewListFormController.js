@@ -20,7 +20,7 @@ NewListFormController.prototype
 		
 		var instance = this;
 
-		$(REMOVE_PRODUCT_BTN_CLASS, entry).click(function(event) {
+		$(REMOVE_PRODUCT_BTN_CLASS, product).click(function(event) {
 			instance.removeProduct($(this).data('target'));
 		});
 	};
@@ -44,7 +44,7 @@ NewListFormController.prototype
 
 			if(productName !== '') {
 				var product = new Product(productName);
-				product.key = $(item).data('productId');
+				product.key = $(item).attr('id');
 				list.content.push(product);
 			}
 		});

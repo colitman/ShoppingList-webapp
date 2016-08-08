@@ -12,13 +12,10 @@ SavedListFormController.prototype
 		var button = $(clicked).is('button')? clicked : $(clicked).parent();
 
 		var targetProductId = $(button).data('target');
-		var targetListId = $(listItem).attr('id');
 
-		var listForm = $('article#' + targetListId);
-
-		$('#' + targetProductId, listForm).data('bought', !$('#' + targetProductId, listForm).data('bought'));
+		$('#' + targetProductId, listItem).data('bought', !$('#' + targetProductId, listItem).data('bought'));
 	
-		var list = this.listBuilder.parse(listForm);
+		var list = this.listBuilder.parse(listItem);
 
 		if (list.content.length === 0) {
 			return;
@@ -26,7 +23,7 @@ SavedListFormController.prototype
 
 		this.listService.updateList(list)
 			.done(function() {
-				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+				$('#' + targetProductId, listItem).toggleClass('sl-bought-product');
 				$(button).toggleClass('btn-success btn-warning');
 				$('i', button).toggleClass('fa-cart-plus fa-minus');
 				
@@ -34,7 +31,7 @@ SavedListFormController.prototype
 				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
-				$('#' + targetProductId, listForm).data('bought', !$('#' + targetProductId, listForm).data('bought'));
+				$('#' + targetProductId, listItem).data('bought', !$('#' + targetProductId, listItem).data('bought'));
 
 				$(ALERT_DANGER).text(errorThrown);
 				$(ALERT_DANGER).toggleClass('hidden');
