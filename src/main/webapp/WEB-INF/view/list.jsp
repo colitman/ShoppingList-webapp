@@ -12,7 +12,7 @@
 		<c:import url="/imports/head?pageTitle=${listId} :: Shopping List"></c:import>
 	</head>
 	
-	<body>
+	<body data-page="list" data-list="${listId}">
 		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			
