@@ -2,23 +2,32 @@
 
 var listsController = new ListsController();
 var savedListFormController = new SavedListFormController();
+var listsBuilder = new ListBuilder();
 
 $(document).ready(function() {
-																				LOGGER.debug('Document ready');
 	init();
 });
 
 function init() {
-
-	$(BUY_LIST_BTN_CLASS).click(function(event) {
-		savedListFormController.buyList(event.target);
-	});
-
-	$(CHANGE_PRODUCT_STATUS_BTN_CLASS).click(function(event) {
-		savedListFormController.changeProductStatus(event.target);
-	});
-
-	var listId = $('body').attr('id');
-
-	listsController.getList(listId);
+	listsController.getList($('#sl-saved-lists').data('list'))
+		.done(function(data) {
+			var lists = [];
+			lists.push(data);
+			listsBuilder.create(lists);
+			
+			$(SAVED_LIST).each(function(listIndex, listItem) {
+				$(CHANGE_PRODUCT_STATUS_BTN_CLASS, listItem).each(function(buttonIndex, buttonItem) {
+					$(buttonItem).click(function(event) {
+						savedListFormController.changeProductStatus(listItem, event.target);
+					});
+				})
+				
+				$(BUY_LIST_BTN_CLASS, listItem).click(function(event) {
+					savedListFormController.buyList(event.target);
+				});
+			});
+		}).fail(function (jqXHR, textStatus, errorThrown) {
+			$(ALERT_WARNING).text(errorThrown);
+			$(ALERT_WARNING).toggleClass('hidden');
+		});
 }

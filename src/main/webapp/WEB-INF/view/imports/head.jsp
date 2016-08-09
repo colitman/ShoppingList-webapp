@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,5 +14,4 @@
 <link rel="stylesheet" href="${app }/res/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="${app }/res/fa/css/font-awesome.css">
 
-<link rel="stylesheet" href="${app }/res/shoplist/css/fix.css">
-<link rel="stylesheet" href="${app }/res/shoplist/css/app.css">
+<link rel="stylesheet" href="${app }/res/shoplist/css/main.css">

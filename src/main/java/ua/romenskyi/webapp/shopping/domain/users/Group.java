@@ -4,21 +4,14 @@
  */
 package ua.romenskyi.webapp.shopping.domain.users;
 
-import java.util.Collection;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Type;
-
 import ua.romenskyi.webapp.shopping.data.NameColumn;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 /**
  * @author dmytro.romenskyi - Jun 28, 2016
@@ -39,7 +32,14 @@ public class Group implements NamedEntityInterface {
 	private String name;
 	
 	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
+	@JsonBackReference
 	private Collection<User> users;
+
+	public Group() {
+		this.key = -1L;
+		this.name = "New group";
+		this.users = new ArrayList<User>();
+	}
 
 	@Override
 	public Long getKey() {

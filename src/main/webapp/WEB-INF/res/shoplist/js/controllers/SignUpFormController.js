@@ -1,50 +1,67 @@
 'use strict';
 
-function SignUpFormController (signUpForm) {
-	this.form = signUpForm;
+function SignUpFormController () {
+	this.password = $('#password', AUTH_FORM);
+	this.password2 = $('#password2', AUTH_FORM);
+	this.signUpButton = $('button[type="submit"]', AUTH_FORM);
+	
 	this.userService = new UserService();
 }
 
 SignUpFormController.prototype
 	.checkPasswordsEqual = function() {
-		var entered1 = $('#password', this.form).val();
-		var entered2 = $('#password2', this.form).val();
-		var signUpButton = $('button[type="submit"]', this.form);
-		var password2Disabled = $('#password2', this.form).attr('disabled');
+		var entered1 = $(this.password).val();
+		var entered2 = $(this.password2).val();
+	
+		var equal = false;
+		var provideFeedback = false;
 		
-		var equal = !(entered1 !== entered2 && !password2Disabled);
-
-		signUpButton.attr('disabled', !equal);
-		$('#sl-passwords', this.form).removeClass(equal? 'has-error': 'has-success');
-		$('#sl-passwords', this.form).addClass(equal? 'has-success' : 'has-error');
-
-		$('.has-feedback .form-control-feedback', this.form).removeClass(equal? 'glyphicon-warning-sign': 'glyphicon-ok');
-		$('.has-feedback .form-control-feedback', this.form).addClass(equal? 'glyphicon-ok': 'glyphicon-warning-sign');
+		if(entered1) {
+			if(entered2) {
+				equal = entered1 === entered2;
+				provideFeedback = true;
+			}
+		} else if(entered2) {
+			provideFeedback = true;
+		}
+	
+		this.signUpButton.prop('disabled', !equal);
+		
+		if(!provideFeedback) {
+			$('.has-feedback', AUTH_FORM).removeClass('has-error has-success');
+			$('.form-control-feedback', AUTH_FORM).removeClass('glyphicon-warning-sign glyphicon-ok');
+		} else {
+			$('.has-feedback', AUTH_FORM).removeClass(equal? 'has-error': 'has-success');
+			$('.has-feedback', AUTH_FORM).addClass(equal? 'has-success' : 'has-error');
+			
+			$('.form-control-feedback', AUTH_FORM).removeClass(equal? 'glyphicon-warning-sign': 'glyphicon-ok');
+			$('.form-control-feedback', AUTH_FORM).addClass(equal? 'glyphicon-ok': 'glyphicon-warning-sign');
+		}
 	};
 
 SignUpFormController.prototype
 	.toggleSecondPasswordAccessibility = function() {
-		var entered1 = $('#password', this.form).val();
+		var entered1 = $(this.password).val();
 
 		if(entered1) {
-			$('#password2', this.form).attr('disabled', false);
+			$(this.password2).prop('disabled', false);
 		} else {
-			var entered2 = $('#password2', this.form).val();
+			var entered2 = $(this.password2).val();
 			
 			if(!entered2) {
-				$('#password2', this.form).attr('disabled', true);
+				$(this.password2).prop('disabled', true);
 			}
 		}
 	};
 
 SignUpFormController.prototype
 	.submitForm = function() {
-		this.userService.signUpUser(this.form)
-			.done(function(data){
+		this.userService.signUpUser()
+			.done(function(){
 				var username = $('input#username').val();
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/signin?username=' + username);
 			}).fail(function(jqXHR, textStatus, errorThrown) {
-				$('#sl-sign-up-error-message').text(jqXHR.responseText);
-				$('.sl-auth-form-header .alert').removeClass('hidden');
+				$('.alert p', AUTH_FORM).text(jqXHR.responseText);
+				$('.alert', AUTH_FORM).removeClass('hidden');
 			});
 	};

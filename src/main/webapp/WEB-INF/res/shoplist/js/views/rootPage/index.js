@@ -3,42 +3,45 @@
 var newListFormController = new NewListFormController();
 var savedListFormController = new SavedListFormController();
 var listsController = new ListsController();
+var listsBuilder = new ListBuilder();
 
 $(document).ready(function() {
-																				LOGGER.debug('Document ready');
 	init();
 });
 
 function init() {
-
-																				LOGGER.debug('Initializing a page');
-																				LOGGER.debug('Assigning Add product button click event');
-
 	$(ADD_PRODUCT_BTN).click(function(event) {
-																				LOGGER.debug('Add product button clicked');
-		newListFormController.addProduct(NEW_PRODUCT); //+
+		newListFormController.addProduct(NEW_PRODUCT);
 	});
-																				LOGGER.debug('Assigning New product input keyup event');
+	
 	$(NEW_PRODUCT).keyup(function(event) {
-																				LOGGER.debug('New product input keyup event triggered');
 		if(event.keyCode === 13 || event.which === 13) {
-																				LOGGER.debug('Add product button click simulated');
 			$(ADD_PRODUCT_BTN).click();
 		}
 	});
-																				LOGGER.debug('Assigning Save list button click event');
+
 	$(SAVE_LIST_BTN).click(function(event) {
-																				LOGGER.debug('Save list button clicked');
-		newListFormController.saveList(NEW_LIST); //+
+		newListFormController.saveList(NEW_LIST);
 	});
-
-	$(BUY_LIST_BTN_CLASS).click(function(event) {
-		savedListFormController.buyList(event.target);
+	
+	listsController.getLists({
+		ignoredStatuses:	'draft,bought'
+	}).done(function(data) {
+		listsBuilder.create(data);
+		
+		$(SAVED_LIST).each(function(listIndex, listItem) {
+			$(CHANGE_PRODUCT_STATUS_BTN_CLASS, listItem).each(function(buttonIndex, buttonItem) {
+				$(buttonItem).click(function(event) {
+					savedListFormController.changeProductStatus(listItem, event.target);
+				});
+			})
+			
+			$(BUY_LIST_BTN_CLASS, listItem).click(function(event) {
+				savedListFormController.buyList(event.target);
+			});
+		});
+	}).fail(function (jqXHR, textStatus, errorThrown) {
+		$(ALERT_WARNING).text(errorThrown);
+		$(ALERT_WARNING).toggleClass('hidden');
 	});
-
-	$(CHANGE_PRODUCT_STATUS_BTN_CLASS).click(function(event) {
-		savedListFormController.changeProductStatus(event.target);
-	});
-
-	listsController.getSavedListsForCurrentUser();
 }

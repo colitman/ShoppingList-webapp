@@ -16,16 +16,12 @@ public class JsonList implements JsonModel {
 	private JsonProduct[] content;
 	private boolean bought;
 	private boolean publicList;
-	private String anonymousOwner;
-	private long owner;
 
 	public JsonList() {
 		this.key = -1L;
 		this.content = new JsonProduct[0];
 		this.bought = false;
 		this.publicList = false;
-		this.anonymousOwner = "";
-		this.owner = -1L;
 	}
 	
 	public List toDomain() {
@@ -35,8 +31,6 @@ public class JsonList implements JsonModel {
 		domainList.setContent(getStringContent());
 		domainList.setBought(isBought());
 		domainList.setPublicList(isPublicList());
-		domainList.setOwner(getOwner());
-		domainList.setAnonymousOwner(getAnonymousOwner());
 		
 		return domainList;
 	}
@@ -95,21 +89,5 @@ public class JsonList implements JsonModel {
 
 	public void setPublicList(boolean publicList) {
 		this.publicList = publicList;
-	}
-
-	public String getAnonymousOwner() {
-		return anonymousOwner;
-	}
-
-	public void setAnonymousOwner(String anonymousOwner) {
-		this.anonymousOwner = anonymousOwner;
-	}
-
-	public long getOwner() {
-		return owner;
-	}
-
-	public void setOwner(long owner) {
-		this.owner = owner;
 	}
 }

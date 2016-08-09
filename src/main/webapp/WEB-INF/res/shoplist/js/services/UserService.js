@@ -3,15 +3,15 @@
 function UserService () {}
 
 UserService.prototype
-	.signUpUser = function(signUpForm) {
-		var url = $(signUpForm).attr('action');
-		var method = $(signUpForm).attr('method');
-		var data = $(signUpForm).serialize();
+	.signUpUser = function() {
+		var url = $(AUTH_FORM).attr('action');
+		var method = $(AUTH_FORM).attr('method');
+		var data = $(AUTH_FORM).serialize();
 		
 		return $.ajax({
 					type: method,
 					url: url,
 					data: data,
-					dataType:'json',
+					dataType:'json'
 				});
 	};
