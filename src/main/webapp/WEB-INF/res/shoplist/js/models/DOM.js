@@ -16,7 +16,7 @@ function AddedProduct(id, name) {
 	$(td).append(div);
 	$(div).append(input);
 	$(div).append(span);
-	$(div).append(button);
+	$(span).append(button);
 	$(button).append(i);
 	
 	$(div).addClass('input-group input-group-sm');
@@ -25,7 +25,7 @@ function AddedProduct(id, name) {
 	$(input).attr('placeholder', 'Product and amount');
 	$(span).addClass('input-group-btn');
 	$(button).attr('type', 'button');
-	$(button).addClass('btn btn-default sl-remove-product-btn');
+	$(button).addClass('btn btn-danger sl-remove-product-btn');
 	$(i).addClass('fa fa-remove');
 	
 	$(tr).attr('id', id);
@@ -63,20 +63,33 @@ function SavedProduct(id, name, bought) {
 	
 	return tr;
 }
-
+/*
+ <div class="panel-footer">
+ <a href="/lists/1">/lists/1</a>
+ </div>
+ */
 function SavedList(id, isBought, isPublic) {
 	var article = $(document.createElement('article'));
 	var panel = $(document.createElement('div'));
 	var heading = $(document.createElement('div'));
 	var body = $(document.createElement('div'));
 	var table = $(document.createElement('table'));
-	var buyButton = $(document.createElement('button'));
+	var footer = $(document.createElement('div'));
+	var footerLink = $(document.createElement('a'));
+	
+	if(!isBought) {
+		var buyButton = $(document.createElement('button'));
+	}
 	
 	$(article).append(panel);
 	$(panel).append(heading);
 	$(panel).append(body);
 	$(panel).append(table);
-	$(panel).append(buyButton);
+	if(!isBought) {
+		$(panel).append(buyButton);
+	}
+	$(panel).append(footer);
+	$(footer).append(footerLink);
 	
 	$(article).addClass('sl-list col-sm-6 col-md-4');
 	$(panel).addClass('panel');
@@ -84,16 +97,25 @@ function SavedList(id, isBought, isPublic) {
 	$(heading).addClass('panel-heading');
 	$(body).addClass('panel-body');
 	$(table).addClass('table table-condensed');
-	$(buyButton).attr('type', 'button');
-	$(buyButton).addClass('btn btn-sm btn-block sl-list-action-btn sl-buy-list-btn');
-	$(buyButton).addClass(isBought? 'btn-default': 'btn-primary');
+	if(!isBought) {
+		$(buyButton).attr('type', 'button');
+		$(buyButton).addClass('btn btn-sm btn-block sl-list-action-btn sl-buy-list-btn');
+		$(buyButton).addClass(isBought? 'btn-default': 'btn-primary');
+	}
+	$(footer).addClass('panel-footer');
 	
 	$(article).attr('id', id);
 	$(article).data('bought', isBought);
 	$(article).data('public', isPublic);
 	$(heading).text(id);
 	$(body).text('Items in list: ');
-	$(buyButton).data('target', id);
+	if(!isBought) {
+		$(buyButton).data('target', id);
+		$(buyButton).prop('disabled', isBought);
+		$(buyButton).text(isBought? 'Bought': 'Buy');
+	}
+	$(footerLink).attr('href', ROOT + '/lists/' + id);
+	$(footerLink).text('/lists/' + id);
 	
 	return article;
 }

@@ -13,7 +13,7 @@ NewListFormController.prototype
 		
 		var product = new AddedProduct(new Date().getTime(), $(productInput).val());
 		
-		$('.sl-new-product-form').before(product);
+		$('#sl-new-product-form').before(product);
 	
 		$(productInput).val('');
 		$(productInput).focus();
@@ -34,9 +34,6 @@ NewListFormController.prototype
 	.saveList = function(listForm) {
 
 		var list = new List();
-
-		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
 
 		$('tr', listForm).each(function(index, item) {
 			

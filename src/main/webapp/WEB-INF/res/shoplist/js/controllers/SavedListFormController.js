@@ -58,9 +58,11 @@ SavedListFormController.prototype
 				$('.panel', listForm).removeClass('panel-success');
 				$('.panel', listForm).addClass('panel-default');
 				
-				$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
+				$(BUY_LIST_BTN_CLASS, listForm).remove();
+				
+				/*$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
 				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
-				$(BUY_LIST_BTN_CLASS, listForm).prop('disabled', 'disabled');
+				$(BUY_LIST_BTN_CLASS, listForm).prop('disabled', 'disabled');*/
 				
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');

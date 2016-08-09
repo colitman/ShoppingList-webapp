@@ -21,7 +21,7 @@ ListBuilder.prototype.create = function(lists) {
 			$('table', listElement).append(productElement);
 		}
 		
-		$('.sl-saved-lists').append(listElement);
+		$('#sl-saved-lists').append(listElement);
 	}
 }
 

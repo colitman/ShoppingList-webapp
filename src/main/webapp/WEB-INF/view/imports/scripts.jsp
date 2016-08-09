@@ -8,6 +8,7 @@
 <script src="${app}/res/bootstrap/js/bootstrap.min.js"></script>
 <script src="${app}/res/jscookie/js.cookie.js"></script>
 
+<script src="${app}/res/shoplist/js/models/logging.js"></script>
 <script src="${app}/res/shoplist/js/models/domain.js"></script>
 <script src="${app}/res/shoplist/js/models/DOM.js"></script>
 <script src="${app}/res/shoplist/js/app.js"></script>

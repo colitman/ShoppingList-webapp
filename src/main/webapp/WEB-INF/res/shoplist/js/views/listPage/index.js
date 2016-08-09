@@ -11,7 +11,9 @@ $(document).ready(function() {
 function init() {
 	listsController.getList($('#sl-saved-lists').data('list'))
 		.done(function(data) {
-			listsBuilder.create(data);
+			var lists = [];
+			lists.push(data);
+			listsBuilder.create(lists);
 			
 			$(SAVED_LIST).each(function(listIndex, listItem) {
 				$(CHANGE_PRODUCT_STATUS_BTN_CLASS, listItem).each(function(buttonIndex, buttonItem) {

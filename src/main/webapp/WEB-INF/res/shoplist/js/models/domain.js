@@ -5,8 +5,8 @@ function List() {
 	this.content = [];
 	this.bought = false;
 	this.publicList = false;
-	this.anonymousOwner = '';
-	this.owner = -1;
+	/*this.anonymousOwner = '';
+	this.owner = -1;*/
 	Object.seal(this);
 }
 

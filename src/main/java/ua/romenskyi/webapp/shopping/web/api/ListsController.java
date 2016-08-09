@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import ua.romenskyi.webapp.shopping.business.ResourceAlreadyExistsException;
 import ua.romenskyi.webapp.shopping.business.ResourceNotFoundException;
 import ua.romenskyi.webapp.shopping.business.lists.ListServiceInterface;
+import ua.romenskyi.webapp.shopping.business.users.UserServiceInterface;
 import ua.romenskyi.webapp.shopping.config.CurrentUser;
 import ua.romenskyi.webapp.shopping.domain.list.List;
 import ua.romenskyi.webapp.shopping.domain.users.User;
@@ -30,6 +31,8 @@ public class ListsController {
 	
 	@Autowired
 	private ListServiceInterface listService;
+    @Autowired
+    private UserServiceInterface userService;
 	
 	@RequestMapping(method=RequestMethod.POST)
 	public ResponseEntity<String> postNewList(@RequestBody JsonList listModel,
@@ -74,6 +77,9 @@ public class ListsController {
 		boolean updated = false;
 		
 		try {
+		    List oldList = listService.get(list.getKey());
+            list.setOwner(oldList.getOwner());
+            list.setAnonymousOwner(oldList.getAnonymousOwner());
 			updated = listService.update(list);
 		} catch (ResourceNotFoundException e) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);

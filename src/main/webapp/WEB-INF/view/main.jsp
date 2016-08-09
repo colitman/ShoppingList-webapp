@@ -13,7 +13,7 @@
 	</head>
 	
 	<body>
-		<div class=container">
+		<div class="container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
 			
 			<main>

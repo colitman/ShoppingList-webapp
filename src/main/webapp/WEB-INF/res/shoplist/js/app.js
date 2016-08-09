@@ -16,7 +16,7 @@ var SAVE_LIST_BTN = $('.sl-list-action-btn', NEW_LIST);
 var CHANGE_PRODUCT_STATUS_BTN_CLASS = '.sl-product-status-btn';
 var BUY_LIST_BTN_CLASS = '.sl-buy-list-btn';
 
-var SAVED_LIST = '.sl-saved-lists article';
+var SAVED_LIST = '#sl-saved-lists article';
 
 var LIST_SEARCH_FORM = $('#sl-list-search-form');
 
