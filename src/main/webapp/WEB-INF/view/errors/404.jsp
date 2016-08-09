@@ -9,7 +9,7 @@
 	<head>
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
 	</head>
-	<body>
+	<body data-page="error" data-error="404">
 		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			

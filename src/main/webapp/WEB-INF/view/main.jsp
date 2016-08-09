@@ -12,7 +12,7 @@
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
 	</head>
 	
-	<body>
+	<body data-page="root">
 		<div class="container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
 			

@@ -12,7 +12,7 @@
 		<c:import url="/imports/head?pageTitle=Sign In"></c:import>
 	</head>
 	
-	<body>
+	<body data-page="signin">
 		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 
