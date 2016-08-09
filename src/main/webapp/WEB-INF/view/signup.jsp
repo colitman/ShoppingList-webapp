@@ -35,7 +35,7 @@
 						<input id="password2" name="password2" class="form-control" type="password" placeholder="Password again" required="required" disabled="disabled"/>
 					</div>
 					
-					<button type="submit" class="btn btn-success btn-block sl-auth-button">Sign Up</button>
+					<button type="submit" class="btn btn-success btn-block sl-auth-button" disabled="disabled">Sign Up</button>
 					
 					<footer>
 						<a id="sign-in-link" href="${app}/signin">Sign In</a>
