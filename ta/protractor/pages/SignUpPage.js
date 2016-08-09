@@ -21,12 +21,20 @@ var SignUpPage = (function(){
 
 	SignUpPage.prototype
 		.setPassword = function(password) {
-			this.passwordField.sendKeys(password);
+			if(password !== '') {
+				this.passwordField.sendKeys(password);
+			} else {
+				this.passwordField.clear();
+			}
 		}
 
 	SignUpPage.prototype
 		.setPassword2 = function(password) {
-			this.password2Field.sendKeys(password);
+			if(password !== '') {
+				this.password2Field.sendKeys(password);
+			} else {
+				this.password2Field.clear();
+			}
 		}
 
 	SignUpPage.prototype
