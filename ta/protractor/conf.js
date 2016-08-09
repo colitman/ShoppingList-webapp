@@ -4,6 +4,9 @@ exports.config = {
 	suites : {
 		local_smoke: [
 			'suites/smoke/local_*.js'
+		],
+		local_regression: [
+			'suites/regression/local_r1_0.js'
 		]
 	},
 
