@@ -38,8 +38,8 @@ var protractorRoot = "./../";
  * 	check that feedback successful			+
  * 	check that submit is enabled			+
  * press submit								+
- * 	check that navigated to signin page		+
- * 	check that username contains "protractor_user" +
+ * 	check that navigated to signin page
+ * 	check that username contains "protractor_user"
  * navigate to sign up page					+
  * enter "protractor_user" to username		+
  * enter 1 to password						+
@@ -49,15 +49,13 @@ var protractorRoot = "./../";
  */
 
 var SignUpPage = require(protractorRoot + "pages/SignUpPage");
-var SignInPage = require(protractorRoot + "pages/SignInPage");
 var signUpPage = new SignUpPage();
-var signInPage = new SignInPage();
 
-var SignUpTest = (function(){
+var SignUpPageTest = (function(){
 	
-	function SignUpTest() {}
-
-	SignUpTest.prototype.run = function() {
+	function SignUpPageTest() {}
+	
+	SignUpPageTest.prototype.run = function() {
 		describe('Signup page', function() {
 			
 			it('should be able to navigate to ', function() {
@@ -204,7 +202,7 @@ var SignUpTest = (function(){
 		});
 	}
 	
-	return SignUpTest;
+	return SignUpPageTest;
 })();
 
-module.exports = SignUpTest;
+module.exports = SignUpPageTest;

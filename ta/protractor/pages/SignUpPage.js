@@ -6,7 +6,15 @@ var SignUpPage = (function(){
 		this.passwordField = element(by.css('input#password'));
 		this.password2Field = element(by.css('input#password2'));
 		this.signUpButton = element(by.css('.sl-auth-button'));
-		this.signIpLink = element(by.css('#sign-in-link'));
+		this.signInLink = element(by.css('#sign-in-link'));
+		this.feedback = element(by.css('.has-feedback'));
+		this.alert = element(by.css('.sl-auth-form .alert'));
+	}
+	
+	SignUpPage.prototype.resetForm = function() {
+		this.setPassword2('');
+		this.setPassword('');
+		this.setUsername('');
 	}
 
 	SignUpPage.prototype
@@ -16,12 +24,14 @@ var SignUpPage = (function(){
 
 	SignUpPage.prototype
 		.setUsername = function(username) {
+			this.usernameField.clear();
 			this.usernameField.sendKeys(username);
 		}
 
 	SignUpPage.prototype
 		.setPassword = function(password) {
 			if(password !== '') {
+				this.passwordField.clear();
 				this.passwordField.sendKeys(password);
 			} else {
 				var instance = this;
@@ -37,6 +47,7 @@ var SignUpPage = (function(){
 	SignUpPage.prototype
 		.setPassword2 = function(password) {
 			if(password !== '') {
+				this.password2Field.clear();
 				this.password2Field.sendKeys(password);
 			} else {
 				var instance = this;
