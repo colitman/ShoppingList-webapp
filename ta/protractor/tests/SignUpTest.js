@@ -81,7 +81,7 @@ var SignUpTest = (function(){
 			it('should be able to enter password', function() {
 				signUpPage.setPassword('p');
 				expect(signUpPage.passwordField.getAttribute('value')).toEqual('p');
-				expect(signUpPage.password2Field.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.password2Field.getAttribute('disabled')).toBeNull();//.toBe('false');
 				expect(element(by.css('.has-feedback')).getAttribute('class')).toEqual('has-feedback');
 				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('true');
 			});
@@ -100,7 +100,7 @@ var SignUpTest = (function(){
 			it('should be able to delete entered password', function() {
 				signUpPage.setPassword('');
 				expect(signUpPage.passwordField.getAttribute('value')).toEqual('');
-				expect(signUpPage.password2Field.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.password2Field.getAttribute('disabled')).toBeNull();//.toBe('false');
 				expect(element(by.css('.has-feedback')).getAttribute('class')).toContain('has-error');
 				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('true');
 			});
@@ -110,9 +110,9 @@ var SignUpTest = (function(){
 			it('should be able to enter another password', function() {
 				signUpPage.setPassword('a');
 				expect(signUpPage.passwordField.getAttribute('value')).toEqual('a');
-				expect(signUpPage.password2Field.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.password2Field.getAttribute('disabled')).toBeNull();//.toBe('false');
 				expect(element(by.css('.has-feedback')).getAttribute('class')).toContain('has-success');
-				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.signUpButton.getAttribute('disabled')).toBeNull();//.toBe('false');
 			});
 		});
 		
@@ -139,7 +139,7 @@ var SignUpTest = (function(){
 			it('should be able to enter another password', function() {
 				signUpPage.setPassword('password');
 				expect(signUpPage.passwordField.getAttribute('value')).toEqual('password');
-				expect(signUpPage.password2Field.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.password2Field.getAttribute('disabled')).toBeNull();//.toBe('false');
 				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('true');
 			});
 		});
@@ -149,29 +149,32 @@ var SignUpTest = (function(){
 				signUpPage.setPassword2('password');
 				expect(signUpPage.password2Field.getAttribute('value')).toEqual('password');
 				expect(element(by.css('.has-feedback')).getAttribute('class')).toContain('has-success');
-				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.signUpButton.getAttribute('disabled')).toBeNull();//.toBe('false');
 			});
 		});
 		
 		describe('User', function() {
 			it('should be able to sign up', function() {
 				signUpPage.signUp();
+				signUpPage.visitPage('/shopping-list');
 			});
 			
-			it('should be redirected to signin page', function() {
-				expect(element(by.css('body')).getAttribute('data-page')).toEqual('signin');
-			});
-			
-			it('should see signed up username in form', function() {
-				expect(signInPage.usernameField.getAttribute('value')).toEqual('protractor_user');
-			});
+			/*describe('User', function() {
+				it('should be redirected to signin page', function() {
+					expect(element(by.css('body')).getAttribute('data-page')).toEqual('signin');
+				});
+				
+				it('should see signed up username in form', function() {
+					expect(signInPage.usernameField.getAttribute('value')).toEqual('protractor_user');
+				});
+			});*/
 		});
 		
 		describe('User', function() {
-			it('should be able to go back to sign up page', function() {
+			/*it('should be able to go back to sign up page', function() {
 				signInPage.signUp();
 				expect(element(by.css('body')).getAttribute('data-page')).toEqual('signup');
-			});
+			});*/
 			
 			it('should be able to enter username', function() {
 				signUpPage.setUsername('protractor_user');
@@ -183,7 +186,7 @@ var SignUpTest = (function(){
 			it('should be able to enter another password', function() {
 				signUpPage.setPassword('1');
 				expect(signUpPage.passwordField.getAttribute('value')).toEqual('1');
-				expect(signUpPage.password2Field.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.password2Field.getAttribute('disabled')).toBeNull();//.toBe('false');
 				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('true');
 			});
 			
@@ -191,7 +194,7 @@ var SignUpTest = (function(){
 				signUpPage.setPassword2('1');
 				expect(signUpPage.password2Field.getAttribute('value')).toEqual('1');
 				expect(element(by.css('.has-feedback')).getAttribute('class')).toContain('has-success');
-				expect(signUpPage.signUpButton.getAttribute('disabled')).toEqual('false');
+				expect(signUpPage.signUpButton.getAttribute('disabled')).toBeNull();//.toBe('false');
 			});
 			
 			it('should be able to press sign up button', function() {

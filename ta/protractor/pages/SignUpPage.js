@@ -24,7 +24,13 @@ var SignUpPage = (function(){
 			if(password !== '') {
 				this.passwordField.sendKeys(password);
 			} else {
-				this.passwordField.clear();
+				var instance = this;
+				this.passwordField.getAttribute('value').then(function(attr){
+					var bsCount = attr.length;
+					for(var i = 0; i < bsCount; i++) {
+						instance.passwordField.sendKeys(protractor.Key.BACK_SPACE);
+					}
+				});
 			}
 		}
 
@@ -33,7 +39,13 @@ var SignUpPage = (function(){
 			if(password !== '') {
 				this.password2Field.sendKeys(password);
 			} else {
-				this.password2Field.clear();
+				var instance = this;
+				this.password2Field.getAttribute('value').then(function(attr){
+					var bsCount = attr.length;
+					for(var i = 0; i < bsCount; i++) {
+						instance.password2Field.sendKeys(protractor.Key.BACK_SPACE);
+					}
+				});
 			}
 		}
 
