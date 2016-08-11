@@ -1,5 +1,17 @@
 'use strict';
 
+/** === Sign In functionality
+ * navigate to signin?error
+ * 	check that username is empty
+ * 	check that signin exception is displayed
+ * navigate to signin?username=protractor_user
+ * enter "p@ssword" to password
+ * press signin
+ * 	check that redirected to signin?error
+ * 	check that username is empty
+ * 	check that signin exception is displayed
+ */
+
 var protractorRoot = "./../";
 
 var SignInPage = require(protractorRoot + "pages/SignUpPage");

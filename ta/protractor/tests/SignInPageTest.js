@@ -5,22 +5,8 @@ var protractorRoot = "./../";
 /** === Sign In functionality
  * navigate to signin
  * 	check that username is empty
- * 	check that signin is disabled
  * navigate to signin?username=protractor_user
  * 	check that username contains "protractor_user"
- * 	check that signin is disabled
- * navigate to signin?error
- * 	check that username is empty
- * 	check that signin is disabled
- * 	check that signin exception is displayed
- * navigate to signin?username=protractor_user
- * enter "p@ssword" to password
- * 	check that signin is enbaled
- * press signin
- * 	check that redirected to signin?error
- * 	check that username is empty
- * 	check that signin is disabled
- * 	check that signin exception is displayed
  * enter "protractor_user" to username
  * enter "password" to password
  * press signin
