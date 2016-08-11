@@ -32,14 +32,34 @@ var protractorRoot = "./../";
  */
 
 var SignInPage = require(protractorRoot + "pages/SignInPage");
+var SignInFormTest = require(protractorRoot + "tests/SignInFormTest");
+var Assert = require(protractorRoot + "assertions/Assert");
+
 var signInPage = new SignInPage();
+var signInFormTest = new SignInFormTest();
 
 var SignInPageTest = (function(){
 	
 	function SignInPageTest() {}
 	
 	SignInPageTest.prototype.run = function() {
-		
+		describe('Signin page', function() {
+			it('should be able to navigate to ', function() {
+				signInPage.visitPage('/shopping-list');
+				expect(element(by.css('body')).getAttribute('data-page')).toEqual('signin');
+			});
+			
+			it('should not allow signing in with existing username and password', function() {
+				signInFormTest.setAndCheckUsername(signInFormTest.TEST_USER_NAME);
+				signInFormTest.setAndCheckPassword(signInFormTest.TEST_PASSWORD);
+				signInPage.signIn();
+				browser.sleep(5000);
+			});
+			
+			it('should redirect user to main page after successful sign in', function() {
+				expect(element(by.css('body')).getAttribute('data-page')).toEqual('root');
+			});
+		});
 	}
 	
 	return SignInPageTest;

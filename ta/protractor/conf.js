@@ -9,10 +9,17 @@ exports.config = {
 			'suites/regression/local_r1_0.js'
 		]
 	},
-
+	
 	capabilities: {
-		'browserName': 'chrome'
+		browserName: 'chrome'
 	},
+
+	/*multiCapabilities: [{
+		browserName: 'chrome'
+	}, {
+		browserName: 'firefox',
+		exclude: ['tests/SignUpPageTest.js'],
+	}],*/
 
 	baseUrl: 'http://localhost:8080',
 
