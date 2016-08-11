@@ -22,14 +22,15 @@ var SignUpPageTest = (function(){
 				expect(element(by.css('body')).getAttribute('data-page')).toEqual('signup');
 			});
 			
-			describe('Sign up form', signUpFormTest.baseFormBehavior());
-			describe('Passwords validation module', signUpFormTest.passwordsValidationBehavior());
+			signUpFormTest.baseFormBehavior();
+			signUpFormTest.passwordsValidationBehavior();
 			
 			it('should allow signing up a new user', function() {
 				signUpFormTest.setAndCheckUsername(signUpFormTest.TEST_USER_NAME);
 				signUpFormTest.setAndCheckPassword(signUpFormTest.TEST_PASSWORD);
 				signUpFormTest.setAndCheckPassword2(signUpFormTest.TEST_PASSWORD);
 				signUpPage.signUp();
+				browser.sleep(5000);
 			});
 			
 			it('should redirect user to sign in page after successful sign up', function() {
@@ -38,11 +39,13 @@ var SignUpPageTest = (function(){
 			});
 			
 			it('should not allow signing up a new user with existing username', function() {
-				signUpPage.visitPage();
+				signUpPage.visitPage('/shopping-list');
+				//browser.sleep(5000);
 				signUpFormTest.setAndCheckUsername(signUpFormTest.TEST_USER_NAME);
 				signUpFormTest.setAndCheckPassword(signUpFormTest.TEST_PASSWORD);
 				signUpFormTest.setAndCheckPassword2(signUpFormTest.TEST_PASSWORD);
 				signUpPage.signUp();
+				browser.sleep(5000);
 				Assert.notHasClass(signUpPage.alert, 'hidden', 'Error message should be displayed when trying to sign up with existing username');
 			});
 		});
