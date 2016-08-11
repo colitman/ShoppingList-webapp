@@ -21,9 +21,10 @@ var SignUpPageTest = (function(){
 				signUpPage.visitPage('/shopping-list');
 				expect(element(by.css('body')).getAttribute('data-page')).toEqual('signup');
 			});
-			/*
-			signUpFormTest.run();
-			*/
+			
+			describe('Sign up form', signUpFormTest.baseFormBehavior());
+			describe('Passwords validation module', signUpFormTest.passwordsValidationBehavior());
+			
 			it('should allow signing up a new user', function() {
 				signUpFormTest.setAndCheckUsername(signUpFormTest.TEST_USER_NAME);
 				signUpFormTest.setAndCheckPassword(signUpFormTest.TEST_PASSWORD);

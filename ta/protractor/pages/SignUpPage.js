@@ -11,11 +11,11 @@ var SignUpPage = (function(){
 		this.alert = element(by.css('.sl-auth-form .alert'));
 	}
 	
-	SignUpPage.prototype.resetForm = function() {
+	/*SignUpPage.prototype.resetForm = function() {
 		this.setPassword2('');
 		this.setPassword('');
 		this.setUsername('');
-	}
+	}*/
 
 	SignUpPage.prototype
 		.visitPage = function(appRoot) {
