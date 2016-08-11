@@ -17,17 +17,17 @@ var SignUpFormTest = (function(){
 	SignUpFormTest.prototype.setAndCheckUsername = function(username) {
 		signUpPage.setUsername(username);
 		Assert.valueEquals(signUpPage.usernameField, username, 'Username was not set');
-	}
+	};
 	
 	SignUpFormTest.prototype.setAndCheckPassword = function(password) {
 		signUpPage.setPassword(password);
 		Assert.valueEquals(signUpPage.passwordField, password, 'Password was not set');
-	}
+	};
 	
 	SignUpFormTest.prototype.setAndCheckPassword2 = function(password) {
 		signUpPage.setPassword2(password);
 		Assert.valueEquals(signUpPage.password2Field, password, 'Password2 was not set');
-	}
+	};
 	
 	SignUpFormTest.prototype.baseFormBehavior = function() {
 		var instance = this;
@@ -52,17 +52,17 @@ var SignUpFormTest = (function(){
 		
 		it('should allow entering password2', function() {
 			instance.setAndCheckPassword2(instance.TEST_PASSWORD);
-			Assert.hasClass(signUpPage.feedback, 'has-error', 'Feedback should fail if passwords are not equal');
-			Assert.disabled(signUpPage.signUpButton, 'Sign Up button should be disabled unless both passwords entered and are equal');
+			Assert.hasClass(signUpPage.feedback, 'has-success', 'Feedback should success if passwords are equal');
+			Assert.enabled(signUpPage.signUpButton, 'Sign Up button should be enabled if both passwords entered and are equal');
 		});
 		
 		it('should allow signin up', function() {
 			Assert.enabled(signUpPage.signUpButton, 'Sign Up button should be enabled if both passwords entered and are equal');
-			signUpPage.setPassword2('');
+			/*signUpPage.setPassword2('');
 			signUpPage.setPassword('');
-			signUpPage.setUsername('');
-		})
-	}
+			signUpPage.setUsername('');*/
+		});
+	};
 	
 	SignUpFormTest.prototype.passwordsValidationBehavior = function() {
 		
@@ -124,7 +124,7 @@ var SignUpFormTest = (function(){
 			Assert.classEquals(signUpPage.feedback, 'has-feedback', 'There should be no feedback if both Password and Password2 are empty');
 			Assert.disabled(signUpPage.signUpButton, 'Sign Up button should be disabled unless both passwords entered and are equal');
 		});
-	}
+	};
 	
 	return SignUpFormTest;
 })();

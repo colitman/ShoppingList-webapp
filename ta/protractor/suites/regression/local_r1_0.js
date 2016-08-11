@@ -9,7 +9,7 @@ var signUpPageTest = new SignUpPageTest();
 var signInPageTest = new SignInPageTest();
 
 signUpPageTest.run();
-signInPageTest.run();
+//signInPageTest.run();
 
 /** === List creation
  *  ====== Anonymous user
