@@ -25,6 +25,9 @@ var ALERT_INFO = $('footer .alert-info');
 var ALERT_WARNING = $('footer .alert-warning');
 var ALERT_DANGER = $('footer .alert-danger');
 
+var LIST_ACCESS_MODAL = $('.sl-modal #confirm-list-public');
+var LIST_ACCESS_BUTTON_CLASS = ".sl-list-access-btn";
+
 $(document).ready(function() {
 	setMinHeight();
 	$(window).resize(function(event) {

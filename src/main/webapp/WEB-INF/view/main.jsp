@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="sl-modals">
-			
+			<c:import url="/imports/modals/setListAccessModal"></c:import>
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>

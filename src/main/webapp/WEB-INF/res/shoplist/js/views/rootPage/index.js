@@ -19,9 +19,17 @@ function init() {
 			$(ADD_PRODUCT_BTN).click();
 		}
 	});
+	
+	$(LIST_ACCESS_BUTTON_CLASS).click(function(event) {
+		newListFormController.saveList(NEW_LIST, $(this).data('public'));
+	});
 
 	$(SAVE_LIST_BTN).click(function(event) {
-		newListFormController.saveList(NEW_LIST);
+		if(!IS_ANON) {
+			$(LIST_ACCESS_MODAL).modal('show');
+		} else {
+			newListFormController.saveList(NEW_LIST, true);
+		}
 	});
 	
 	listsController.getLists({

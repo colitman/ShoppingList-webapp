@@ -35,4 +35,15 @@ public class ImportsController {
 		
 		return mv;
 	}
+
+	@RequestMapping(path="/modals/{modalName}")
+	public ModelAndView getModal(@PathVariable String modalName,
+								  ModelAndView mv,
+								  @CurrentUser User user) {
+
+		mv.addObject("currentUser", user);
+		mv.setViewName("imports/modals/" + modalName);
+
+		return mv;
+	}
 }

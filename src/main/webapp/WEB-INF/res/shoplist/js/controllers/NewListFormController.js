@@ -31,9 +31,10 @@ NewListFormController.prototype
 	};
 
 NewListFormController.prototype
-	.saveList = function(listForm) {
+	.saveList = function(listForm, isPublic) {
 
 		var list = new List();
+		list.publicList = isPublic;
 
 		$('tr', listForm).each(function(index, item) {
 			
@@ -48,10 +49,6 @@ NewListFormController.prototype
 
 		if (list.content.length === 0) {
 			return;
-		}
-
-		if(!IS_ANON) {
-			list.publicList = confirm('Do you want to make this list accessible for other users?');
 		}
 
 		this.listService.saveList(list)
