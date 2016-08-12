@@ -13,7 +13,7 @@ ListBuilder.prototype.create = function(lists) {
 		var listData = lists[i];
 		var listElement = new SavedList(listData.key, listData.bought, listData.publicList);
 		
-		var listProductsData = JSON.parse(listData.content);
+		var listProductsData = listData.content;
 		
 		for(var j = 0; j < listProductsData.length; j++) {
 			var listProductData = listProductsData[j];

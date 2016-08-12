@@ -4,7 +4,15 @@
  */
 package ua.romenskyi.webapp.shopping.models.json;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import ua.romenskyi.webapp.shopping.domain.list.List;
+
+import java.io.IOException;
+import java.util.ArrayList;
 
 /**
  * @author dmytro.romenskyi - Jul 19, 2016
@@ -23,6 +31,13 @@ public class JsonList implements JsonModel {
 		this.bought = false;
 		this.publicList = false;
 	}
+
+	public JsonList(List list) {
+		this.key = list.getKey();
+		this.content = parseProducts(list.getContent());
+		this.bought = list.isBought();
+		this.publicList = list.isPublicList();
+	}
 	
 	public List toDomain() {
 		List domainList = new List();
@@ -34,26 +49,30 @@ public class JsonList implements JsonModel {
 		
 		return domainList;
 	}
+
+	private JsonProduct[] parseProducts(String expression) {
+		ObjectMapper mapper = new ObjectMapper();
+		java.util.List<JsonProduct> products = new ArrayList<JsonProduct>();
+		try {
+			products = mapper.readValue(expression, new TypeReference<java.util.List<JsonProduct>>(){});
+		} catch (JsonParseException jpe) {
+			//TODO addlogging
+		} catch (JsonMappingException jme) {
+			//TODO add logging
+		} catch (IOException e) {
+			//TODO add logging
+		}
+		return products.toArray(new JsonProduct[0]);
+	}
 	
 	private String getStringContent() {
-		String data = ""; 
-		
-		for(int i = 0; i < getContent().length; i++) {
-			if(i == 0) {
-				data += "[";
-			}
-			
-			JsonProduct p = getContent()[i];
-			
-			data += "{\"key\": \"" + p.getKey() + "\", \"name\": \"" + p.getName() + "\", \"bought\": " + String.valueOf(p.isBought()) + "}";
-			
-			if(i != getContent().length - 1) {
-				data += ", ";
-			}
-			
-			if(i == getContent().length - 1) {
-				data += "]";
-			}
+		String data = "";
+
+		ObjectMapper mapper = new ObjectMapper();
+		try {
+			data = mapper.writeValueAsString(getContent());
+		} catch (JsonProcessingException jpe) {
+			//TODO addlogging
 		}
 		
 		return data;

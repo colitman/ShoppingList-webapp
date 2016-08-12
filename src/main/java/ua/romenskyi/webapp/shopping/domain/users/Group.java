@@ -4,7 +4,6 @@
  */
 package ua.romenskyi.webapp.shopping.domain.users;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Type;
 import ua.romenskyi.webapp.shopping.data.NameColumn;
 import ua.romenskyi.webapp.shopping.domain.NamedEntityInterface;
@@ -32,7 +31,6 @@ public class Group implements NamedEntityInterface {
 	private String name;
 	
 	@ManyToMany(cascade={CascadeType.PERSIST, CascadeType.MERGE})
-	@JsonBackReference
 	private Collection<User> users;
 
 	public Group() {

@@ -77,9 +77,9 @@ public class ListsController {
 		boolean updated = false;
 		
 		try {
-		    List oldList = listService.get(list.getKey());
+		    /*List oldList = listService.get(list.getKey());
             list.setOwner(oldList.getOwner());
-            list.setAnonymousOwner(oldList.getAnonymousOwner());
+            list.setAnonymousOwner(oldList.getAnonymousOwner());*/
 			updated = listService.update(list);
 		} catch (ResourceNotFoundException e) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
@@ -91,7 +91,7 @@ public class ListsController {
 	}
 	
 	@RequestMapping(method=RequestMethod.GET)
-	public ResponseEntity<java.util.List<List>> getLists(@RequestParam(required=false) Long owner,
+	public ResponseEntity<java.util.List<JsonList>> getLists(@RequestParam(required=false) Long owner,
 														 @RequestParam(required=false) String shopper,
 														 @RequestParam(required=false) String statuses,
 														 @RequestParam(required=false) String ignoredStatuses,
@@ -105,22 +105,21 @@ public class ListsController {
 		boolean processShopper = false;
 		boolean processIgnoredStatuses = statuses == null || statuses.isEmpty();
 		
-		/*java.util.List<List> ownedLists = new ArrayList<List>();
-		java.util.List<List> anonLists = new ArrayList<List>();*/
-		
 		if(owner != null && owner > 0 && owner == currentUserKey) {
 			lists = listService.getByOwner(currentUser);
-			//lists.addAll(ownedLists);
 		}
 		
 		if(owner == null || owner == -1) {
 			processShopper = true;
 		}
+
+		// TODO: what if owner is not current user?
 		
 		if(processShopper && shopper != null && !shopper.isEmpty()) {
 			lists = listService.getByAnonymousOwner(shopper);
-			//lists.addAll(anonLists);
 		}
+
+		// TODO what if owner and shopper are null?
 
 		if(!processIgnoredStatuses) {
 			for (List list:lists) {
@@ -152,15 +151,21 @@ public class ListsController {
 				}
 			}
 		}
+
+		java.util.List<JsonList> returnedLists = new java.util.ArrayList<JsonList>();
+
+		for(List l:filteredLists) {
+			returnedLists.add(new JsonList(l));
+		}
 		
-		return new ResponseEntity<java.util.List<List>>(filteredLists, HttpStatus.OK);
+		return new ResponseEntity<java.util.List<JsonList>>(returnedLists, HttpStatus.OK);
 	}
 	
 	@RequestMapping(path="/{listKey}", method=RequestMethod.GET)
-	public ResponseEntity<List> getListByKey(@PathVariable Long listKey,
+	public ResponseEntity<JsonList> getListByKey(@PathVariable Long listKey,
 												@CurrentUser User currentUser) {
 		if(listKey == null) {
-			return new ResponseEntity<List>(HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<JsonList>(HttpStatus.BAD_REQUEST);
 		}
 		
 		List list = null;
@@ -168,13 +173,13 @@ public class ListsController {
 		try {
 			list = listService.get(listKey);
 		} catch (ResourceNotFoundException e) {
-			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<JsonList>(HttpStatus.NOT_FOUND);
 		}
 		
 		if(list.getOwner() != null && (currentUser == null || currentUser.getKey() != list.getOwner().getKey()) && !list.isPublicList()) {
-			return new ResponseEntity<List>(HttpStatus.NOT_FOUND);
+			return new ResponseEntity<JsonList>(HttpStatus.NOT_FOUND);
 		}
 		
-		return new ResponseEntity<List>(list, HttpStatus.OK);
+		return new ResponseEntity<JsonList>(new JsonList(list), HttpStatus.OK);
 	}
 }
