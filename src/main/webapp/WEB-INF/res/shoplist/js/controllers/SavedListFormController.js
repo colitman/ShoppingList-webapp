@@ -20,6 +20,8 @@ SavedListFormController.prototype
 		if (list.content.length === 0) {
 			return;
 		}
+		
+		list.status = list.bought? LIST_STATUS_BOUGHT: LIST_STATUS_ACTIVE;
 
 		this.listService.updateList(list)
 			.done(function() {
@@ -53,16 +55,14 @@ SavedListFormController.prototype
 			return;
 		}
 		
+		list.status = LIST_STATUS_BOUGHT;
+		
 		this.listService.updateList(list)
 			.done(function() {
 				$('.panel', listForm).removeClass('panel-success');
 				$('.panel', listForm).addClass('panel-default');
 				
 				$(BUY_LIST_BTN_CLASS, listForm).remove();
-				
-				/*$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
-				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
-				$(BUY_LIST_BTN_CLASS, listForm).prop('disabled', 'disabled');*/
 				
 				$(ALERT_SUCCESS).text('Successfully');
 				$(ALERT_SUCCESS).toggleClass('hidden');

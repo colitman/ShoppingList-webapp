@@ -42,7 +42,7 @@ function init() {
 				$(buttonItem).click(function(event) {
 					savedListFormController.changeProductStatus(listItem, event.target);
 				});
-			})
+			});
 			
 			$(BUY_LIST_BTN_CLASS, listItem).click(function(event) {
 				savedListFormController.buyList(event.target);

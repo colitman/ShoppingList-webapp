@@ -3,10 +3,9 @@
 function List() {
 	this.key = -1;
 	this.content = [];
+	this.status = 'draft';
 	this.bought = false;
 	this.publicList = false;
-	/*this.anonymousOwner = '';
-	this.owner = -1;*/
 	Object.seal(this);
 }
 

@@ -23,4 +23,33 @@
 								 onDelete="CASCADE"
 								 onUpdate="CASCADE" />
 	</changeSet>
+	
+	<changeSet id="list_statuses_implementation" author="romenskyi" dbms="postgresql">
+		<addColumn tableName="lists">
+			<column name="status" type="text" beforeColumn="public"></column>
+		</addColumn>
+		
+		<update tableName="lists">
+			<column name="status" value="bought" />
+			<where>bought = true</where>
+		</update>
+		<update tableName="lists">
+			<column name="status" value="active" />
+			<where>bought = false</where>
+		</update>
+		
+		<addNotNullConstraint tableName="lists" columnName="status" />
+		<dropColumn tableName="lists" columnName="bought" />
+	</changeSet>
+	
+	<changeSet id="list_statuses_fix" author="romenskyi" dbms="postgresql">
+		<update tableName="lists">
+			<column name="status" value="BOUGHT" />
+			<where>status = 'bought'</where>
+		</update>
+		<update tableName="lists">
+			<column name="status" value="ACTIVE" />
+			<where>status = 'active'</where>
+		</update>
+	</changeSet>
 </databaseChangeLog>

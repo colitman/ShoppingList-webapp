@@ -77,9 +77,6 @@ public class ListsController {
 		boolean updated = false;
 		
 		try {
-		    /*List oldList = listService.get(list.getKey());
-            list.setOwner(oldList.getOwner());
-            list.setAnonymousOwner(oldList.getAnonymousOwner());*/
 			updated = listService.update(list);
 		} catch (ResourceNotFoundException e) {
 			return new ResponseEntity<String>(HttpStatus.NOT_FOUND);
@@ -123,7 +120,7 @@ public class ListsController {
 
 		if(!processIgnoredStatuses) {
 			for (List list:lists) {
-				String listStatus = list.isBought()? "bought" : "active";
+				String listStatus = list.getStatus().toLowerCase();
 				String[] statusArray = statuses.split(",");
 
 				for(String status:statusArray) {
@@ -135,7 +132,7 @@ public class ListsController {
 			}
 		} else {
 			for (List list:lists) {
-				String listStatus = list.isBought()? "bought" : "active";
+				String listStatus = list.getStatus().toLowerCase();
 				String[] statusArray = ignoredStatuses.split(",");
 
 				boolean found = false;

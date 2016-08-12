@@ -11,6 +11,7 @@ import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 import ua.romenskyi.webapp.shopping.domain.users.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * @author dmytro.romenskyi - Jun 29, 2016
@@ -20,6 +21,12 @@ import javax.persistence.*;
 @Table(name="lists")
 public class List implements OwnedEntityInterface {
 
+    public enum Status {
+        DRAFT,
+        ACTIVE,
+		BOUGHT
+    }
+
 	@Id
 	@Column(name="key")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -28,9 +35,10 @@ public class List implements OwnedEntityInterface {
 	@Column(name="content", nullable=false)
 	@Type(type = "text")
 	private String content;
-	
-	@Column(name="bought", nullable=false)
-	private boolean bought;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name="status", nullable = false)
+	private Status status;
 	
 	@Column(name="public", nullable=false)
 	private boolean publicList;
@@ -48,7 +56,7 @@ public class List implements OwnedEntityInterface {
 	public List() {
 		this.key = -1L;
 		this.content = "[]";
-		this.bought = false;
+		this.status = Status.DRAFT;
 		this.publicList = false;
 		this.owner = null;
 		this.anonymousOwner = "";
@@ -72,12 +80,21 @@ public class List implements OwnedEntityInterface {
 		this.content = content;
 	}
 
-	public boolean isBought() {
-		return bought;
+	public String getStatus() {
+		return this.status.name().toLowerCase();
 	}
 
-	public void setBought(boolean bought) {
-		this.bought = bought;
+	public void setStatus(String status) {
+		status = status.toLowerCase();
+		java.util.List<String> validStatuses = new ArrayList<String>();
+
+		for(Status s:Status.values()) {
+			validStatuses.add(s.name().toLowerCase());
+		}
+
+		if(validStatuses.contains(status)) {
+			this.status = Status.valueOf(status.toUpperCase());
+		}
 	}
 
 	public boolean isPublicList() {

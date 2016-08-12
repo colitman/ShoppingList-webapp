@@ -18,7 +18,7 @@
 					<button type="button" class="btn btn-default sl-list-access-btn" data-public="false">No</button>
 					<button type="button" class="btn btn-primary sl-list-access-btn" data-public="true">Yes</button>
 				</div>
-			</div><!-- /.modal-content -->
-		</div><!-- /.modal-dialog -->
-	</div><!-- /.modal -->
+			</div>
+		</div>
+	</div>
 </aside>

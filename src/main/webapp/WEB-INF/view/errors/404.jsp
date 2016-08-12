@@ -14,7 +14,7 @@
 			<c:import url="/imports/mainTopNav"></c:import>
 			
 			<main>
-				<i class="fa fa-meh-o fa-pulse" style="font-size:20em"></i>
+				<i class="fa fa-meh-o fa-pulse" style="font-size:20em;"></i>
 				Not Found
 			</main>
 			

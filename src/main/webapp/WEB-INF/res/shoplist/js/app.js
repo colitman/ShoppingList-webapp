@@ -5,6 +5,10 @@ var CURRENT_USER = $('meta[name="currentUser"]').attr('content');
 var CURRENT_ANON_USER = Cookies.get('shopper');
 var IS_ANON = !CURRENT_USER || CURRENT_USER.length === 0;
 
+var LIST_STATUS_DRAFT = 'draft';
+var LIST_STATUS_ACTIVE = 'active';
+var LIST_STATUS_BOUGHT = 'bought';
+
 var AUTH_FORM = $('.sl-auth-form');
 
 var NEW_LIST = $('#sl-new-list article');

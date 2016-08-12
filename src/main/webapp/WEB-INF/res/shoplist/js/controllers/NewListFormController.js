@@ -50,6 +50,8 @@ NewListFormController.prototype
 		if (list.content.length === 0) {
 			return;
 		}
+	
+		list.status = LIST_STATUS_ACTIVE;
 
 		this.listService.saveList(list)
 			.done(function() {
