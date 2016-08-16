@@ -15,13 +15,10 @@ var RootPageTest = (function(){
 	function RootPageTest() {}
 	
 	RootPageTest.prototype.run = function() {
-		describe('smoke', function() {
-			it('should work', function(){
+		describe('Root page', function() {
+			it('should be able to navigate to', function(){
 				rootPage.visitPage('/shopping-list');
-				browser.sleep(5000);
-				rootPage.setProductName('bread');
-				rootPage.addProduct();
-				rootPage.saveList();
+				expect(element(by.css('body')).getAttribute('data-page')).toEqual('root');
 			});
 		})
 	}

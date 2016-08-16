@@ -12,7 +12,7 @@ var rootPageTest = new RootPageTest();
 
 signUpPageTest.run();
 signInPageTest.run();
-rootPageTest.run();
+//rootPageTest.run();
 
 /** === List creation
  *  ====== Anonymous user

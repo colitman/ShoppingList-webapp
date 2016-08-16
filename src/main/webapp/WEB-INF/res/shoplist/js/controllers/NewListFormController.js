@@ -32,7 +32,9 @@ NewListFormController.prototype
 
 NewListFormController.prototype
 	.saveList = function(listForm, isPublic) {
-
+		
+		$(ADD_PRODUCT_BTN).click();
+	
 		var list = new List();
 		list.publicList = isPublic;
 
