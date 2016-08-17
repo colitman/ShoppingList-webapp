@@ -24,37 +24,13 @@ var SAVED_LIST = '#sl-saved-lists article';
 
 var LIST_SEARCH_FORM = $('#sl-list-search-form');
 
-var ALERT_SUCCESS = $('footer .alert-success');
-var ALERT_INFO = $('footer .alert-info');
-var ALERT_WARNING = $('footer .alert-warning');
-var ALERT_DANGER = $('footer .alert-danger');
-
 var LIST_ACCESS_MODAL = $('.sl-modal #confirm-list-public');
 var LIST_ACCESS_BUTTON_CLASS = ".sl-list-access-btn";
 
 $(document).ready(function() {
-	setMinHeight();
-	$(window).resize(function(event) {
-		setMinHeight();
-	});
-
 	$(LIST_SEARCH_FORM).submit(function(event) {
 		event.preventDefault();
 		var id = $('#listId', this).val();
 		window.location.replace(window.location.protocol + '//' + window.location.host + $(this).attr('action') + id);
 	});
 });
-
-function setMinHeight() {
-	var page = $('body > .container');
-
-	var nav = $('nav', page);
-	var content = $('main', page);
-	var footer = $('body > .container > footer');
-
-	var contentMinHeight;
-
-	contentMinHeight = $(window).height() - $(nav).outerHeight(true) - $(footer).outerHeight(true);
-
-	$(content).css('min-height', contentMinHeight);
-}

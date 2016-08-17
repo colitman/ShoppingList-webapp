@@ -28,15 +28,11 @@ SavedListFormController.prototype
 				$('#' + targetProductId, listItem).toggleClass('sl-bought-product');
 				$(button).toggleClass('btn-success btn-warning');
 				$('i', button).toggleClass('fa-cart-plus fa-minus');
-				
-				$(ALERT_SUCCESS).text('Successfully');
-				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				$('#' + targetProductId, listItem).data('bought', !$('#' + targetProductId, listItem).data('bought'));
 
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				new Alert('danger', '', errorThrown).show();
 			});
 
 	};
@@ -63,16 +59,12 @@ SavedListFormController.prototype
 				$('.panel', listForm).addClass('panel-default');
 				
 				$(BUY_LIST_BTN_CLASS, listForm).remove();
-				
-				$(ALERT_SUCCESS).text('Successfully');
-				$(ALERT_SUCCESS).toggleClass('hidden');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				
 				$(listForm).data('bought', false);
-
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				
+				new Alert('danger', '', errorThrown).show();
 			});
 	};
 

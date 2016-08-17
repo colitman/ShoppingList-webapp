@@ -6,7 +6,7 @@
 <c:set var="app" value="${pageContext.servletContext.contextPath}" />
 <c:set var="isAnon" value="${empty currentUser}" />
 
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
 	<div class="container-fluid">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${app}/">ShoppingList</a>
@@ -58,3 +58,4 @@
 		</div>
 	</div>
 </nav>
+<section class="alerts"></section>

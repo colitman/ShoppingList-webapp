@@ -60,7 +60,6 @@ NewListFormController.prototype
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				new Alert('danger', '', errorThrown).show();
 			});
 	};

@@ -12,3 +12,4 @@
 <script src="${app}/res/shoplist/js/models/domain.js"></script>
 <script src="${app}/res/shoplist/js/models/DOM.js"></script>
 <script src="${app}/res/shoplist/js/app.js"></script>
+<script src="${app}/res/shoplist/js/models/alerts.js"></script>

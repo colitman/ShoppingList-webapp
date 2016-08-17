@@ -1,5 +1,9 @@
 /* Global styles */
-body {background-color: #eee;}
+body {
+	background-color: #eee;
+	padding-top: 70px;
+	padding-bottom: 50px;
+}
 
 a.disabled,
 i.disabled {
@@ -29,13 +33,11 @@ i.disabled {
 	}
 }
 
-footer {margin: 10px 0 10px 0;}
-
-footer .alert {
-	position: absolute;
-	bottom: 40px;
-	left: 0;
-	width: 100%;
+footer {
+	padding-top: 10px;
+	background-color: #f8f8f8;
+	border-style: solid;
+	border-color: #e7e7e7;
 }
 
 /* Authentication pages styles */
@@ -66,24 +68,6 @@ footer .alert {
 	margin-top: 15px;
 	padding-top:5px;
 	border-top: thin solid #ccc;
-}
-
-/* List styles */
-@media (max-width: 767px) {
-	.sl-list:nth-child(1n+2) {
-		clear: left;
-	}
-}
-
-@media (min-width:768px) and (max-width: 991px) {
-	.sl-list:nth-child(2n+3) {
-		clear: left;
-	}
-}
-@media (min-width: 992px) {
-	.sl-list:nth-child(3n+4) {
-		clear: left;
-	}
 }
 
 .sl-list .sl-list-action-btn {
