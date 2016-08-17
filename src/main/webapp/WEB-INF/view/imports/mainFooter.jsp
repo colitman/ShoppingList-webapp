@@ -3,11 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
-<footer>
-	<div class="alert alert-success hidden"></div>
-	<div class="alert alert-info hidden"></div>
-	<div class="alert alert-warning hidden"></div>
-	<div class="alert alert-danger hidden"></div>
+<footer class="navbar-fixed-bottom">
 	<p class="text-center text-muted">
 		ShoppingList |
 		<a href="https://ua.linkedin.com/in/dmytro-romenskyi-87035524">Dmytro Romenskyi</a> |

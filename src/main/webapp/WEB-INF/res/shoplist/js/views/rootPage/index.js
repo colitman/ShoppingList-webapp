@@ -49,7 +49,6 @@ function init() {
 			});
 		});
 	}).fail(function (jqXHR, textStatus, errorThrown) {
-		$(ALERT_WARNING).text(errorThrown);
-		$(ALERT_WARNING).toggleClass('hidden');
+		new Alert('warning', '', errorThrown).show();
 	});
 }
