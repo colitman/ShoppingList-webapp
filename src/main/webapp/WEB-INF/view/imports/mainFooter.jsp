@@ -3,7 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
-<footer class="navbar-fixed-bottom">
+<footer class="sl-page-footer navbar-fixed-bottom">
 	<p class="text-center text-muted">
 		ShoppingList |
 		<a href="https://ua.linkedin.com/in/dmytro-romenskyi-87035524">Dmytro Romenskyi</a> |

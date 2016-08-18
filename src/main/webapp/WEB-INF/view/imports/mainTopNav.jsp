@@ -7,7 +7,7 @@
 <c:set var="isAnon" value="${empty currentUser}" />
 
 <nav class="navbar navbar-default navbar-fixed-top">
-	<div class="container-fluid">
+	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${app}/">ShoppingList</a>
 			<button type="button"

@@ -33,7 +33,7 @@ i.disabled {
 	}
 }
 
-footer {
+footer.sl-page-footer {
 	padding-top: 10px;
 	background-color: #f8f8f8;
 	border-style: solid;
