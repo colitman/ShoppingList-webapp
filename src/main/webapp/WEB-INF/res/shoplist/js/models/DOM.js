@@ -68,7 +68,7 @@ function SavedProduct(id, name, bought) {
  <a href="/lists/1">/lists/1</a>
  </div>
  */
-function SavedList(id, isBought, isPublic) {
+function SavedList(id, status, isPublic) {
 	var article = $(document.createElement('article'));
 	var panel = $(document.createElement('div'));
 	var heading = $(document.createElement('div'));
@@ -77,7 +77,7 @@ function SavedList(id, isBought, isPublic) {
 	var footer = $(document.createElement('div'));
 	var footerLink = $(document.createElement('a'));
 	
-	if(!isBought) {
+	if(status !== LIST_STATUS_BOUGHT) {
 		var buyButton = $(document.createElement('button'));
 	}
 	
@@ -85,7 +85,7 @@ function SavedList(id, isBought, isPublic) {
 	$(panel).append(heading);
 	$(panel).append(body);
 	$(panel).append(table);
-	if(!isBought) {
+	if(status !== LIST_STATUS_BOUGHT) {
 		$(panel).append(buyButton);
 	}
 	$(panel).append(footer);
@@ -93,26 +93,25 @@ function SavedList(id, isBought, isPublic) {
 	
 	$(article).addClass('sl-list col-sm-6 col-md-4');
 	$(panel).addClass('panel');
-	$(panel).addClass(isBought? 'panel-default': 'panel-success');
+	$(panel).addClass(status === LIST_STATUS_BOUGHT? 'panel-default': status === LIST_STATUS_ACTIVE? 'panel-success': 'panel-warning');
 	$(heading).addClass('panel-heading');
 	$(body).addClass('panel-body');
 	$(table).addClass('table table-condensed');
-	if(!isBought) {
+	if(status !== LIST_STATUS_BOUGHT) {
 		$(buyButton).attr('type', 'button');
 		$(buyButton).addClass('btn btn-sm btn-block sl-list-action-btn sl-buy-list-btn');
-		$(buyButton).addClass(isBought? 'btn-default': 'btn-primary');
+		$(buyButton).addClass('btn-primary');
 	}
 	$(footer).addClass('panel-footer');
 	
 	$(article).attr('id', id);
-	$(article).data('bought', isBought);
+	$(article).data('status', status);
 	$(article).data('public', isPublic);
 	$(heading).text(id);
 	$(body).text('Items in list: ');
-	if(!isBought) {
+	if(status !== LIST_STATUS_BOUGHT) {
 		$(buyButton).data('target', id);
-		$(buyButton).prop('disabled', isBought);
-		$(buyButton).text(isBought? 'Bought': 'Buy');
+		$(buyButton).text('Buy');
 	}
 	$(footerLink).attr('href', ROOT + '/lists/' + id);
 	$(footerLink).text('/lists/' + id);

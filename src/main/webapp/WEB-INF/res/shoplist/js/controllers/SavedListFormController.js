@@ -21,8 +21,6 @@ SavedListFormController.prototype
 			return;
 		}
 		
-		list.status = list.bought? LIST_STATUS_BOUGHT: LIST_STATUS_ACTIVE;
-
 		this.listService.updateList(list)
 			.done(function() {
 				$('#' + targetProductId, listItem).toggleClass('sl-bought-product');
@@ -43,15 +41,14 @@ SavedListFormController.prototype
 		var listId = $(button).data('target');
 		var listForm = $('article#' + listId);
 
-		$(listForm).data('bought', true);
+		var prevStatus = $(listForm).data('status');
+		$(listForm).data('status', LIST_STATUS_BOUGHT);
 
 		var list = this.listBuilder.parse(listForm);
 
 		if (list.content.length === 0) {
 			return;
 		}
-		
-		list.status = LIST_STATUS_BOUGHT;
 		
 		this.listService.updateList(list)
 			.done(function() {
@@ -62,7 +59,7 @@ SavedListFormController.prototype
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				
-				$(listForm).data('bought', false);
+				$(listForm).data('status', prevStatus);
 				
 				new Alert('danger', '', errorThrown).show();
 			});
