@@ -7,7 +7,7 @@
 	<groupId>ua.romenskyi.webapp</groupId>
 	<artifactId>shopping-list</artifactId>
 	<packaging>war</packaging>
-	<version>0.1</version>
+	<version>1.1</version>
 	<name>shopping-list</name>
   
 	<properties>
