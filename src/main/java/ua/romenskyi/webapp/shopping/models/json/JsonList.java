@@ -23,14 +23,12 @@ public class JsonList implements JsonModel {
 	private long key;
 	private JsonProduct[] content;
 	private String status;
-	private boolean bought;
 	private boolean publicList;
 
 	public JsonList() {
 		this.key = -1L;
 		this.content = new JsonProduct[0];
 		this.status = List.Status.DRAFT.name().toLowerCase();
-		this.bought = false;
 		this.publicList = false;
 	}
 
@@ -38,7 +36,6 @@ public class JsonList implements JsonModel {
 		this.key = list.getKey();
 		this.content = parseProducts(list.getContent());
 		this.status = list.getStatus().toLowerCase();
-		this.bought = List.Status.BOUGHT.name().toLowerCase().equalsIgnoreCase(status);
 		this.publicList = list.isPublicList();
 	}
 	
@@ -103,14 +100,6 @@ public class JsonList implements JsonModel {
 
 	public void setStatus(String status) {
 		this.status = status;
-	}
-
-	public boolean isBought() {
-		return bought;
-	}
-
-	public void setBought(boolean bought) {
-		this.bought = bought;
 	}
 
 	public boolean isPublicList() {

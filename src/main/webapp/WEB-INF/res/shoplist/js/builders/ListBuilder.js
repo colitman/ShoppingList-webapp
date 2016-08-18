@@ -11,7 +11,7 @@ function ListBuilder () {}
 ListBuilder.prototype.create = function(lists) {
 	for(var i = 0; i < lists.length; i++) {
 		var listData = lists[i];
-		var listElement = new SavedList(listData.key, listData.bought, listData.publicList);
+		var listElement = new SavedList(listData.key, listData.status, listData.publicList);
 		
 		var listProductsData = listData.content;
 		
@@ -35,7 +35,7 @@ ListBuilder.prototype.create = function(lists) {
 ListBuilder.prototype.parse = function(listForm) {
 	var list = new List();
 	list.key = $(listForm).attr('id');
-	list.bought = $(listForm).data('bought');
+	list.status = $(listForm).data('status');
 	list.publicList = $(listForm).data('public');
 	
 	$('tr', listForm).each(function(productIndex, productElement) {
