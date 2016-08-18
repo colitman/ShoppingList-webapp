@@ -4,44 +4,44 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=Sign Up"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/auth.css">
 	</head>
 	
-	<body id="sign-up-page" class="sl-auth-page">
-		<div class="sl-page container">
+	<body data-page="signup">
+		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
-			<div class="sl-main-content">
+			
+			<main>
 				<form class="sl-auth-form" action="${app}/api/users" method="post">
-					<div class="sl-auth-form-header">
+					<header>
 						<div class="alert alert-danger hidden">
 							<h4>Sign up failure</h4>
-							<p id="sl-sign-up-error-message"></p>
+							<p></p>
 						</div>
 						
 						<h3>Please Sign Up</h3>
+					</header>
+					
+					<input id="username" name="username" class="form-control" type="text" placeholder="Username" required="required" autofocus="autofocus"/>
+					
+					<div class="has-feedback">
+						<input id="password" name="password" class="form-control" type="password"  placeholder="Password" required="required"/>
+						<span class="glyphicon form-control-feedback"></span>
+						<input id="password2" name="password2" class="form-control" type="password" placeholder="Password again" required="required" disabled="disabled"/>
 					</div>
 					
-					<div class="sl-auth-form-body">
-						<input placeholder="Username" type="text" id="username" name="username" class="form-control" required="required" autofocus="autofocus"/>
-						<div id="sl-passwords" class="has-feedback">
-							<input placeholder="Password" type="password" id="password" name="password" class="form-control" required="required"/>
-							<span class="glyphicon form-control-feedback"></span>
-							<input placeholder="Password again" type="password" id="password2" name="password2" class="form-control" required="required" disabled="disabled"/>
-						</div>
-						<button type="submit" class="btn btn-success btn-block sl-auth-button">Sign Up</button>
-					</div>
+					<button type="submit" class="btn btn-success btn-block sl-auth-button" disabled="disabled">Sign Up</button>
 					
-					<div class="sl-auth-form-footer">
+					<footer>
 						<a id="sign-in-link" href="${app}/signin">Sign In</a>
-					</div>
+					</footer>
 				</form>
-			</div>
+			</main>
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 

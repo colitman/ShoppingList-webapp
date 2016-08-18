@@ -16,11 +16,13 @@ var SignInPage = (function(){
 
 	SignInPage.prototype
 		.setUsername = function(username) {
+			this.usernameField.clear();
 			this.usernameField.sendKeys(username);
 		}
 
 	SignInPage.prototype
 		.setPassword = function(password) {
+			this.passwordField.clear();
 			this.passwordField.sendKeys(password);
 		}
 

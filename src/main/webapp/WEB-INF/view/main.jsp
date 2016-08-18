@@ -4,38 +4,56 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=Shopping List"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/fix-lists.css">
 	</head>
 	
-	<body id="root-page">
-		<div class="sl-page container">
+	<body data-page="root">
+		<div class="container">
 			<c:import url="/imports/mainTopNav?root=true"></c:import>
 			
-			<div class="sl-main-content">
-				<div class="row sl-lists">
+			<main>
+				<div class="row">
+					<section id="sl-new-list">
+						<article class="sl-list col-sm-6 col-md-4">
+							<div class="panel panel-primary">
+								<div class="panel-heading">
+									New List
+								</div>
+								<div class="panel-body">
+									What is needed?
+								</div>
+								
+								<table class="table table-condensed">
+									<tr id="sl-new-product-form">
+										<td>
+											<div class="input-group input-group-sm">
+												<input type="text" class="form-control" placeholder="Product and amount" autofocus="autofocus">
+												<span class="input-group-btn">
+													<button type="button" class="btn btn-default"><i class="fa fa-plus"></i></button>
+												</span>
+											</div>
+										</td>
+									</tr>
+								</table>
+								
+								<button type="button" class="btn btn-success btn-sm btn-block sl-list-action-btn">Save</button>
+							</div>
+						</article>
+					</section>
 					
-					<c:import url="/imports/newListForm"></c:import>
-				
+					<section id="sl-saved-lists"></section>
 				</div>
-			</div>
+			</main>
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 
 		<div class="sl-modals">
-			
-		</div>
-
-		<div class="sl-snippets hidden">
-			<c:import url="/snippets/addedProductSnippet"></c:import>
-			<c:import url="/snippets/savedListSnippet"></c:import>
-			<c:import url="/snippets/savedProductSnippet"></c:import>
+			<c:import url="/imports/modals/setListAccessModal"></c:import>
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>

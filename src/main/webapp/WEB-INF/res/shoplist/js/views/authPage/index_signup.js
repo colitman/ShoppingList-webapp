@@ -1,6 +1,6 @@
 'use strict';
 
-var signUpFormController = new SignUpFormController(AUTH_FORM);
+var signUpFormController = new SignUpFormController();
 
 $(document).ready(function() {
 	init();
@@ -13,8 +13,8 @@ function init() {
 	var signUpButton = $('button[type="submit"]', AUTH_FORM);
 
 	$(password).keyup(function(event) {
-		signUpFormController.checkPasswordsEqual();
 		signUpFormController.toggleSecondPasswordAccessibility();
+		signUpFormController.checkPasswordsEqual();
 	});
 
 	$(password2).keyup(function(event) {

@@ -3,11 +3,11 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
+<c:set var="isAnon" value="${empty currentUser}" />
 
-<nav class="navbar navbar-default">
-	<div class="container-fluid">
+<nav class="navbar navbar-default navbar-fixed-top">
+	<div class="container">
 		<div class="navbar-header">
 			<a class="navbar-brand" href="${app}/">ShoppingList</a>
 			<button type="button"
@@ -23,7 +23,7 @@
 			<form id="sl-list-search-form" class="navbar-form navbar-left form-inline" action="${app}/lists/" method="get">
 				<div class="form-group">
 					<label for="listId">/</label>
-					<input type="search" id="listId" name="listId" class="form-control" placeholder="List ID" />
+					<input type="search" id="listId" class="form-control" placeholder="List ID" />
 				</div>
 				<button type="submit" class="btn btn-default">Find</button>
 			</form>
@@ -53,8 +53,9 @@
 			</ul>
 			
 			<c:if test="${not root}">
-				<button type="button" class="btn btn-primary navbar-btn navbar-right">Create List</button>
+				<a href="${app}/" class="btn btn-primary navbar-btn navbar-right">Create List</a>
 			</c:if>
 		</div>
 	</div>
 </nav>
+<section class="alerts"></section>

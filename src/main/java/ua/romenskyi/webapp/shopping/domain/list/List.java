@@ -4,18 +4,14 @@
  */
 package ua.romenskyi.webapp.shopping.domain.list;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Type;
-
 import ua.romenskyi.webapp.shopping.data.AnonymousOwnerColumn;
 import ua.romenskyi.webapp.shopping.data.OwnerColumn;
 import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
+import ua.romenskyi.webapp.shopping.domain.users.User;
+
+import javax.persistence.*;
+import java.util.ArrayList;
 
 /**
  * @author dmytro.romenskyi - Jun 29, 2016
@@ -25,6 +21,12 @@ import ua.romenskyi.webapp.shopping.domain.OwnedEntityInterface;
 @Table(name="lists")
 public class List implements OwnedEntityInterface {
 
+    public enum Status {
+        DRAFT,
+        ACTIVE,
+		BOUGHT
+    }
+
 	@Id
 	@Column(name="key")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -33,16 +35,18 @@ public class List implements OwnedEntityInterface {
 	@Column(name="content", nullable=false)
 	@Type(type = "text")
 	private String content;
-	
-	@Column(name="bought", nullable=false)
-	private boolean bought;
+
+	@Enumerated(EnumType.STRING)
+	@Column(name="status", nullable = false)
+	private Status status;
 	
 	@Column(name="public", nullable=false)
 	private boolean publicList;
-	
-	@Column(name="owner", updatable=false)
+
+	@ManyToOne
+	@JoinColumn(name="owner", updatable=false)
 	@OwnerColumn
-	private Long owner;
+	private User owner;
 	
 	@Column(name="anon_owner", updatable=false)
 	@Type(type="text")
@@ -50,8 +54,12 @@ public class List implements OwnedEntityInterface {
 	private String anonymousOwner;
 	
 	public List() {
-		this.content = "";
-		this.bought = false;
+		this.key = -1L;
+		this.content = "[]";
+		this.status = Status.DRAFT;
+		this.publicList = false;
+		this.owner = null;
+		this.anonymousOwner = "";
 	}
 
 	@Override
@@ -72,12 +80,21 @@ public class List implements OwnedEntityInterface {
 		this.content = content;
 	}
 
-	public boolean isBought() {
-		return bought;
+	public String getStatus() {
+		return this.status.name().toLowerCase();
 	}
 
-	public void setBought(boolean bought) {
-		this.bought = bought;
+	public void setStatus(String status) {
+		status = status.toLowerCase();
+		java.util.List<String> validStatuses = new ArrayList<String>();
+
+		for(Status s:Status.values()) {
+			validStatuses.add(s.name().toLowerCase());
+		}
+
+		if(validStatuses.contains(status)) {
+			this.status = Status.valueOf(status.toUpperCase());
+		}
 	}
 
 	public boolean isPublicList() {
@@ -89,12 +106,12 @@ public class List implements OwnedEntityInterface {
 	}
 
 	@Override
-	public Long getOwner() {
+	public User getOwner() {
 		return owner;
 	}
 
 	@Override
-	public void setOwner(Long owner) {
+	public void setOwner(User owner) {
 		this.owner = owner;
 	}
 

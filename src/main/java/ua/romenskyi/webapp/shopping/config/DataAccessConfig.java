@@ -42,7 +42,6 @@ public class DataAccessConfig {
 	
 	private @Value("${hibernate.dialect}") String dialect;
 	private @Value("${hibernate.show_sql}") String showSQL;
-	//private @Value("${hibernate.hbm2ddl.auto}") String autoDDL;
 	private @Value("${hibernate.enable_lazy_load_no_trans}") String lazyLoadNoTrans;
 	
 	private @Value("${environment.heroku}") boolean onHeroku;
@@ -97,7 +96,6 @@ public class DataAccessConfig {
 		Properties hibProps = new Properties();
 		hibProps.setProperty(DIALECT, dialect);
 		hibProps.setProperty(SHOW_SQL, showSQL);
-		//hibProps.setProperty(HBM2DDL_AUTO, autoDDL);
 		hibProps.setProperty(ENABLE_LAZY_LOAD_NO_TRANS, lazyLoadNoTrans);
 		
 		sessionFactory.setHibernateProperties(hibProps);

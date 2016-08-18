@@ -10,56 +10,41 @@ NewListFormController.prototype
 		if($(productInput).val() === '') {
 			return;
 		}
-		// pick added product snippet,
-		var product = $('.sl-snippet[data-name="added-product"]').clone();
-		$(product).removeClass('sl-snippet');
 		
-		// insert to proper place,
-		$('.list-group-item:last-child', NEW_LIST).before(product);
+		var product = new AddedProduct(new Date().getTime(), $(productInput).val());
 		
-		// populate data,
-		$('input', product).val($(productInput).val());
+		$('#sl-new-product-form').before(product);
+	
 		$(productInput).val('');
 		$(productInput).focus();
 		
-		// assign "remove product" event
-		var productId = new Date().getTime();
-		$(product).attr('id', productId);
-		$('input', product).data('product-id', productId);
-		$(REMOVE_PRODUCT_BTN_CLASS, product).data('target', productId);
-
 		var instance = this;
 
 		$(REMOVE_PRODUCT_BTN_CLASS, product).click(function(event) {
-			instance.removeProduct(this);
+			instance.removeProduct($(this).data('target'));
 		});
 	};
 
 NewListFormController.prototype
-	.removeProduct = function(removeButton) {
-		
-		// get button target id,
-		var target = $(removeButton).data('target');
-		
-		// remove the element with this id
+	.removeProduct = function(target) {
 		$('#' + target, NEW_LIST).remove();
 	};
 
 NewListFormController.prototype
-	.saveList = function(listForm) {
-
+	.saveList = function(listForm, isPublic) {
+		
+		$(ADD_PRODUCT_BTN).click();
+	
 		var list = new List();
+		list.publicList = isPublic;
 
-		list.owner = IS_ANON? -1: CURRENT_USER;
-		list.anonymousOwner = IS_ANON? CURRENT_ANON_USER: '';
-
-		$('input', listForm).each(function(index, item) {
+		$('tr', listForm).each(function(index, item) {
 			
-			var productName = $(item).val();
+			var productName = $('input', item).val();
 
 			if(productName !== '') {
 				var product = new Product(productName);
-				product.key = $(item).data('product-id');
+				product.key = $(item).attr('id');
 				list.content.push(product);
 			}
 		});
@@ -67,18 +52,14 @@ NewListFormController.prototype
 		if (list.content.length === 0) {
 			return;
 		}
-
-		if(!IS_ANON) {
-			list.publicList = confirm('Do you want to make this list accessible for other users?');
-		}
+	
+		list.status = LIST_STATUS_ACTIVE;
 
 		this.listService.saveList(list)
-			.done(function(data) {
-				//refresh the main page, display the saved list next to new one form 
+			.done(function() {
 				window.location.replace(window.location.protocol + '//' + window.location.host + ROOT + '/');
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				new Alert('danger', '', errorThrown).show();
 			});
 	};

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+		xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      		http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+	
+	<changeSet id="list_owner_constraint" author="romenskyi" dbms="postgresql">
+		
+		<update tableName="lists">
+			<column name="owner" value="null" />
+			<where>owner = -1</where>
+		</update>
+		
+		<!--
+			Adding foreign keys
+		-->
+		<addForeignKeyConstraint constraintName="lists_owner_users_key_FK"
+								 baseTableName="lists"
+								 baseColumnNames="owner"
+								 referencedTableName="users"
+								 referencedColumnNames="key"
+								 onDelete="CASCADE"
+								 onUpdate="CASCADE" />
+	</changeSet>
+	
+	<changeSet id="list_statuses_implementation" author="romenskyi" dbms="postgresql">
+		<addColumn tableName="lists">
+			<column name="status" type="text" beforeColumn="public"></column>
+		</addColumn>
+		
+		<update tableName="lists">
+			<column name="status" value="bought" />
+			<where>bought = true</where>
+		</update>
+		<update tableName="lists">
+			<column name="status" value="active" />
+			<where>bought = false</where>
+		</update>
+		
+		<addNotNullConstraint tableName="lists" columnName="status" />
+		<dropColumn tableName="lists" columnName="bought" />
+	</changeSet>
+	
+	<changeSet id="list_statuses_fix" author="romenskyi" dbms="postgresql">
+		<update tableName="lists">
+			<column name="status" value="BOUGHT" />
+			<where>status = 'bought'</where>
+		</update>
+		<update tableName="lists">
+			<column name="status" value="ACTIVE" />
+			<where>status = 'active'</where>
+		</update>
+	</changeSet>
+</databaseChangeLog>

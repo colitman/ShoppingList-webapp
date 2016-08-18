@@ -4,22 +4,21 @@
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=Sign In"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/auth.css">
 	</head>
 	
-	<body id="sign-in-page" class="sl-auth-page">
-		<div class="sl-page container">
+	<body data-page="signin">
+		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 
-			<div class="sl-main-content">
+			<main>
 				<form class="sl-auth-form" action="${app}/signin" method="post">
-					<div class="sl-auth-form-header">
+					<header>
 						<c:if test="${param.error != null}">
 							<div class="alert alert-danger">
 								<h4>Sign in failure</h4>
@@ -29,20 +28,18 @@
 							</div>
 						</c:if>
 						<h3>Please Sign In</h3>
-					</div>
+					</header>
 					
-					<div class="sl-auth-form-body">
-						<input id="username" value="${username}" placeholder="Username" type="text" name="username" class="form-control" required="required" autofocus="autofocus"/>
-						<input id="password" placeholder="Password" type="password" name="password" class="form-control" required="required"/>
-						<button type="submit" class="btn btn-primary btn-block sl-auth-button">Sign In</button>
-					</div>
+					<input id="username" name="username" value="${username}" class="form-control" type="text"  placeholder="Username" required="required" autofocus="autofocus"/>
+					<input id="password" name="password" class="form-control" type="password" placeholder="Password" required="required"/>
+					<button type="submit" class="btn btn-primary btn-block sl-auth-button">Sign In</button>
 					
-					<div class="sl-auth-form-footer">
+					<footer>
 						<a href="${app}/signup" id="sign-up-link">Sign Up</a>
 						<a class="pull-right" href="${app}/password_reset" id="reset-pwd-link">Reset password</a>
-					</div>
+					</footer>
 				</form>
-			</div>
+			</main>
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 		

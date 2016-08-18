@@ -1,43 +1,36 @@
 'use strict';
 
+
 function SavedListFormController () {
 	this.listService = new ListService();
 	this.listBuilder = new ListBuilder();
 }
 
 SavedListFormController.prototype
-	.changeProductStatus = function (clicked) {
+	.changeProductStatus = function (listItem, clicked) {
 
 		var button = $(clicked).is('button')? clicked : $(clicked).parent();
 
 		var targetProductId = $(button).data('target');
-		var targetListId = $(button).data('targetList');
 
-		var listForm = $('#' + targetListId + '.sl-list-wrapper');
-
-		$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
-		$(button).toggleClass('btn-success btn-warning');
-		$('i', button).toggleClass('fa-cart-plus fa-minus');
+		$('#' + targetProductId, listItem).data('bought', !$('#' + targetProductId, listItem).data('bought'));
 	
-		var list = this.listBuilder.parse(listForm);
+		var list = this.listBuilder.parse(listItem);
 
 		if (list.content.length === 0) {
 			return;
 		}
-
+		
 		this.listService.updateList(list)
 			.done(function() {
-				$(ALERT_SUCCESS).text('Successfully');
-				$(ALERT_SUCCESS).toggleClass('hidden');
-			})
-			.fail(function(jqXHR, textStatus, errorThrown) {
-
-				$('#' + targetProductId, listForm).toggleClass('sl-bought-product');
+				$('#' + targetProductId, listItem).toggleClass('sl-bought-product');
 				$(button).toggleClass('btn-success btn-warning');
 				$('i', button).toggleClass('fa-cart-plus fa-minus');
+			})
+			.fail(function(jqXHR, textStatus, errorThrown) {
+				$('#' + targetProductId, listItem).data('bought', !$('#' + targetProductId, listItem).data('bought'));
 
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				new Alert('danger', '', errorThrown).show();
 			});
 
 	};
@@ -46,14 +39,10 @@ SavedListFormController.prototype
 	.buyList = function (button) {
 
 		var listId = $(button).data('target');
-		var listForm = $('#' + listId + '.sl-list-wrapper');
+		var listForm = $('article#' + listId);
 
-		$('.panel', listForm).removeClass('panel-success');
-		$('.panel', listForm).addClass('panel-default');
-
-		$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-success');
-		$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-default');
-		$(BUY_LIST_BTN_CLASS, listForm).attr('disabled', 'disabled');
+		var prevStatus = $(listForm).data('status');
+		$(listForm).data('status', LIST_STATUS_BOUGHT);
 
 		var list = this.listBuilder.parse(listForm);
 
@@ -63,21 +52,16 @@ SavedListFormController.prototype
 		
 		this.listService.updateList(list)
 			.done(function() {
-
-				$(ALERT_SUCCESS).text('Successfully');
-				$(ALERT_SUCCESS).toggleClass('hidden');
+				$('.panel', listForm).removeClass('panel-success');
+				$('.panel', listForm).addClass('panel-default');
+				
+				$(BUY_LIST_BTN_CLASS, listForm).remove();
 			})
 			.fail(function(jqXHR, textStatus, errorThrown) {
 				
-				$('.panel', listForm).removeClass('panel-default');
-				$('.panel', listForm).addClass('panel-success');
-
-				$(BUY_LIST_BTN_CLASS, listForm).removeClass('btn-default');
-				$(BUY_LIST_BTN_CLASS, listForm).addClass('btn-success');
-				$(BUY_LIST_BTN_CLASS, listForm).removeAttr('disabled');
-
-				$(ALERT_DANGER).text(errorThrown);
-				$(ALERT_DANGER).toggleClass('hidden');
+				$(listForm).data('status', prevStatus);
+				
+				new Alert('danger', '', errorThrown).show();
 			});
 	};
 

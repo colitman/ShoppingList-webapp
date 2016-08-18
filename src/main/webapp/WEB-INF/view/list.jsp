@@ -4,34 +4,27 @@
 
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
-<c:set var="app" value="${pageContext.servletContext.contextPath}"></c:set>
-<c:set var="isAnon" value="${empty currentUser}"></c:set>
+<c:set var="app" value="${pageContext.servletContext.contextPath}" />
 
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<c:import url="/imports/head?pageTitle=${listId} :: Shopping List"></c:import>
-		<link rel="stylesheet" href="${app}/res/shoplist/css/fix-lists.css">
 	</head>
 	
-	<body class="sl-list-page" id="${listId}">
-		<div class="sl-page container">
+	<body data-page="list" data-list="${listId}">
+		<div class="container">
 			<c:import url="/imports/mainTopNav"></c:import>
 			
-			<div class="sl-main-content">
-				<div class="row sl-lists">
-					<c:import url="/snippets/savedListSnippet?id=${listId}"></c:import>
-				</div>
-			</div>
+			<main>
+				<section id="sl-saved-lists" data-list="${listId}"></section>
+			</main>
+			
 			<c:import url="/imports/mainFooter"></c:import>
 		</div>
 
 		<div class="sl-modals">
 			
-		</div>
-
-		<div class="sl-snippets hidden">
-			<c:import url="/snippets/savedProductSnippet"></c:import>
 		</div>
 
 		<c:import url="/imports/scripts"></c:import>

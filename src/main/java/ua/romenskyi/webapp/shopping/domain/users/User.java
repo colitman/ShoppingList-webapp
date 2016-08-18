@@ -4,24 +4,17 @@
  */
 package ua.romenskyi.webapp.shopping.domain.users;
 
-import java.util.Collection;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-
 import org.hibernate.annotations.Type;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
-
 import ua.romenskyi.webapp.shopping.data.NameColumn;
 import ua.romenskyi.webapp.shopping.domain.UniqueNamedEntityInterface;
+import ua.romenskyi.webapp.shopping.domain.list.List;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 
 @Entity
 @Table(name="users")
@@ -45,6 +38,17 @@ public class User implements UniqueNamedEntityInterface, UserDetails {
 	
 	@ManyToMany(mappedBy="users")
 	private Collection<Group> groups;
+
+	@OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+	private Collection<List> lists;
+
+	public User() {
+		this.key = -1L;
+		this.username = "";
+		this.password = "";
+		this.groups = new ArrayList<Group>();
+		this.lists = new ArrayList<List>();
+	}
 
 	@Override
 	public Long getKey() {
@@ -91,6 +95,14 @@ public class User implements UniqueNamedEntityInterface, UserDetails {
 
 	public void setGroups(Collection<Group> groups) {
 		this.groups = groups;
+	}
+
+	public Collection<List> getLists() {
+		return lists;
+	}
+
+	public void setLists(Collection<List> lists) {
+		this.lists = lists;
 	}
 
 	@Override
